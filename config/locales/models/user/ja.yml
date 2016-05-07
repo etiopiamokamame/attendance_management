@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      user: "利用者情報"
+    attributes:
+      user:
+        name:             "利用者名"
+        affiliation_name: "所属部署名"
+        number:           " 社員番号"
+        password:         "パスワード"
+        password_confirm: "パスワード（再入力）"

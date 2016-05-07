@@ -1,0 +1,27 @@
+ja:
+  layouts:
+    side_menu:
+      top:           "TOP"
+      admin_menu:    "管理者メニュー"
+      normal_menu:   "利用者メニュー"
+      system_config: "システム設定"
+      user_config:   "利用者管理"
+      reason:        "事由マスタ"
+      leave_type:    "休暇種別マスタ"
+      attendance:    "勤怠記入"
+      user:          "利用者情報編集"
+      leave_table:   "休暇表"
+      report:        "報告書"
+      delete:        "削除"
+      init_password: "パスワード初期化"
+  title: "勤怠管理システム"
+  success:
+    process:       "保存しました。"
+    init_password: "%{name}さんのパスワードを初期化しました。"
+    remove_user:   "%{name}さんを削除しました。"
+    delete:        "削除しました。"
+  error:
+    not_login:     "社員番号またはパスワードが間違えています。"
+    not_logged_in: "ログインして下さい。"
+    some_errors:   "%{count}個のエラーが発生しています。"
+  back: "戻る"

@@ -1,0 +1,10 @@
+<%= stylesheet_link_tag "users" %>
+<%= javascript_include_tag "users" %>
+<%= header_messages :user %>
+<%= header_title t(".create_user_title") %>
+
+<div class="form-user">
+  <%= form_for @user, url: {action: "create"} do |f| %>
+    <%= render partial: "form", locals: {f: f} %>
+  <% end %>
+</div>

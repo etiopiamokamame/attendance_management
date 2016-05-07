@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "leave_types" %>
+<%= header_messages %>
+<%= header_title t(".title") %>
+
+<div class="form-leave-type">
+  <table class="leave-type-table">
+    <tr>
+      <th><%= t(".number") %></th>
+      <th><%= t(".content") %></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @leave_types.each.with_index(1) do |leave_type, i| %>
+      <tr>
+        <td>
+          <%= i %>
+        </td>
+        <td>
+          <%= leave_type.content %>
+        </td>
+        <td>
+          <%= link_to t(".edit"), edit_leave_type_path(leave_type.id) %>
+        </td>
+        <td>
+          <%= link_to t(".delete"), leave_type_path(leave_type.id),
+            method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="form-leave-type-btn">
+    <%= button_to t(".new_leave_type"), new_leave_type_path,
+      class:  "new-leave-type-btn",
+      method: :get %>
+    <%= button_to t(:back), top_index_path,
+      class:   "back-btn",
+      method: :get %>
+  </div>
+</div>

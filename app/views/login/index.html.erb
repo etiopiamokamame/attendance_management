@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag "application", "login" %>
+
+<head>
+  <title><%= t("title") %></title>
+</head>
+
+<div class="login-body">
+  <div class="header-title login-title">
+    <label><%= t("title") %></label>
+  </div>
+
+  <div class="form-login">
+    <%= form_tag authenticate_login_index_path do %>
+      <%= header_messages %>
+      <%= text_field_tag "user[number]", "",
+        class:       "login-number",
+        placeholder: t(".number") %>
+      <%= password_field_tag "user[password]", "",
+        class:       "login-password",
+        placeholder: t(".password") %>
+      <div class="form-login-btn">
+        <%= submit_tag t(".login"), class: "login-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

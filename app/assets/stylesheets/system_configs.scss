@@ -1,0 +1,43 @@
+// Place all the styles related to the system_configs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-system-config form {
+  margin:        0 auto;
+  width:         80%;
+  text-align:    center;
+}
+
+.form-system-config form > div > div {
+  float: left;
+  width: 50%;
+}
+
+.form-system-config form > div div:first-child {
+  clear: both;
+}
+
+/* #ADADAD */
+
+.save-btn {
+  float: right;
+}
+
+.back-btn {
+  float: left;
+}
+
+.save-btn, .back-btn {
+  background:    #78B3FB;
+  border:        0;
+  width:         50%;
+  height:        40px;
+  border-radius: 3px;
+  color:         white;
+  cursor:        pointer;
+  margin:        10px;
+}
+
+.save-btn:hover, .back-btn:hover {
+  background: #529DF9;
+}

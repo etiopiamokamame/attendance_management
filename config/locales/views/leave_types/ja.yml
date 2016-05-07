@@ -1,0 +1,12 @@
+ja:
+  leave_types:
+    index:
+      title:           "休暇マスタ"
+      number:          "No."
+      content:         "種別内容"
+      edit:            "編集"
+      delete:          "削除"
+      new_leave_type:  "新規作成"
+    form:
+      content:           "種別内容"
+      create_leave_type: "登録"

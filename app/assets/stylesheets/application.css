@@ -1,0 +1,157 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ * require_tree .
+ *= require_self
+ */
+
+body {
+  background: #C3DEFF;
+  margin:     0;
+  padding:    0;
+  border:     0;
+}
+
+html,
+body,
+.side-menu,
+.side-content,
+.main-content,
+.content {
+  height: 100%;
+}
+
+.side-menu {
+  position: fixed;
+  width:    250px;
+}
+
+.side-menu {
+  overflow: auto;
+}
+
+.main-content {
+  margin-left: 250px;
+}
+
+.main-content > .content,
+.side-menu    > .side-content {
+  padding:    5px;
+  box-sizing: border-box;
+}
+
+.main-content, .content {
+  background-color: white;
+}
+
+.content {
+  overflow: auto;
+}
+
+.field_with_errors {
+  background-color: red;
+  padding:          2px;
+}
+
+.notice {
+  color:            white;
+  font-weight:      bold;
+  font-size:        20px;
+  border:           3px solid #2FBF00;
+  border-radius:    3px;
+  background-color: #7CFF6C;
+  padding:          10px 0;
+}
+
+.error {
+  color: lightcoral;
+}
+
+.flash {
+  width:      80%;
+  text-align: center;
+  margin:     0 auto;
+}
+
+.flash p {
+  margin: 10px 0;
+}
+
+.error-message {
+  font-size:     20px;
+  margin:        15px auto;
+  width:         80%;
+  background:    #DCDCDC;
+  border:        3px solid red;
+  border-radius: 5px;
+  box-sizing:    border-box;
+}
+
+.some-error {
+  font-weight:      bold;
+  padding:          10px;
+  color:            white;
+  background-color: red;
+}
+
+.error-message ul {
+  color:  red;
+  margin: 5px;
+}
+
+div.header-title {
+  width:  80%;
+  margin: 20px auto;
+}
+
+div.header-title div.title {
+  background-color: #FF767C;
+  padding:          10px 22px 10px 22px;
+  color:            white;
+  font-size:        30px;
+  border-radius:    3px;
+}
+
+.admin-menu, .normal-menu {
+  list-style: none;
+}
+
+.top-menu > div,
+.admin-menu > li,
+.normal-menu > li {
+  margin-bottom: 1em;
+}
+
+.top-menu > div:hover,
+.admin-menu > li div:hover,
+.normal-menu > li div:hover {
+  background-color: #89BEFF;
+}
+
+.top-menu > div a,
+.admin-menu > li a,
+.normal-menu > li a {
+  display:         block;
+  width:           100%;
+  padding:         5px;
+  text-decoration: none;
+  box-sizing:      border-box;
+}
+
+.top-menu div,
+.admin-menu-list,
+.normal-menu-list {
+  margin-left: 20px;
+  padding:     5px;
+  font-size:   20px;
+  font-weight: bold;
+}

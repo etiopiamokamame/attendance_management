@@ -1,0 +1,85 @@
+<label class="top-menu">
+  <div>
+    <%= link_to top_index_path, method: :get do %>
+      <%= t(".top") %>
+    <% end %>
+  </div>
+</label>
+
+<% if session[:admin_user] %>
+  <label class="admin-menu-list">
+    <%= t(".admin_menu") %>
+  </label>
+  <ul class="admin-menu">
+    <li>
+      <div>
+        <%= link_to edit_system_config_path(SystemConfig.first.id), method: :get do %>
+          <%= image_tag("system_config.png") %>
+          <%= t(".system_config") %>
+        <% end %>
+      </div>
+    </li>
+    <li>
+      <div>
+        <%= link_to user_configs_path, method: :get do %>
+          <%= image_tag("user_config.png") %>
+          <%= t(".user_config") %>
+        <% end %>
+      </div>
+    </li>
+    <li>
+      <div>
+        <%= link_to reasons_path, method: :get do %>
+          <%= image_tag("reason.png") %>
+          <%= t(".reason") %>
+        <% end %>
+      </div>
+    </li>
+    <li>
+      <div>
+        <%= link_to leave_types_path, method: :get do %>
+          <%= image_tag("leave_type.png") %>
+          <%= t(".leave_type") %>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+<% end %>
+
+<label class="normal-menu-list">
+  <%= t(".normal_menu") %>
+</label>
+<ul class="normal-menu">
+  <li>
+    <div>
+      <%= link_to attendances_path, method: :get do %>
+        <%= image_tag("attendance.png") %>
+        <%= t(".attendance") %>
+      <% end %>
+    </div>
+  </li>
+  <li>
+    <div>
+      <%= link_to users_path, method: :get do %>
+        <%= image_tag("user.png") %>
+        <%= t(".user") %>
+      <% end %>
+    </div>
+  </li>
+  <li>
+    <div>
+      <%= link_to leave_tables_path, method: :get do %>
+        <%= image_tag("leave_table.png") %>
+        <%= t(".leave_table") %>
+      <% end %>
+    </div>
+  </li>
+  <li>
+    <div>
+      <%= link_to reports_path, method: :get do %>
+        <%= image_tag("report.png") %>
+        <%= t(".report") %>
+      <% end %>
+    </div>
+  </li>
+</ul>

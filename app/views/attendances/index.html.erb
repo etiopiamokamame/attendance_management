@@ -1,0 +1,125 @@
+<%= stylesheet_link_tag "attendances" %>
+<%= javascript_include_tag "attendances" %>
+<%= header_messages :attendance %>
+<%= header_title t(".title") %>
+
+<div class="form-attendance">
+  <%= form_tag save_attendances_path do %>
+    <%= hidden_field :user, :id %>
+    <%= hidden_field :attendance, :year %>
+    <%= hidden_field :attendance, :month %>
+    <table class="header-attendance-table">
+      <tr>
+        <th><%= t(".entry_month") %></th>
+        <td>
+          <%= Date.new(
+              @attendance.year,
+              @attendance.month
+            ).to_era(t(".attendance_year_format")) %>
+        </td>
+        <th><%= t(".company_name") %></th>
+        <td><%= @sys.company_name %></td>
+      </tr>
+      <tr>
+        <th><%= t(".affiliation") %></th>
+        <td><%= @user.affiliation_name %></td>
+        <th><%= t(".site_start_time") %></th>
+        <td>
+          <%= time_field :attendance, :display_site_start_time,
+            step: 30.minute %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= t(".user_name") %></th>
+        <td><%= @user.name %></td>
+        <th><%= t(".site_end_time") %></th>
+        <td>
+          <%= time_field :attendance, :display_site_end_time,
+            step: 30.minute %>
+        </td>
+      </tr>
+    </table>
+    <table class="attendance-table">
+      <tr>
+        <th class="day"><%= t(".day") %></th>
+        <th class="week"><%= t(".week") %></th>
+        <th class="work_start_time"><%= t(".work_start_time") %></th>
+        <th class="work_end_time"><%= t(".work_end_time") %></th>
+        <th class="working_time"><%= t(".working_time") %></th>
+        <th class="off_hours_time"><%= t(".off_hours_time") %></th>
+        <th class="late_night_time"><%= t(".late_night_time") %></th>
+        <th class="time_holiday"><%= t(".time_holiday") %></th>
+        <th class="shortfall_time"><%= t(".shortfall_time") %></th>
+        <th class="reason"><%= t(".reason") %></th>
+        <th class="leave_type"><%= t(".leave_type") %></th>
+        <th class="rest_out_of_standard"><%= t(".rest_out_of_standard") %></th>
+      </tr>
+      <% @attendance.display_details.each do |detail| %>
+        <tr>
+          <td>
+            <%= detail.day %>
+          </td>
+          <td>
+            <%= t(".week_name_#{detail.week}") %>
+            <%= hidden_field_tag "attendance[details[#{detail.day}][week]]",
+              detail.week %>
+          </td>
+          <td>
+            <%= time_field_tag "attendance[details[#{detail.day}][work_start_time_duration]]",
+              detail.work_start_time_duration,
+              step: 30.minute %>
+          </td>
+          <td>
+            <%= time_field_tag "attendance[details[#{detail.day}][work_end_time_duration]]",
+              detail.work_end_time_duration,
+              step: 30.minute %>
+          </td>
+          <td>
+            <%= time_field_tag "attendance[details[#{detail.day}][working_time_duration]]",
+              detail.working_time_duration,
+              readonly: true %>
+          </td>
+          <td>
+            <%= time_field_tag "attendance[details[#{detail.day}][off_hours_time_duration]",
+              detail.off_hours_time_duration,
+              readonly: true %>
+          </td>
+          <td>
+            <%= time_field_tag "attendance[details[#{detail.day}][late_night_time_duration]",
+              detail.late_night_time_duration,
+              readonly: true %>
+          </td>
+          <td>
+            <%= time_field_tag "attendance[details[#{detail.day}][time_holiday_duration]",
+              detail.time_holiday_duration,
+              step: 60.minute %>
+          </td>
+          <td>
+            <%= time_field_tag "attendance[details[#{detail.day}][shortfall_time_duration]",
+              detail.shortfall_time_duration,
+              readonly: true %>
+          </td>
+          <td>
+            <%= text_field_tag "attendance[details[#{detail.day}][reason]",
+              detail.reason %>
+          </td>
+          <td>
+            <%= text_field_tag "attendance[details[#{detail.day}][leave_type_id]",
+              detail.leave_type_id %>
+          </td>
+          <td>
+            <%= time_field_tag "attendance[details[#{detail.day}][rest_out_of_standard_duration]",
+              detail.rest_out_of_standard_duration,
+              step: 30.minute %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="form-attendance-btn">
+      <%= submit_tag t(".save"), class: "save-btn" %>
+      <%= button_to t(:back), "",
+        class:   "back-btn",
+        onclick: "return top_page();" %>
+    </div>
+  <% end %>
+</div>

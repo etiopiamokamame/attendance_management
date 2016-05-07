@@ -1,0 +1,11 @@
+ja:
+  users:
+    new:
+      create_user_title: "新規利用者登録"
+    form:
+      user_name:             "利用者名"
+      affiliation_name:      "所属部署名"
+      user_number:           "社員番号"
+      user_password:         "パスワード"
+      user_password_confirm: "パスワード（再入力）"
+      create_user:           "作成"

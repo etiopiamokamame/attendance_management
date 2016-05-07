@@ -1,0 +1,9 @@
+<%= stylesheet_link_tag "reasons" %>
+<%= javascript_include_tag "reasons" %>
+<%= header_messages :reason %>
+
+<div class="form-reason">
+  <%= form_for @reason, url: {action: "update"} do |f| %>
+    <%= render partial: "form", locals: {f: f} %>
+  <% end %>
+</div>

@@ -1,0 +1,53 @@
+// Place all the styles related to the reasons controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-reason {
+  box-sizing:    border-box;
+  margin:        0 auto 15px;
+  padding:       22px 22px 22px 22px;
+  width:         60%;
+  border-radius: 0px 5px 5px 5px;
+  background:    #282e33;
+  border-top:    3px solid #434a52;
+  border-bottom: 3px solid #434a52;
+  text-align:    center;
+}
+
+.form-content {
+  margin-bottom: 10px;
+}
+
+.content-field {
+  width: 100%;
+}
+
+.reason-table {
+  margin-bottom: 10px;
+}
+
+.form-reason-btn {
+  height: 30px;
+}
+
+.new-reason-btn {
+  float: left;
+}
+
+.back-btn {
+  float: right;
+}
+
+.new-reason-btn, .back-btn, .create-reason-btn {
+  background:    #b5cd60;
+  border:        0;
+  width:         49%;
+  height:        40px;
+  border-radius: 3px;
+  color:         white;
+  cursor:        pointer;
+}
+
+.new-reason-btn:hover, .back-btn:hover, .create-reason-btn:hover {
+  background: #16aa56;
+}

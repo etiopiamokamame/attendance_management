@@ -1,0 +1,31 @@
+<div class="form-user-name">
+  <%= f.text_field :name,
+    class:       "user-name",
+    placeholder: t(".user_name") %>
+</div>
+<div class="form-affiliation-name">
+  <%= f.text_field :affiliation_name,
+    class:       "affiliation-name",
+    placeholder: t(".affiliation_name") %>
+</div>
+<div class="form-user-number">
+  <%= f.text_field :number,
+    class:       "user-number",
+    placeholder: t(".user_number") %>
+</div>
+<div class="form-user-password">
+  <%= f.password_field :password,
+    class:       "user-password",
+    placeholder: t(".user_password") %>
+</div>
+<div class="form-user-password-confirm">
+  <%= f.password_field :password_confirm,
+    class:       "user-password-confirm",
+    placeholder: t(".user_password_confirm")  %>
+</div>
+<div class="form-user-btn">
+  <%= f.submit t(".create_user"), class: "create-user-btn" %>
+  <%= button_to t(:back), "",
+      class:   "back-btn",
+      onclick: "return login_page();" %>
+</div>

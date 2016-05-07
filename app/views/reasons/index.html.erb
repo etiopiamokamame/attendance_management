@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "reasons" %>
+<%= header_messages %>
+<%= header_title t(".title") %>
+
+<div class="form-reason">
+  <table class="reason-table">
+    <tr>
+      <th><%= t(".number") %></th>
+      <th><%= t(".content") %></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @reasons.each.with_index(1) do |reason, i| %>
+      <tr>
+        <td>
+          <%= i %>
+        </td>
+        <td>
+          <%= reason.content %>
+        </td>
+        <td>
+          <%= link_to t(".edit"), edit_reason_path(reason.id) %>
+        </td>
+        <td>
+          <%= link_to t(".delete"), reason_path(reason.id),
+            method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="form-reason-btn">
+    <%= button_to t(".new_reason"), new_reason_path,
+      class:  "new-reason-btn",
+      method: :get %>
+    <%= button_to t(:back), top_index_path,
+      class:   "back-btn",
+      method: :get %>
+  </div>
+</div>
