@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :reasons
+  resources :articles
   resources :leave_types
   resources :top,                    only: [:index]
   resources :system_configs,         only: [:edit, :update]

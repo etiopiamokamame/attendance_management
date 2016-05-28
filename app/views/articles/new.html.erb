@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag    "articles" %>
+<%= javascript_include_tag "articles" %>
+<%= header_title t(".title") %>
+
+<div class="form-new-article">
+  <%= form_for @article, url: {action: "create"} do |f| %>
+    <div class="form-new-article-btn">
+      <div>
+        <%= f.submit t(".create_article"),
+          class:  "create-article-btn" %>
+      </div>
+      <div>
+        <%= button_to t(:back), "",
+          class:   "back-btn",
+          onclick: "return article_page();" %>
+      </div>
+    </div>
+  <% end %>
+</div>

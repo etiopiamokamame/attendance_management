@@ -8,6 +8,7 @@ ja:
       user_config:   "利用者管理"
       reason:        "事由マスタ"
       leave_type:    "休暇種別マスタ"
+      articles:      "新着記事"
       attendance:    "勤怠記入"
       user:          "利用者情報編集"
       leave_table:   "休暇表"

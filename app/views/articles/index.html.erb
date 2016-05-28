@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag "articles" %>
+<%= header_title t(".title") %>
+
+<div class="form-new-article">
+  <div class="form-new-article-btn">
+    <div>
+      <%= button_to t(".new_article"), new_article_path,
+        method: :get,
+        class:  "new-article-btn" %>
+    </div>
+    <div>
+      <%= button_to t(:back), "",
+        class:   "back-btn",
+        onclick: "return top_page();" %>
+    </div>
+  </div>
+</div>

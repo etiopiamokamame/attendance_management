@@ -17,11 +17,13 @@ assets_files = %w(
                 reasons.css
                 leave_types.css
                 attendances.css
+                articles.css
                 login.js
                 users.js
                 reasons.js
                 leave_types.js
                 attendances.js
+                articles.js
                )
 
 Rails.application.config.assets.precompile += assets_files

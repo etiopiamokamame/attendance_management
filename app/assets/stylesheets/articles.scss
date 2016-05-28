@@ -1,0 +1,41 @@
+// Place all the styles related to the article controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-new-article form {
+  margin:        0 auto;
+  width:         80%;
+  text-align:    center;
+}
+
+.form-new-article div.form-new-article-btn > div {
+  float:      left;
+  width:      50%;
+  font-size:  20px;
+  padding:    5px;
+  box-sizing: border-box;
+}
+
+.new-article-btn, .create-article-btn {
+  float: right;
+}
+
+.back-btn {
+  float: left;
+}
+
+.new-article-btn, .create-article-btn, .back-btn {
+  background:    #78B3FB;
+  border:        0;
+  width:         50%;
+  height:        40px;
+  border-radius: 3px;
+  color:         white;
+  cursor:        pointer;
+  margin:        10px;
+}
+
+.new-article-btn:hover, .create-article-btn:hover, .back-btn:hover {
+  background: #529DF9;
+}
+
