@@ -9,15 +9,24 @@
 }
 
 .form-system-config form > div > div {
-  float: left;
-  width: 50%;
+  float:      left;
+  width:      50%;
+  font-size:  20px;
+  padding:    5px;
+  box-sizing: border-box;
 }
 
 .form-system-config form > div div:first-child {
-  clear: both;
+  clear:      both;
+  text-align: left;
 }
 
-/* #ADADAD  */
+.form-system-config form input[type="text"],
+.form-system-config form input[type="time"],
+.form-system-config form input[type="number"] {
+  width:      100%;
+  box-sizing: border-box;
+}
 
 .save-btn {
   float: right;
