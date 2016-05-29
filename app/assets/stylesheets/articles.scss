@@ -8,7 +8,8 @@
   text-align:    center;
 }
 
-.form-new-article div.form-new-article-btn > div {
+.form-new-article > div div,
+.form-new-article form > div > div {
   float:      left;
   width:      50%;
   font-size:  20px;
@@ -16,7 +17,21 @@
   box-sizing: border-box;
 }
 
-.new-article-btn, .create-article-btn {
+.form-new-article > div div:first-child,
+.form-new-article form > div div:first-child {
+  clear:      both;
+  text-align: left;
+}
+
+.form-new-article form input[type="text"],
+.form-new-article form textarea {
+  width:      100%;
+  box-sizing: border-box;
+}
+
+.new-article-btn,
+.edit-article-btn,
+.save-article-btn {
   float: right;
 }
 
@@ -24,7 +39,10 @@
   float: left;
 }
 
-.new-article-btn, .create-article-btn, .back-btn {
+.new-article-btn,
+.edit-article-btn,
+.save-article-btn,
+.back-btn {
   background:    #78B3FB;
   border:        0;
   width:         50%;
@@ -35,7 +53,10 @@
   margin:        10px;
 }
 
-.new-article-btn:hover, .create-article-btn:hover, .back-btn:hover {
+.new-article-btn:hover,
+.edit-article-btn:hover,
+.save-article-btn:hover,
+.back-btn:hover {
   background: #529DF9;
 }
 

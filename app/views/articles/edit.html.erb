@@ -4,7 +4,7 @@
 <%= header_title t(".title") %>
 
 <div class="form-new-article">
-  <%= form_for @article, url: {action: "create"} do |f| %>
+  <%= form_for @article, url: {action: "update"} do |f| %>
     <%= render partial: "form", locals: {f: f} %>
     <div>
       <div>
@@ -14,7 +14,7 @@
       <div>
         <%= button_to t(:back), "",
           class:   "back-btn",
-          onclick: "return article_page();" %>
+          onclick: "return article_show_page(#{@article.id});" %>
       </div>
     </div>
   <% end %>

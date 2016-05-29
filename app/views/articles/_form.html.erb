@@ -1,0 +1,16 @@
+<div>
+  <div>
+    <label><%= t(".title") %></label>
+  </div>
+  <div>
+    <%= f.text_field :title %>
+  </div>
+</div>
+<div>
+  <div>
+    <label><%= t(".body") %></label>
+  </div>
+  <div>
+    <%= f.text_area :body, size: "50x10", maxlength: 1000 %>
+  </div>
+</div>

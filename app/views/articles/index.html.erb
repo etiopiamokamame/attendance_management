@@ -1,8 +1,18 @@
 <%= stylesheet_link_tag "articles" %>
+<%= header_messages %>
 <%= header_title t(".title") %>
 
 <div class="form-new-article">
-  <div class="form-new-article-btn">
+  <table>
+    <% @articles.each do |article| %>
+      <tr>
+        <th><%= article.updated_date %></th>
+        <td><%= article.title %></td>
+        <td><%= link_to "詳細", article_path(article) %></td>
+      </tr>
+    <% end %>
+  </table>
+  <div>
     <div>
       <%= button_to t(".new_article"), new_article_path,
         method: :get,

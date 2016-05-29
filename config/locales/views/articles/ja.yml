@@ -4,5 +4,14 @@ ja:
       title:       "新着記事"
       new_article: "新規作成"
     new:
-      title:          "新規記事"
-      create_article: "登録"
+      title:        "新規記事"
+      save_article: "保存"
+    show:
+      title:        "記事"
+      edit_article: "編集"
+    edit:
+      title:        "記事"
+      save_article: "保存"
+    form:
+      title:        "タイトル"
+      body:         "本文"

@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      article: "新着記事"
+    attributes:
+      article:
+        title: "タイトル"
+        body:  "本文"
