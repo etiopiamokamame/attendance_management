@@ -22,7 +22,7 @@ ja:
     remove_user:   "%{name}さんを削除しました。"
     delete:        "削除しました。"
   error:
-    not_login:     "社員番号またはパスワードが間違えています。"
+    not_login:     "社員番号またはパスワードが不正です。"
     not_logged_in: "ログインして下さい。"
     some_errors:   "%{count}個のエラーが発生しています。"
   back: "戻る"

@@ -1,3 +1,25 @@
 <%= stylesheet_link_tag "top" %>
 
-<h1>新着情報</h1>
+<div class="wrapper">
+  <div class="content-heder">
+    <h1>新着情報</h1>
+  </div>
+
+  <% @new_articles.each do |article| %>
+    <div class="box box-max-width">
+      <div class="box-header">
+        <h3 class="box-title">
+          <%= article.title %>
+        </h3>
+        <span class="date pull-right">
+          <label>
+            <%= article.updated_at.to_date.strftime("%Y年%m月%d日") %>
+          </label>
+        </span>
+      </div>
+      <div class="box-body">
+        <pre><%= article.body %></pre>
+      </div>
+    </div>
+  <% end %>
+</div>

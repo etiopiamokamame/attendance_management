@@ -1,6 +1,6 @@
 class TopController < ApplicationController
 
   def index
-    @user = login_user
+    @new_articles = Article.all.order("updated_at DESC")
   end
 end

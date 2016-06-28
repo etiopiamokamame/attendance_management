@@ -2,51 +2,51 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.form-system-config form {
-  margin:        0 auto;
-  width:         80%;
-  text-align:    center;
-}
+// .form-system-config form {
+//   margin:        0 auto;
+//   width:         80%;
+//   text-align:    center;
+// }
 
-.form-system-config form > div > div {
-  float:      left;
-  width:      50%;
-  font-size:  20px;
-  padding:    5px;
-  box-sizing: border-box;
-}
+// .form-system-config form > div > div {
+//   float:      left;
+//   width:      50%;
+//   font-size:  20px;
+//   padding:    5px;
+//   box-sizing: border-box;
+// }
 
-.form-system-config form > div div:first-child {
-  clear:      both;
-  text-align: left;
-}
+// .form-system-config form > div div:first-child {
+//   clear:      both;
+//   text-align: left;
+// }
 
-.form-system-config form input[type="text"],
-.form-system-config form input[type="time"],
-.form-system-config form input[type="number"] {
-  width:      100%;
-  box-sizing: border-box;
-}
+// .form-system-config form input[type="text"],
+// .form-system-config form input[type="time"],
+// .form-system-config form input[type="number"] {
+//   width:      100%;
+//   box-sizing: border-box;
+// }
 
-.save-btn {
-  float: right;
-}
+// .save-btn {
+//   float: right;
+// }
 
-.back-btn {
-  float: left;
-}
+// .back-btn {
+//   float: left;
+// }
 
-.save-btn, .back-btn {
-  background:    #78B3FB;
-  border:        0;
-  width:         50%;
-  height:        40px;
-  border-radius: 3px;
-  color:         white;
-  cursor:        pointer;
-  margin:        10px;
-}
+// .save-btn, .back-btn {
+//   background:    #78B3FB;
+//   border:        0;
+//   width:         50%;
+//   height:        40px;
+//   border-radius: 3px;
+//   color:         white;
+//   cursor:        pointer;
+//   margin:        10px;
+// }
 
-.save-btn:hover, .back-btn:hover {
-  background: #529DF9;
-}
+// .save-btn:hover, .back-btn:hover {
+//   background: #529DF9;
+// }

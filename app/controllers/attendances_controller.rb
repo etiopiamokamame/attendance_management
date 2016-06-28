@@ -2,7 +2,6 @@ class AttendancesController < ApplicationController
   def index
     @sys        = SystemConfig.first
     @user       = login_user
-    binding.pry
     @attendance = @user.this_month_attendance
   end
 
@@ -31,21 +30,21 @@ class AttendancesController < ApplicationController
       :display_site_end_time,
       details: {}
     )
-    params[:attendance][:details].each do |key, val|
-      my_params[:details][key] = params[:attendance][:details].require(key).permit(
-        :week,
-        :work_start_time_duration,
-        :work_end_time_duration,
-        :working_time_duration,
-        :off_hours_time_duration,
-        :late_night_time_duration,
-        :time_holiday_duration,
-        :shortfall_time_duration,
-        :reason,
-        :leave_type_id,
-        :rest_out_of_standard_duration
-      )
-    end
+    # params[:attendance][:details].each do |key, val|
+    #   my_params[:details][key] = params[:attendance][:details].require(key).permit(
+    #     :week,
+    #     :work_start_time_duration,
+    #     :work_end_time_duration,
+    #     :working_time_duration,
+    #     :off_hours_time_duration,
+    #     :late_night_time_duration,
+    #     :time_holiday_duration,
+    #     :shortfall_time_duration,
+    #     :reason,
+    #     :leave_type_id,
+    #     :rest_out_of_standard_duration
+    #   )
+    # end
     my_params
   end
 end

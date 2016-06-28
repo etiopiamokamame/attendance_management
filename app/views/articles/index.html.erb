@@ -1,26 +1,55 @@
 <%= stylesheet_link_tag "articles" %>
 <%= header_messages %>
-<%= header_title t(".title") %>
 
-<div class="form-new-article">
-  <table>
-    <% @articles.each do |article| %>
-      <tr>
-        <th><%= article.updated_date %></th>
-        <td><%= article.title %></td>
-        <td><%= link_to "詳細", article_path(article) %></td>
-      </tr>
-    <% end %>
-  </table>
-  <div>
-    <div>
+<div class="wrapper">
+  <div class="content-heder">
+    <%= header_title t(".title") %>
+  </div>
+
+  <div class="box box-max-width">
+    <div class="box-header">
+      <%= t(".article_list") %>
+    </div>
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th><%= t(".created_at") %></th>
+              <th><%= t(".article_title") %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @articles.each do |article| %>
+              <tr>
+                <td>
+                  <%= article.updated_at.strftime("%Y年%m月%d日") %>
+                </td>
+                <td>
+                  <div class="abbreviation">
+                    <%= article.title %>
+                  </div>
+                </td>
+                <td>
+                  <%= link_to t(".detail"), article_path(article),
+                    class: "btn" %>
+                  <%= link_to t(".delete"), article_path(article),
+                    method: :delete,
+                    class:  "btn" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="box-footer">
       <%= button_to t(".new_article"), new_article_path,
         method: :get,
-        class:  "new-article-btn" %>
-    </div>
-    <div>
+        class:  "btn btn-lg pull-left" %>
       <%= button_to t(:back), "",
-        class:   "back-btn",
+        class:   "btn btn-lg pull-right",
         onclick: "return top_page();" %>
     </div>
   </div>

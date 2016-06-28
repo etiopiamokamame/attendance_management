@@ -2,61 +2,61 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.form-new-article form {
-  margin:        0 auto;
-  width:         80%;
-  text-align:    center;
-}
+// .form-new-article form {
+//   margin:        0 auto;
+//   width:         80%;
+//   text-align:    center;
+// }
 
-.form-new-article > div div,
-.form-new-article form > div > div {
-  float:      left;
-  width:      50%;
-  font-size:  20px;
-  padding:    5px;
-  box-sizing: border-box;
-}
+// .form-new-article > div div,
+// .form-new-article form > div > div {
+//   float:      left;
+//   width:      50%;
+//   font-size:  20px;
+//   padding:    5px;
+//   box-sizing: border-box;
+// }
 
-.form-new-article > div div:first-child,
-.form-new-article form > div div:first-child {
-  clear:      both;
-  text-align: left;
-}
+// .form-new-article > div div:first-child,
+// .form-new-article form > div div:first-child {
+//   clear:      both;
+//   text-align: left;
+// }
 
-.form-new-article form input[type="text"],
-.form-new-article form textarea {
-  width:      100%;
-  box-sizing: border-box;
-}
+// .form-new-article form input[type="text"],
+// .form-new-article form textarea {
+//   width:      100%;
+//   box-sizing: border-box;
+// }
 
-.new-article-btn,
-.edit-article-btn,
-.save-article-btn {
-  float: right;
-}
+// .new-article-btn,
+// .edit-article-btn,
+// .save-article-btn {
+//   float: right;
+// }
 
-.back-btn {
-  float: left;
-}
+// .back-btn {
+//   float: left;
+// }
 
-.new-article-btn,
-.edit-article-btn,
-.save-article-btn,
-.back-btn {
-  background:    #78B3FB;
-  border:        0;
-  width:         50%;
-  height:        40px;
-  border-radius: 3px;
-  color:         white;
-  cursor:        pointer;
-  margin:        10px;
-}
+// .new-article-btn,
+// .edit-article-btn,
+// .save-article-btn,
+// .back-btn {
+//   background:    #78B3FB;
+//   border:        0;
+//   width:         50%;
+//   height:        40px;
+//   border-radius: 3px;
+//   color:         white;
+//   cursor:        pointer;
+//   margin:        10px;
+// }
 
-.new-article-btn:hover,
-.edit-article-btn:hover,
-.save-article-btn:hover,
-.back-btn:hover {
-  background: #529DF9;
-}
+// .new-article-btn:hover,
+// .edit-article-btn:hover,
+// .save-article-btn:hover,
+// .back-btn:hover {
+//   background: #529DF9;
+// }
 

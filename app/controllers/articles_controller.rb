@@ -17,12 +17,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
-    today    = Date.today
-
-    @article.user_id         = session[:userid]
-    @article.registered_date = today.strftime("%Y%m%d")
-    @article.updated_date    = today.strftime("%Y%m%d")
+    @article         = Article.new(article_params)
+    @article.user_id = session[:userid]
 
     if @article.save
       flash[:notice] = t("success.process")
@@ -33,11 +29,9 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article              = Article.find(params[:id])
-    @article.attributes   = article_params
-    today                 = Date.today
-    @article.user_id      = session[:userid]
-    @article.updated_date = today.strftime("%Y%m%d")
+    @article            = Article.find(params[:id])
+    @article.attributes = article_params
+    @article.user_id    = session[:userid]
 
     if @article.save
       flash[:notice] = t("success.process")
@@ -45,6 +39,9 @@ class ArticlesController < ApplicationController
     else
       render action: :edit
     end
+  end
+
+  def destroy
   end
 
   private

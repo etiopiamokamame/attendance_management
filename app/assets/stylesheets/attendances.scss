@@ -2,96 +2,96 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.header-title {
-  width: 90%;
-}
+// div.header-title {
+//   width: 90%;
+// }
 
-.form-attendance {
-  box-sizing:    border-box;
-  margin:        0 auto 15px;
-  padding:       22px 22px 22px 22px;
-  width:         90%;
-  border-radius: 0px 5px 5px 5px;
-  background:    #282e33;
-  border-top:    3px solid #434a52;
-  border-bottom: 3px solid #434a52;
-  text-align:    center;
-}
+// .form-attendance {
+//   box-sizing:    border-box;
+//   margin:        0 auto 15px;
+//   padding:       22px 22px 22px 22px;
+//   width:         90%;
+//   border-radius: 0px 5px 5px 5px;
+//   background:    #282e33;
+//   border-top:    3px solid #434a52;
+//   border-bottom: 3px solid #434a52;
+//   text-align:    center;
+// }
 
-.company-name {
-  text-align: left;
-}
+// .company-name {
+//   text-align: left;
+// }
 
-.attendance-year {
-  text-align: left;
-}
+// .attendance-year {
+//   text-align: left;
+// }
 
-.header-attendance-table tr {
-  height: 30px;
-}
+// .header-attendance-table tr {
+//   height: 30px;
+// }
 
-.header-attendance-table,
-.attendance-table,
-.header-attendance-table td,
-.attendance-table td,
-.header-attendance-table th,
-.attendance-table th{
-  border:          1px #434a52 solid;
-  border-collapse: collapse;
-}
+// .header-attendance-table,
+// .attendance-table,
+// .header-attendance-table td,
+// .attendance-table td,
+// .header-attendance-table th,
+// .attendance-table th{
+//   border:          1px #434a52 solid;
+//   border-collapse: collapse;
+// }
 
-.header-attendance-table,
-.attendance-table {
-  width:         100%;
-  margin-bottom: 10px;
-  table-layout:  fixed;
-}
+// .header-attendance-table,
+// .attendance-table {
+//   width:         100%;
+//   margin-bottom: 10px;
+//   table-layout:  fixed;
+// }
 
-.header-attendance-table th,
-.attendance-table th {
-  background-color: #a9a9a9;
-}
+// .header-attendance-table th,
+// .attendance-table th {
+//   background-color: #a9a9a9;
+// }
 
-.header-attendance-table td,
-.attendance-table td {
-  padding:          0;
-  background-color: #E0DFDF;
-  color:            black;
-}
+// .header-attendance-table td,
+// .attendance-table td {
+//   padding:          0;
+//   background-color: #E0DFDF;
+//   color:            black;
+// }
 
-.header-attendance-table td input,
-.attendance-table td input {
-  background-color: #E0DFDF;
-  width:            100%;
-  height:           100%;
-  font-size:        20px;
-  text-align:       center;
-  border:           0;
-  padding:          0;
-}
+// .header-attendance-table td input,
+// .attendance-table td input {
+//   background-color: #E0DFDF;
+//   width:            100%;
+//   height:           100%;
+//   font-size:        20px;
+//   text-align:       center;
+//   border:           0;
+//   padding:          0;
+// }
 
-.save-btn {
-  float: left;
-}
+// .save-btn {
+//   float: left;
+// }
 
-.back-btn {
-  float: right;
-}
+// .back-btn {
+//   float: right;
+// }
 
-.save-btn, .back-btn {
-  background:    #b5cd60;
-  border:        0;
-  width:         49%;
-  height:        40px;
-  border-radius: 3px;
-  color:         white;
-  cursor:        pointer;
-}
+// .save-btn, .back-btn {
+//   background:    #b5cd60;
+//   border:        0;
+//   width:         49%;
+//   height:        40px;
+//   border-radius: 3px;
+//   color:         white;
+//   cursor:        pointer;
+// }
 
-.save-btn:hover, .back-btn:hover {
-  background: #16aa56;
-}
+// .save-btn:hover, .back-btn:hover {
+//   background: #16aa56;
+// }
 
-.form-attendance-btn {
-  height: 30px;
-}
+// .form-attendance-btn {
+//   height: 30px;
+// }

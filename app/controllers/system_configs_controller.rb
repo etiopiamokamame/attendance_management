@@ -19,13 +19,14 @@ class SystemConfigsController < ApplicationController
   def sys_params
     params.require(:system_config).permit(
       :company_name,
-      :base_working_start_time_duration,
-      :base_working_end_time_duration,
-      :rest_start_time_duration,
-      :rest_end_time_duration,
-      :base_overtime_rest_start_time_duration,
-      :base_overtime_rest_end_time_duration,
-      :late_night_time_duration,
+      :base_working_start_time,
+      :base_working_end_time,
+      :rest_start_time,
+      :rest_end_time,
+      :enable_base_overtime_rest_time,
+      :base_overtime_rest_start_time,
+      :base_overtime_rest_end_time,
+      :late_night_time,
       :time_off_hours_prospect
     )
   end

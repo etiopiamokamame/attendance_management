@@ -24,6 +24,7 @@ assets_files = %w(
                 leave_types.js
                 attendances.js
                 articles.js
+                system_configs.js
                )
 
 Rails.application.config.assets.precompile += assets_files

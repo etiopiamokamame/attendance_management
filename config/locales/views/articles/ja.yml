@@ -1,8 +1,13 @@
 ja:
   articles:
     index:
-      title:       "新着記事"
-      new_article: "新規作成"
+      title:         "新着記事"
+      article_list:  "記事一覧"
+      new_article:   "新規作成"
+      detail:        "詳細"
+      delete:        "削除"
+      created_at:    "作成日"
+      article_title: "タイトル"
     new:
       title:        "新規記事"
       save_article: "保存"

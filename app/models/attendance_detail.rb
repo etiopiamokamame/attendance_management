@@ -1,4 +1,6 @@
 class AttendanceDetail
+  include ActiveModel::Model
+
   # 日  初期値有り  入力なし
   attr_accessor :day
   # 曜日  初期値有り  入力なし
@@ -28,55 +30,15 @@ class AttendanceDetail
     h                         = h.symbolize_keys
     @day                      = day
     @week                     = h[:week]
-    self.work_start_time      = h[:work_start_time_duration]
-    self.work_end_time        = h[:work_end_time_duration]
-    self.working_time         = h[:working_time_duration]
-    self.off_hours_time       = h[:off_hours_time_duration]
-    self.late_night_time      = h[:late_night_time_duration]
-    self.time_holiday         = h[:time_holiday_duration]
-    self.shortfall_time       = h[:shortfall_time_duration]
+    self.work_start_time      = h[:work_start_time]
+    self.work_end_time        = h[:work_end_time]
+    self.working_time         = h[:working_time]
+    self.off_hours_time       = h[:off_hours_time]
+    self.late_night_time      = h[:late_night_time]
+    self.time_holiday         = h[:time_holiday]
+    self.shortfall_time       = h[:shortfall_time]
     self.reason               = h[:reason]
     self.leave_type_id        = h[:leave_type_id]
-    self.rest_out_of_standard = h[:rest_out_of_standard_duration]
-  end
-
-  def work_start_time_duration
-    return nil if self.work_start_time.blank?
-    Time.strptime(self.work_start_time, "%H:%M")
-  end
-
-  def work_end_time_duration
-    return nil if self.work_end_time.blank?
-    Time.strptime(self.work_end_time, "%H:%M")
-  end
-
-  def working_time_duration
-    return nil if self.working_time.blank?
-    Time.strptime(self.working_time, "%H:%M")
-  end
-
-  def off_hours_time_duration
-    return nil if self.off_hours_time.blank?
-    Time.strptime(self.off_hours_time, "%H:%M")
-  end
-
-  def late_night_time_duration
-    return nil if self.late_night_time.blank?
-    Time.strptime(self.late_night_time, "%H:%M")
-  end
-
-  def time_holiday_duration
-    return nil if self.time_holiday.blank?
-    Time.strptime(self.time_holiday, "%H:%M")
-  end
-
-  def shortfall_time_duration
-    return nil if self.shortfall_time.blank?
-    Time.strptime(self.shortfall_time, "%H:%M")
-  end
-
-  def rest_out_of_standard_duration
-    return nil if self.rest_out_of_standard.blank?
-    Time.strptime(self.rest_out_of_standard, "%H:%M")
+    self.rest_out_of_standard = h[:rest_out_of_standard]
   end
 end

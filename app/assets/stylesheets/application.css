@@ -12,13 +12,17 @@
  *
  * require_tree .
  *= require_self
+ *= require jquery.timepicker.css
  */
 
-body {
-  background: #C3DEFF;
+html, body, form, h1, h2, h3, h4, h5, h6 {
   margin:     0;
   padding:    0;
   border:     0;
+}
+
+body {
+  background-color: #ECF0F5;
 }
 
 html,
@@ -30,31 +34,55 @@ body,
   height: 100%;
 }
 
-.side-menu {
-  position: fixed;
-  width:    250px;
+table.table {
+  border-collapse: collapse;
+  border-spacing:  0;
+  width:           100%;
+}
+
+table.table tr th {
+  white-space: nowrap;
+}
+
+table.table tr > th,
+table.table tr > td {
+  border:  1px solid #f4f4f4;
+  padding: 8px;
+}
+
+table.table-attendance tr > th,
+table.table-attendance tr > td {
+  border-color: #9a9a9a;
 }
 
 .side-menu {
-  overflow: auto;
+  background-color: #3C8DBC;
+  position:         fixed;
+  width:            250px;
+  color:            white;
+  font-weight:      bold;
+  overflow:         auto;
 }
 
 .main-content {
   margin-left: 250px;
 }
 
-.main-content > .content,
-.side-menu    > .side-content {
-  padding:    5px;
-  box-sizing: border-box;
-}
-
 .main-content, .content {
-  background-color: white;
+  background-color: #ECF0F5;
 }
 
 .content {
   overflow: auto;
+}
+
+.wrapper {
+  margin: 10px 15px 10px 15px;
+}
+
+.content-heder {
+  padding:       15px 15px 0 15px;
+  margin-bottom: 10px;
 }
 
 .field_with_errors {
@@ -108,50 +136,236 @@ body,
   margin: 5px;
 }
 
-div.header-title {
-  width:  80%;
-  margin: 20px auto;
-}
-
-div.header-title div.title {
-  background-color: #FF767C;
-  padding:          10px 22px 10px 22px;
-  color:            white;
-  font-size:        30px;
-  border-radius:    3px;
-}
-
 .admin-menu, .normal-menu {
+  width:      100%;
   list-style: none;
+  padding:    0;
+  margin:     0;
 }
 
-.top-menu > div,
-.admin-menu > li,
-.normal-menu > li {
-  margin-bottom: 1em;
+.top-menu-list > a:hover,
+.admin-menu > li > a:hover,
+.normal-menu > li > a:hover,
+.admin-menu-list,
+.normal-menu-list {
+  background-color: #367FA9;
 }
 
-.top-menu > div:hover,
-.admin-menu > li div:hover,
-.normal-menu > li div:hover {
-  background-color: #89BEFF;
-}
-
-.top-menu > div a,
+.top-menu-list > a,
 .admin-menu > li a,
 .normal-menu > li a {
   display:         block;
+  color:           white;
   width:           100%;
-  padding:         5px;
+  padding:         10px 5PX;
   text-decoration: none;
   box-sizing:      border-box;
 }
 
-.top-menu div,
+.top-menu-list > a,
 .admin-menu-list,
 .normal-menu-list {
-  margin-left: 20px;
-  padding:     5px;
+  cursor:      pointer;
+  padding:     10px 5px;
   font-size:   20px;
   font-weight: bold;
+  box-sizing:  border-box;
+  width:       100%;
+  display:     block;
+}
+
+.btn {
+  display:         inline-block;
+  padding:         6px 12px;
+  font-size:       14px;
+  font-weight:     400;
+  line-height:     1.42857143;
+  background:      #78B3FB;
+  border:          0;
+  white-space:     nowrap;
+  border-radius:   3px;
+  color:           white;
+  cursor:          pointer;
+  text-decoration: none;
+}
+
+.btn-lg {
+  padding:     10px 16px;
+  font-size:   18px;
+  line-height: 1.3333333;
+}
+
+.btn:hover, .back-btn:hover {
+  background: #529DF9;
+}
+
+.box {
+  background-color: white;
+  border-top:       3px solid #3c8dbc;
+  border-radius:    5px;
+  margin-bottom:    10px;
+}
+
+.box-max-width {
+  width:      100%;
+  padding:    0 5px;
+  box-sizing: border-box;
+}
+
+.box .box-header {
+  padding:       10px;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.box .box-header .box-title {
+  display:     inline-block;
+  font-size:   18px;
+  margin:      0;
+  line-height: 1;
+}
+
+.box .box-header .date-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.box .box-header .date label {
+  font-weight: bold;
+}
+
+.box .box-body {
+  padding: 10px;
+}
+
+.box .box-body pre {
+  font-size: 15px;
+}
+
+.box-footer {
+  width:      100%;
+  box-sizing: border-box;
+  display:    table;
+  border-top: 1px solid #f4f4f4;
+  padding:    10px;
+}
+
+.form-group {
+  overflow-x: auto;
+}
+
+.form-group .form-group-content {
+  margin-bottom: 15px;
+  padding:       10px;
+  box-sizing:    border-box;
+  display:       table;
+  width:         100%;
+}
+
+.form-group .form-group-content label {
+  margin-bottom: 5px;
+  display:       inline-block;
+  font-weight:   700;
+}
+
+.form-group .form-group-content input {
+  width:      100%;
+  height:     34px;
+  padding:    6px 12px;
+  box-sizing: border-box;
+  font-size:  14px;
+}
+
+.enable-list {
+  margin:     0;
+  display:    flex;
+  list-style: none;
+}
+
+.enable-list label input {
+  display: none;
+}
+
+.enable-list li:first-child label {
+  border-radius: 10px 0 0 10px;
+}
+
+.enable-list li:last-child label {
+  border-radius: 0 10px 10px 0;
+}
+
+.enable-list label {
+  padding:          5px 15px;
+  border:           1px solid #bbb;
+  font-size:        15px;
+  background-color: #ddd;
+  color:            white;
+}
+
+.enable-list label:hover {
+  background-color: #c1c1c1;
+}
+
+.enable-list label.selected {
+  background:   linear-gradient(#20e1e4, #3c8dbc);
+  border-color: #306e92;
+}
+
+.enable-list label.selected:hover {
+  background-color: #306e92;
+}
+
+.form-control {
+  border-radius:    0;
+  box-shadow:       none;
+  border-color:     #d2d6de;
+  display:          block;
+  width:            100%;
+  height:           34px;
+  padding:          6px 12px;
+  font-size:        14px;
+  line-height:      1.42857143;
+  color:            #555;
+  background-image: none;
+  border:           1px solid #ccc;
+  box-sizing:       border-box;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > td {
+  white-space:   nowrap;
+  border:        0;
+  padding:       8px;
+  line-height:   1.42857143;
+  text-overflow: ellipsis;
+  width:         10px;
+}
+
+.table > thead > tr > th {
+  border-bottom: 2px solid #f4f4f4;
+}
+
+.table > tbody > tr > td {
+  border-top: 1px solid #f4f4f4;
+}
+
+.table > tbody > tr > td > div.abbreviation {
+  white-space:   nowrap;
+  text-overflow: ellipsis;
+  overflow:      hidden;
+  width:         300px;
+}
+
+.no-margin {
+  margin: 0;
 }

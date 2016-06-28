@@ -5,12 +5,7 @@ module ApplicationHelper
   end
 
   def header_title(title)
-    content_tag(:div,
-      content_tag(:div,
-        title, class: "title"
-      ),
-      class: "header-title"
-    )
+    content_tag(:div, content_tag(:h1, title), class: "content-heder")
   end
 
   def error_message_for(model_name = nil)

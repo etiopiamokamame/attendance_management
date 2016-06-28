@@ -6,6 +6,7 @@ class CreateSystemConfigs < ActiveRecord::Migration
       t.string  :base_working_end_time
       t.string  :rest_start_time
       t.string  :rest_end_time
+      t.boolean :enable_base_overtime_rest_time, null: false, default: true
       t.string  :base_overtime_rest_start_time
       t.string  :base_overtime_rest_end_time
       t.string  :late_night_time

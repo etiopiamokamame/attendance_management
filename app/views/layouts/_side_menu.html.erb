@@ -1,55 +1,43 @@
-<label class="top-menu">
-  <div>
-    <%= link_to top_index_path, method: :get do %>
-      <%= t(".top") %>
-    <% end %>
-  </div>
+<label class="top-menu-list">
+  <%= link_to top_index_path, method: :get do %>
+    <%= t(".top") %>
+  <% end %>
 </label>
 
 <% if session[:admin_user] %>
   <label class="admin-menu-list">
     <%= t(".admin_menu") %>
   </label>
-  <ul class="admin-menu">
+  <ul id="admin_menu" class="admin-menu">
     <li>
-      <div>
-        <%= link_to edit_system_config_path(SystemConfig.first.id), method: :get do %>
-          <%= image_tag("system_config.png") %>
-          <%= t(".system_config") %>
-        <% end %>
-      </div>
+      <%= link_to edit_system_config_path(SystemConfig.first.id), method: :get do %>
+        <%= image_tag("system_config.png") %>
+        <%= t(".system_config") %>
+      <% end %>
     </li>
     <li>
-      <div>
-        <%= link_to user_configs_path, method: :get do %>
-          <%= image_tag("user_config.png") %>
-          <%= t(".user_config") %>
-        <% end %>
-      </div>
+      <%= link_to user_configs_path, method: :get do %>
+        <%= image_tag("user_config.png") %>
+        <%= t(".user_config") %>
+      <% end %>
     </li>
     <li>
-      <div>
-        <%= link_to reasons_path, method: :get do %>
-          <%= image_tag("reason.png") %>
-          <%= t(".reason") %>
-        <% end %>
-      </div>
+      <%= link_to reasons_path, method: :get do %>
+        <%= image_tag("reason.png") %>
+        <%= t(".reason") %>
+      <% end %>
     </li>
     <li>
-      <div>
-        <%= link_to leave_types_path, method: :get do %>
-          <%= image_tag("leave_type.png") %>
-          <%= t(".leave_type") %>
-        <% end %>
-      </div>
+      <%= link_to leave_types_path, method: :get do %>
+        <%= image_tag("leave_type.png") %>
+        <%= t(".leave_type") %>
+      <% end %>
     </li>
     <li>
-      <div>
-        <%= link_to articles_path, method: :get do %>
-          <%= image_tag("articles.png") %>
-          <%= t(".articles") %>
-        <% end %>
-      </div>
+      <%= link_to articles_path, method: :get do %>
+        <%= image_tag("articles.png") %>
+        <%= t(".articles") %>
+      <% end %>
     </li>
   </ul>
 <% end %>
@@ -57,37 +45,29 @@
 <label class="normal-menu-list">
   <%= t(".normal_menu") %>
 </label>
-<ul class="normal-menu">
+<ul id="normal_menu" class="normal-menu">
   <li>
-    <div>
-      <%= link_to attendances_path, method: :get do %>
-        <%= image_tag("attendance.png") %>
-        <%= t(".attendance") %>
-      <% end %>
-    </div>
+    <%= link_to attendances_path, method: :get do %>
+      <%= image_tag("attendance.png") %>
+      <%= t(".attendance") %>
+    <% end %>
   </li>
   <li>
-    <div>
-      <%= link_to users_path, method: :get do %>
-        <%= image_tag("user.png") %>
-        <%= t(".user") %>
-      <% end %>
-    </div>
+    <%= link_to users_path, method: :get do %>
+      <%= image_tag("user.png") %>
+      <%= t(".user") %>
+    <% end %>
   </li>
   <li>
-    <div>
-      <%= link_to leave_tables_path, method: :get do %>
-        <%= image_tag("leave_table.png") %>
-        <%= t(".leave_table") %>
-      <% end %>
-    </div>
+    <%= link_to leave_tables_path, method: :get do %>
+      <%= image_tag("leave_table.png") %>
+      <%= t(".leave_table") %>
+    <% end %>
   </li>
   <li>
-    <div>
-      <%= link_to reports_path, method: :get do %>
-        <%= image_tag("report.png") %>
-        <%= t(".report") %>
-      <% end %>
-    </div>
+    <%= link_to reports_path, method: :get do %>
+      <%= image_tag("report.png") %>
+      <%= t(".report") %>
+    <% end %>
   </li>
 </ul>
