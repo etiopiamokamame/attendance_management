@@ -24,10 +24,13 @@ body {
 }
 
 .form-login {
-  margin:        50px auto;
-  width:         320px;
+  width:  320px;
+  margin: auto;
+}
+
+.form-login form {
+  margin:        10px;
   box-sizing:    border-box;
-  margin:        auto;
   padding:       22px 22px 10px 22px;
   border-radius: 5px;
   background:    #9CC8F5;

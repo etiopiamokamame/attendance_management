@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "login#index"
+  root to: "login#index"
 
   resources :login, only: [:index] do
     collection do
@@ -26,8 +26,9 @@ Rails.application.routes.draw do
   resources :reasons
   resources :articles
   resources :leave_types
-  resources :top,                    only: [:index]
-  resources :system_configs,         only: [:edit, :update]
-  resources :leave_tables,           only: [:index]
-  resources :reports,                only: [:index]
+  resources :holidays,       except: [:show]
+  resources :top,            only:   [:index]
+  resources :system_configs, only:   [:edit, :update]
+  resources :leave_tables,   only:   [:index]
+  resources :reports,        only:   [:index]
 end

@@ -9,6 +9,7 @@ ja:
       reason:        "事由マスタ"
       leave_type:    "休暇種別マスタ"
       articles:      "新着記事"
+      holidays:      "休暇マスタ"
       attendance:    "勤怠記入"
       user:          "利用者情報編集"
       leave_table:   "休暇表"

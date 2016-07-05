@@ -22,6 +22,7 @@ html, body, form, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
+  font-family:      "Noto Sans Japanese", 游ゴシック, YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
   background-color: #ECF0F5;
 }
 
@@ -38,6 +39,7 @@ table.table {
   border-collapse: collapse;
   border-spacing:  0;
   width:           100%;
+  table-layout:    fixed;
 }
 
 table.table tr th {
@@ -90,28 +92,27 @@ table.table-attendance tr > td {
   padding:          2px;
 }
 
-.notice {
-  color:            white;
-  font-weight:      bold;
-  font-size:        20px;
-  border:           3px solid #2FBF00;
-  border-radius:    3px;
-  background-color: #7CFF6C;
-  padding:          10px 0;
+.flash p.notice {
+  background-color: #00c0ef;
+  border-color:     #0097BC;
 }
 
-.error {
-  color: lightcoral;
+.flash p.error {
+  background-color: #dd4b39;
+  border-color:     #c23321;
 }
 
 .flash {
-  width:      80%;
-  text-align: center;
-  margin:     0 auto;
+  margin:      10px;
 }
 
 .flash p {
-  margin: 10px 0;
+  border-left:   5px solid #eee;
+  padding:       10px;
+  color:         white;
+  font-size:     16px;
+  border-radius: 3px;
+  font-weight:   400;
 }
 
 .error-message {
@@ -218,10 +219,13 @@ table.table-attendance tr > td {
 }
 
 .box .box-header .box-title {
-  display:     inline-block;
-  font-size:   18px;
-  margin:      0;
-  line-height: 1;
+  display:       inline-block;
+  font-size:     18px;
+  margin:        0;
+  line-height:   1;
+  width:         70%;
+  overflow:      hidden;
+  text-overflow: ellipsis;
 }
 
 .box .box-header .date-right {
@@ -313,7 +317,7 @@ table.table-attendance tr > td {
 }
 
 .enable-list label.selected {
-  background:   linear-gradient(#20e1e4, #3c8dbc);
+  background:   linear-gradient(#00acd6, #367fa9);
   border-color: #306e92;
 }
 
@@ -348,7 +352,6 @@ table.table-attendance tr > td {
   padding:       8px;
   line-height:   1.42857143;
   text-overflow: ellipsis;
-  width:         10px;
 }
 
 .table > thead > tr > th {
@@ -359,13 +362,16 @@ table.table-attendance tr > td {
   border-top: 1px solid #f4f4f4;
 }
 
-.table > tbody > tr > td > div.abbreviation {
+.table > tbody > tr > td.abbreviation {
   white-space:   nowrap;
   text-overflow: ellipsis;
   overflow:      hidden;
-  width:         300px;
 }
 
 .no-margin {
   margin: 0;
+}
+
+.operation-btns-td {
+  text-align: center;
 }

@@ -10,15 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login?
-    return false if controller_name == "login"
-    if controller_name == "users"
-      expect_actions = [
-        "new",
-        "create"
-      ]
-      return false if expect_actions.include?(action_name)
-    end
-    true
+    controller_name != "login"
   end
 
   def check_logged

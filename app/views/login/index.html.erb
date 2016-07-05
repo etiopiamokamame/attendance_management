@@ -9,9 +9,10 @@
     <label><%= t("title") %></label>
   </div>
 
+
   <div class="form-login">
+    <%= header_messages %>
     <%= form_tag authenticate_login_index_path do %>
-      <%= header_messages %>
       <%= text_field_tag "user[number]", "",
         class:       "login-number",
         placeholder: t(".number") %>

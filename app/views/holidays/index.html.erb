@@ -8,31 +8,33 @@
 
   <div class="box box-max-width">
     <div class="box-header">
-      <%= t(".article_list") %>
+      <%= t(".holiday_list") %>
     </div>
     <div class="box-body">
       <div class="table-responsive">
         <table class="table">
           <thead>
             <tr>
-              <th><%= t(".created_at") %></th>
-              <th><%= t(".article_title") %></th>
+              <th><%= t(".date") %></th>
+              <th><%= t(".name") %></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <% @articles.each do |article| %>
+            <% @holidays.each do |holiday| %>
               <tr>
                 <td>
-                  <%= article.updated_at.strftime("%Y年%m月%d日") %>
+                  <%= holiday.date %>
                 </td>
-                <td class="abbreviation">
-                  <%= article.title %>
+                <td>
+                  <div class="abbreviation">
+                    <%= holiday.name %>
+                  </div>
                 </td>
                 <td class="operation-btns-td">
-                  <%= link_to t(".detail"), article_path(article),
+                  <%= link_to t(".edit"), edit_holiday_path(holiday),
                     class: "btn" %>
-                  <%= link_to t(".delete"), article_path(article),
+                  <%= link_to t(".delete"), holiday_path(holiday),
                     method: :delete,
                     class:  "btn" %>
                 </td>
@@ -43,7 +45,7 @@
       </div>
     </div>
     <div class="box-footer">
-      <%= button_to t(".new_article"), new_article_path,
+      <%= button_to t(".new_holiday"), new_holiday_path,
         method: :get,
         class:  "btn btn-lg pull-left" %>
       <%= button_to t(:back), "",

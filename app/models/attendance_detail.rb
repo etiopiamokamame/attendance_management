@@ -25,6 +25,8 @@ class AttendanceDetail
   attr_accessor :leave_type_id
   # 基準外休憩  初期値なし  条件付き入力必須
   attr_accessor :rest_out_of_standard
+  # 休日フラグ
+  attr_accessor :holiday_flag
 
   def initialize(day, h)
     h                         = h.symbolize_keys

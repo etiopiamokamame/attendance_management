@@ -18,6 +18,7 @@ assets_files = %w(
                 leave_types.css
                 attendances.css
                 articles.css
+                holidays.css
                 login.js
                 users.js
                 reasons.js
