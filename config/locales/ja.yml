@@ -1,7 +1,9 @@
 ja:
   layouts:
+    header_menu:
+      top:    "TOP"
+      logout: "ログアウト"
     side_menu:
-      top:           "TOP"
       admin_menu:    "管理者メニュー"
       normal_menu:   "利用者メニュー"
       system_config: "システム設定"
@@ -26,4 +28,4 @@ ja:
     not_login:     "社員番号またはパスワードが不正です。"
     not_logged_in: "ログインして下さい。"
     some_errors:   "%{count}個のエラーが発生しています。"
-  back: "戻る"
+  back:   "戻る"

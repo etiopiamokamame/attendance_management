@@ -42,6 +42,11 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    article = Article.find(params[:id])
+    article.deleted = true
+    article.save
+    flash[:notice] = t("success.delete")
+    redirect_to action: :index
   end
 
   private

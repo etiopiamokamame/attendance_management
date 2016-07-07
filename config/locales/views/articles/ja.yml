@@ -15,7 +15,7 @@ ja:
       title:        "記事"
       edit_article: "編集"
     edit:
-      title:        "記事"
+      title:        "記事編集"
       save_article: "保存"
     form:
       title:        "タイトル"

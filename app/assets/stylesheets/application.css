@@ -15,6 +15,10 @@
  *= require jquery.timepicker.css
  */
 
+* {
+  box-sizing: border-box;
+}
+
 html, body, form, h1, h2, h3, h4, h5, h6 {
   margin:     0;
   padding:    0;
@@ -57,33 +61,58 @@ table.table-attendance tr > td {
   border-color: #9a9a9a;
 }
 
+textarea {
+  width:   100%;
+  padding: 6px 12px;
+}
+
+.header-menu {
+  position: absolute;
+  height:   44px;
+  width:    100%;
+  z-index:  799;
+}
+
 .side-menu {
-  background-color: #3C8DBC;
-  position:         fixed;
+  position:         absolute;
   width:            250px;
   color:            white;
   font-weight:      bold;
-  overflow:         auto;
+  display:          table;
+  background-color: #3C8DBC;
+  z-index:          800;
+}
+
+.header-content {
+  margin-left: 250px;
+  height:      100%;
 }
 
 .main-content {
-  margin-left: 250px;
+  display: table;
+  width:   100%;
 }
 
-.main-content, .content {
-  background-color: #ECF0F5;
+.header-content,
+.main-content,
+.content {
+  background-color: #3C8DBC;
 }
 
 .content {
-  overflow: auto;
+  margin-left: 250px;
 }
 
 .wrapper {
-  margin: 10px 15px 10px 15px;
+  padding:          55px 15px 10px 15px;
+  background-color: #ECF0F5;
+  display:          table;
+  width:            100%;
+  height:           100%;
 }
 
 .content-heder {
-  padding:       15px 15px 0 15px;
+  padding:       10px 15px 0 15px;
   margin-bottom: 10px;
 }
 
@@ -103,7 +132,7 @@ table.table-attendance tr > td {
 }
 
 .flash {
-  margin:      10px;
+  margin: 10px 0;
 }
 
 .flash p {
@@ -118,11 +147,10 @@ table.table-attendance tr > td {
 .error-message {
   font-size:     20px;
   margin:        15px auto;
-  width:         80%;
+  width:         100%;
   background:    #DCDCDC;
   border:        3px solid red;
   border-radius: 5px;
-  box-sizing:    border-box;
 }
 
 .some-error {
@@ -144,6 +172,34 @@ table.table-attendance tr > td {
   margin:     0;
 }
 
+.header-menu-list {
+  list-style:  none;
+  padding:     0;
+  margin:      0;
+  font-weight: bold;
+}
+
+.header-menu-list .top-link {
+  text-align: left;
+  width:      250px;
+}
+
+.header-menu-list .sidebar-toggle {
+  text-align: center;
+  width:      50px;
+}
+
+.header-menu-list .logout-link {
+  text-align: center;
+  width:      120px;
+}
+
+.header-menu-list > li {
+  float: left;
+}
+
+
+.header-menu-list > li > a:hover,
 .top-menu-list > a:hover,
 .admin-menu > li > a:hover,
 .normal-menu > li > a:hover,
@@ -153,24 +209,22 @@ table.table-attendance tr > td {
 }
 
 .top-menu-list > a,
-.admin-menu > li a,
-.normal-menu > li a {
+.admin-menu > li > a,
+.normal-menu > li > a,
+.header-menu-list > li > a {
+  cursor:          pointer;
   display:         block;
   color:           white;
   width:           100%;
   padding:         10px 5PX;
   text-decoration: none;
-  box-sizing:      border-box;
 }
 
-.top-menu-list > a,
 .admin-menu-list,
 .normal-menu-list {
-  cursor:      pointer;
   padding:     10px 5px;
   font-size:   20px;
   font-weight: bold;
-  box-sizing:  border-box;
   width:       100%;
   display:     block;
 }
@@ -210,7 +264,6 @@ table.table-attendance tr > td {
 .box-max-width {
   width:      100%;
   padding:    0 5px;
-  box-sizing: border-box;
 }
 
 .box .box-header {
@@ -254,7 +307,6 @@ table.table-attendance tr > td {
 
 .box-footer {
   width:      100%;
-  box-sizing: border-box;
   display:    table;
   border-top: 1px solid #f4f4f4;
   padding:    10px;
@@ -267,7 +319,6 @@ table.table-attendance tr > td {
 .form-group .form-group-content {
   margin-bottom: 15px;
   padding:       10px;
-  box-sizing:    border-box;
   display:       table;
   width:         100%;
 }
@@ -282,7 +333,6 @@ table.table-attendance tr > td {
   width:      100%;
   height:     34px;
   padding:    6px 12px;
-  box-sizing: border-box;
   font-size:  14px;
 }
 
@@ -338,7 +388,6 @@ table.table-attendance tr > td {
   color:            #555;
   background-image: none;
   border:           1px solid #ccc;
-  box-sizing:       border-box;
 }
 
 .table-responsive {

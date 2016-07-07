@@ -1,21 +1,21 @@
 <%= stylesheet_link_tag    "articles" %>
 <%= javascript_include_tag "articles" %>
-<%= header_messages :article %>
-<%= header_title t(".title") %>
 
-<div class="form-new-article">
-  <%= form_for @article, url: {action: "create"} do |f| %>
-    <%= render partial: "form", locals: {f: f} %>
-    <div>
-      <div>
+<div class="wrapper">
+  <%= header_messages :article %>
+  <div class="content-heder">
+    <%= header_title t(".title") %>
+  </div>
+  <div class="box box-max-width">
+    <%= form_for @article, url: {action: "create"} do |f| %>
+      <%= render partial: "form", locals: {f: f} %>
+      <div class="box-footer">
         <%= f.submit t(".save_article"),
-          class:  "save-article-btn" %>
-      </div>
-      <div>
+          class: "btn btn-lg pull-left" %>
         <%= button_to t(:back), "",
-          class:   "back-btn",
+          class:   "btn btn-lg pull-right",
           onclick: "return article_page();" %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

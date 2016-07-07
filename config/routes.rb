@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :login, only: [:index] do
     collection do
       post :authenticate
+      get :logout
+      post :toggle_sidebar
     end
   end
 

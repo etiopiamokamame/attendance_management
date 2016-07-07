@@ -1,0 +1,12 @@
+<ul class="header-menu-list pull-left">
+  <li class="sidebar-toggle">
+    <%= link_to toggle_sidebar_login_index_path, method: :post, remote: true do %>
+      <%= image_tag("sidebar.png") %>
+    <% end %>
+  </li>
+</ul>
+<ul class="header-menu-list pull-right">
+  <li class="logout-link">
+    <%= link_to t(".logout"), logout_login_index_path %>
+  </li>
+</ul>

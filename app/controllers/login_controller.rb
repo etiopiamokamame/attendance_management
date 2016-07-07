@@ -2,6 +2,16 @@ class LoginController < ApplicationController
   layout false
 
   def index
+    redirect_to top_index_path if session[:userid].present?
+  end
+
+  def logout
+    session.delete(:userid)
+    redirect_to root_path
+  end
+
+  def toggle_sidebar
+    render nothing: true
   end
 
   def authenticate

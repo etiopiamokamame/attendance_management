@@ -1,29 +1,30 @@
 <%= stylesheet_link_tag    "articles" %>
 <%= javascript_include_tag "articles" %>
-<%= header_title t(".title") %>
 
-<div class="form-new-article">
-  <div>
-    <label>タイトル</label>
+<div class="wrapper">
+  <div class="content-heder">
+    <%= header_title t(".title") %>
   </div>
-  <div>
-    <label><%= @article.title %></label>
-  </div>
-  <div>
-    <label>本文</label>
-  </div>
-  <div>
-    <label><%= @article.body %></label>
-  </div>
-  <div>
-    <div>
+  <div class="box box-max-width">
+    <%= form_for @article do |f| %>
+      <div class="box-body">
+        <label><%= t(".title") %></label>
+        <%= f.text_field :title,
+          class:    "form-control",
+          disabled: true %>
+        <label><%= t(".body") %></label>
+        <%= f.text_area :body,
+          size:      "50x10",
+          maxlength: 1000,
+          disabled:  true %>
+      </div>
+    <% end %>
+    <div class="box-footer">
       <%= button_to t(".edit_article"), edit_article_path(@article.id),
         method: :get,
-        class:  "edit-article-btn" %>
-    </div>
-    <div>
+        class:  "btn btn-lg pull-left" %>
       <%= button_to t(:back), "",
-        class:   "back-btn",
+        class:   "btn btn-lg pull-right",
         onclick: "return article_page();" %>
     </div>
   </div>
