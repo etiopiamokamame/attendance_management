@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      holiday: "休日マスタ"
+    attributes:
+      holiday:
+        name:  "休日名"
+        date:  "日付"
+        year:  "年"
+        month: "月"
+        day:   "日"

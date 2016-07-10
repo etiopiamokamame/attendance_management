@@ -8,3 +8,9 @@ ja:
       edit:         "編集"
       delete:       "削除"
       new_holiday:  "新規作成"
+    new:
+      title:        "休日登録"
+      save_holiday: "登録"
+    form:
+      name: "休日名"
+      date: "日付"

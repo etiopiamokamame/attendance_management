@@ -13,6 +13,7 @@ gem 'pg', '0.18.4'
 gem 'js-routes'
 gem 'era_ja'
 gem 'jquery-timepicker-rails'
+gem 'jquery-ui-rails', '~> 4.2.1'
 
 group :development, :test do
   gem 'pry-rails'

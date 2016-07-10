@@ -1,6 +1,9 @@
 <ul class="header-menu-list pull-left">
   <li class="sidebar-toggle">
-    <%= link_to toggle_sidebar_login_index_path, method: :post, remote: true do %>
+    <%= link_to toggle_sidebar_login_index_path,
+      method:  :post,
+      remote:  true,
+      onclick: "toggle_sidebar();" do %>
       <%= image_tag("sidebar.png") %>
     <% end %>
   </li>

@@ -11,6 +11,7 @@ class LoginController < ApplicationController
   end
 
   def toggle_sidebar
+    session[:hidden_sidebar] = session[:hidden_sidebar].blank?
     render nothing: true
   end
 

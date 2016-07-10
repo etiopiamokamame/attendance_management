@@ -13,6 +13,7 @@
  * require_tree .
  *= require_self
  *= require jquery.timepicker.css
+ *= require jquery.ui.datepicker
  */
 
 * {
@@ -20,9 +21,9 @@
 }
 
 html, body, form, h1, h2, h3, h4, h5, h6 {
-  margin:     0;
-  padding:    0;
-  border:     0;
+  margin:  0;
+  padding: 0;
+  border:  0;
 }
 
 body {
@@ -73,9 +74,16 @@ textarea {
   z-index:  799;
 }
 
+.side-menu.active {
+  width: 250px;
+}
+
+.side-menu.disable {
+  width: 30px;
+}
+
 .side-menu {
   position:         absolute;
-  width:            250px;
   color:            white;
   font-weight:      bold;
   display:          table;
@@ -83,9 +91,28 @@ textarea {
   z-index:          800;
 }
 
-.header-content {
+.side-menu .side-content label {
+  white-space: nowrap;
+}
+
+.side-menu .side-content .title.active {
+  display: inline-block;
+}
+
+.side-menu .side-content .title.disable {
+  display: none;
+}
+
+.header-content.active {
   margin-left: 250px;
-  height:      100%;
+}
+
+.header-content.disable {
+  margin-left: 30px;
+}
+
+.header-content {
+  height: 100%;
 }
 
 .main-content {
@@ -99,8 +126,12 @@ textarea {
   background-color: #3C8DBC;
 }
 
-.content {
+.content.active {
   margin-left: 250px;
+}
+
+.content.disable {
+  margin-left: 30px;
 }
 
 .wrapper {
@@ -165,7 +196,7 @@ textarea {
   margin: 5px;
 }
 
-.admin-menu, .normal-menu {
+.top-menu, .admin-menu, .normal-menu {
   width:      100%;
   list-style: none;
   padding:    0;
@@ -198,9 +229,8 @@ textarea {
   float: left;
 }
 
-
 .header-menu-list > li > a:hover,
-.top-menu-list > a:hover,
+.top-menu > li > a:hover,
 .admin-menu > li > a:hover,
 .normal-menu > li > a:hover,
 .admin-menu-list,
@@ -208,7 +238,7 @@ textarea {
   background-color: #367FA9;
 }
 
-.top-menu-list > a,
+.top-menu > li > a,
 .admin-menu > li > a,
 .normal-menu > li > a,
 .header-menu-list > li > a {
@@ -220,6 +250,7 @@ textarea {
   text-decoration: none;
 }
 
+.top-menu-list,
 .admin-menu-list,
 .normal-menu-list {
   padding:     10px 5px;

@@ -1,0 +1,57 @@
+default: &default
+  menu:
+    - path:        "/top"
+      icon:        "top"
+      label_class: "top-menu-list"
+      title:       "top"
+      tree_class:  "top-menu"
+    - label_class: "admin-menu-list"
+      title:       "admin_menu"
+      tree_class:  "admin-menu"
+      icon:        "admin_user"
+      admin:       true
+      tree_path:
+        - path:  "/system_configs/1/edit"
+          icon:  "system_config.png"
+          title: "system_config"
+        - path:  "/user_configs"
+          icon:  "user_config.png"
+          title: "user_config"
+        - path:  "/reasons"
+          icon:  "reason.png"
+          title: "reason"
+        - path:  "/leave_types"
+          icon:  "leave_type.png"
+          title: "leave_type"
+        - path:  "/articles"
+          icon:  "articles.png"
+          title: "articles"
+        - path:  "/holidays"
+          icon:  "holidays.png"
+          title: "holidays"
+    - label_class: "normal-menu-list"
+      title:       "normal_menu"
+      tree_class:  "normal-menu"
+      icon:        "normal_user"
+      tree_path:
+        - path:  "/attendances"
+          icon:  "attendance.png"
+          title: "attendance"
+        - path:  "/users"
+          icon:  "user.png"
+          title: "user"
+        - path:  "/leave_tables"
+          icon:  "leave_table.png"
+          title: "leave_table"
+        - path:  "/reports"
+          icon:  "report.png"
+          title: "report"
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  <<: *default

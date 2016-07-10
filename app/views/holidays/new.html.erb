@@ -1,19 +1,19 @@
-<%= javascript_include_tag "articles" %>
+<%= javascript_include_tag "holidays" %>
 
 <div class="wrapper">
-  <%= header_messages :article %>
+  <%= header_messages :holiday %>
   <div class="content-heder">
     <%= header_title t(".title") %>
   </div>
   <div class="box box-max-width">
-    <%= form_for @article, url: {action: "update"} do |f| %>
+    <%= form_for @holiday, url: {action: "create"} do |f| %>
       <%= render partial: "form", locals: {f: f} %>
       <div class="box-footer">
-        <%= f.submit t(".save_article"),
+        <%= f.submit t(".save_holiday"),
           class: "btn btn-lg pull-left" %>
         <%= button_to t(:back), "",
           class:   "btn btn-lg pull-right",
-          onclick: "return article_show_page(#{@article.id});" %>
+          onclick: "return holiday_page();" %>
       </div>
     <% end %>
   </div>

@@ -4,6 +4,7 @@ ja:
       top:    "TOP"
       logout: "ログアウト"
     side_menu:
+      top:           "TOP"
       admin_menu:    "管理者メニュー"
       normal_menu:   "利用者メニュー"
       system_config: "システム設定"
