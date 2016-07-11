@@ -229,6 +229,13 @@ textarea {
   float: left;
 }
 
+.side-menu ul li.active_hover {
+  position:         absolute;
+  width:            250px;
+  background-color: #3C8DBC;
+}
+
+
 .header-menu-list > li > a:hover,
 .top-menu > li > a:hover,
 .admin-menu > li > a:hover,
@@ -242,12 +249,18 @@ textarea {
 .admin-menu > li > a,
 .normal-menu > li > a,
 .header-menu-list > li > a {
-  cursor:          pointer;
   display:         block;
   color:           white;
   width:           100%;
   padding:         10px 5PX;
   text-decoration: none;
+}
+
+.top-menu > li *,
+.admin-menu > li *,
+.normal-menu > li *,
+.header-menu-list > li * {
+  cursor: pointer;
 }
 
 .top-menu-list,

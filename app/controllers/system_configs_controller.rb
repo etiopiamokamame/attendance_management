@@ -1,4 +1,5 @@
 class SystemConfigsController < ApplicationController
+  before_action :required_admin_authority
   before_action :prep_system_config, only: [:edit, :update]
 
   def update

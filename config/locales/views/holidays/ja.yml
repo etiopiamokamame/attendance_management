@@ -3,7 +3,7 @@ ja:
     index:
       title:        "休暇マスタ設定"
       holiday_list: "休暇一覧"
-      date:         "日"
+      date:         "日付"
       name:         "名称"
       edit:         "編集"
       delete:       "削除"
@@ -14,3 +14,7 @@ ja:
     form:
       name: "休日名"
       date: "日付"
+    edit:
+      title:        "休日編集"
+      save_holiday: "保存"
+

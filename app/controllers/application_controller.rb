@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
     User.find(session[:userid])
   end
 
+  def required_admin_authority
+    unless session[:admin_user]
+      flash[:error] = t("error.not_exist_admin")
+      redirect_to top_index_path
+    end
+  end
+
   private
 
   def require_login?

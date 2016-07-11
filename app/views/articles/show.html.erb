@@ -7,16 +7,20 @@
   </div>
   <div class="box box-max-width">
     <%= form_for @article do |f| %>
-      <div class="box-body">
-        <label><%= t(".title") %></label>
-        <%= f.text_field :title,
-          class:    "form-control",
-          disabled: true %>
-        <label><%= t(".body") %></label>
-        <%= f.text_area :body,
-          size:      "50x10",
-          maxlength: 1000,
-          disabled:  true %>
+      <div class="box-body form-group">
+        <div class="form-group-content">
+          <label><%= t(".title") %></label>
+          <%= f.text_field :title,
+            class:    "form-control",
+            disabled: true %>
+        </div>
+        <div class="form-group-content">
+          <label><%= t(".body") %></label>
+          <%= f.text_area :body,
+            size:      "50x10",
+            maxlength: 1000,
+            disabled:  true %>
+        </div>
       </div>
     <% end %>
     <div class="box-footer">

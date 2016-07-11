@@ -1,4 +1,6 @@
 class LeaveTypesController < ApplicationController
+  before_action :required_admin_authority
+
   def index
     @leave_types = LeaveType.all.order(:id)
   end

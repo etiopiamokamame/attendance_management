@@ -1,4 +1,6 @@
 class UserConfigsController < ApplicationController
+  before_action :required_admin_authority
+
   def index
     @users = User.where.not(id: session[:userid]).order(:number)
   end

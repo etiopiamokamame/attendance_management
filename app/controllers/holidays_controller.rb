@@ -1,4 +1,5 @@
 class HolidaysController < ApplicationController
+  before_action :required_admin_authority
 
   def index
     @holidays = Holiday.where(deleted: false)
@@ -19,9 +20,18 @@ class HolidaysController < ApplicationController
   end
 
   def edit
+    @holiday = Holiday.find(params[:id])
   end
 
   def update
+    @holiday = Holiday.find(params[:id])
+    @holiday.attributes = holiday_params
+    if @holiday.save
+      flash[:notice] = t("success.process")
+      redirect_to action: :index
+    else
+      render action: :edit
+    end
   end
 
   def destroy

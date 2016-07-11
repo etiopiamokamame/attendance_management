@@ -1,7 +1,10 @@
-<div class="box-body">
-  <label><%= t(".name") %></label>
-  <%= f.text_field :name, class: "form-control" %>
-
-  <label><%= t(".date") %></label>
-  <%= f.text_field :date, class: "datepicker form-control" %>
+<div class="box-body form-group">
+  <div class="form-group-content">
+    <label><%= t(".name") %></label>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group-content">
+    <label><%= t(".date") %></label>
+    <%= f.text_field :date, class: "datepicker form-control" %>
+  </div>
 </div>

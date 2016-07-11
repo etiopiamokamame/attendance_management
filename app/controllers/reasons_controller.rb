@@ -1,4 +1,6 @@
 class ReasonsController < ApplicationController
+  before_action :required_admin_authority
+
   def index
     @reasons = Reason.all.order(:id)
   end
