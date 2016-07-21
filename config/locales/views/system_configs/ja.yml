@@ -14,4 +14,5 @@ ja:
       base_overtime_rest_end_time:   "基準残業休憩終了時間"
       late_night_time:               "深夜時間"
       time_off_hours_prospect:       "見込み時間外時間"
+      holiday_weeks:                 "休日"
       save:                          "設定"

@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag    "system_configs" %>
 <%= javascript_include_tag "system_configs" %>
-<%= header_messages :sys %>
 
 <div class="wrapper">
+  <%= header_messages :sys %>
   <%= header_title t(".title") %>
 
   <%= form_for @sys, url: {action: "update"} do |f| %>
@@ -158,10 +158,26 @@
         </div>
       </div>
     </div>
+    <div class="box-max-width">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">
+            <%= t(".holiday_weeks") %>
+          </h3>
+        </div>
+        <div class="box-body">
+          <div class="form-group">
+            <div class="form-group-content">
+              <%= f.select :weeks, @weeks, {}, { multiple: true, class: "form-control" } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <%= f.submit t(".save"), class: "btn" %>
+    <%= f.submit t(".save"), class: "btn btn-lg" %>
     <%= button_to t(:back), "",
-      class:   "btn pull-right",
+      class:   "btn btn-lg pull-right",
       onclick: "return top_page();" %>
   <% end %>
 </div>

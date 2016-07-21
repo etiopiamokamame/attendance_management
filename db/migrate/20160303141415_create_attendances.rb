@@ -6,6 +6,8 @@ class CreateAttendances < ActiveRecord::Migration
       t.integer    :month
       t.string     :site_start_time
       t.string     :site_end_time
+      t.string     :rest_start_time
+      t.string     :rest_end_time
       t.string     :details
       t.integer    :lock_version, null: false, default: 0
       t.boolean    :deleted,      null: false, default: false

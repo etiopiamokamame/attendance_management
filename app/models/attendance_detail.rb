@@ -42,5 +42,6 @@ class AttendanceDetail
     self.reason               = h[:reason]
     self.leave_type_id        = h[:leave_type_id]
     self.rest_out_of_standard = h[:rest_out_of_standard]
+    self.holiday_flag         = h[:holiday_flag]
   end
 end

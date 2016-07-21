@@ -11,6 +11,7 @@ class CreateSystemConfigs < ActiveRecord::Migration
       t.string  :base_overtime_rest_end_time
       t.string  :late_night_time
       t.float   :time_off_hours_prospect
+      t.string  :holiday_weeks
       t.integer :lock_version, null: false, default: 0
       t.boolean :deleted,      null: false, default: false
 

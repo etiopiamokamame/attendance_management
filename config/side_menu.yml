@@ -1,14 +1,14 @@
 default: &default
   menu:
     - path:        "/top"
-      icon:        "top"
+      icon:        "top.png"
       label_class: "top-menu-list"
       title:       "top"
       tree_class:  "top-menu"
     - label_class: "admin-menu-list"
       title:       "admin_menu"
       tree_class:  "admin-menu"
-      icon:        "admin_user"
+      icon:        "admin_user.png"
       admin:       true
       tree_path:
         - path:  "/system_configs/1/edit"
@@ -32,7 +32,7 @@ default: &default
     - label_class: "normal-menu-list"
       title:       "normal_menu"
       tree_class:  "normal-menu"
-      icon:        "normal_user"
+      icon:        "normal_user.png"
       tree_path:
         - path:  "/attendances"
           icon:  "attendance.png"

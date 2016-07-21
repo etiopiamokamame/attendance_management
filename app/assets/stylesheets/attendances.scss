@@ -2,96 +2,69 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// div.header-title {
-//   width: 90%;
+// table.table-attendance tr > th,
+// table.table-attendance tr > td {
+//   border-color: #9a9a9a;
 // }
 
-// .form-attendance {
-//   box-sizing:    border-box;
-//   margin:        0 auto 15px;
-//   padding:       22px 22px 22px 22px;
-//   width:         90%;
-//   border-radius: 0px 5px 5px 5px;
-//   background:    #282e33;
-//   border-top:    3px solid #434a52;
-//   border-bottom: 3px solid #434a52;
-//   text-align:    center;
-// }
+table.table-attendance {
 
-// .company-name {
-//   text-align: left;
-// }
+}
 
-// .attendance-year {
-//   text-align: left;
-// }
+table.table-attendance tr th,
+table.table-attendance tr td {
+  padding: 5px;
+}
 
-// .header-attendance-table tr {
-//   height: 30px;
-// }
+table.table-attendance tr td {
+  text-align: center;
+}
 
-// .header-attendance-table,
-// .attendance-table,
-// .header-attendance-table td,
-// .attendance-table td,
-// .header-attendance-table th,
-// .attendance-table th{
-//   border:          1px #434a52 solid;
-//   border-collapse: collapse;
-// }
+table.table-attendance tr.holiday {
+  background-color: #b5bbc8;
+}
 
-// .header-attendance-table,
-// .attendance-table {
-//   width:         100%;
-//   margin-bottom: 10px;
-//   table-layout:  fixed;
-// }
+.day {
+  width: 30px;
+}
 
-// .header-attendance-table th,
-// .attendance-table th {
-//   background-color: #a9a9a9;
-// }
+.week {
+  width: 30px;
+}
 
-// .header-attendance-table td,
-// .attendance-table td {
-//   padding:          0;
-//   background-color: #E0DFDF;
-//   color:            black;
-// }
+.work-time {
+  width: 80px;
+}
 
-// .header-attendance-table td input,
-// .attendance-table td input {
-//   background-color: #E0DFDF;
-//   width:            100%;
-//   height:           100%;
-//   font-size:        20px;
-//   text-align:       center;
-//   border:           0;
-//   padding:          0;
-// }
+.working-time {
+  width: 80px;
+}
 
-// .save-btn {
-//   float: left;
-// }
+.off-hours-time {
+  width: 100px;
+}
 
-// .back-btn {
-//   float: right;
-// }
+.late-night-time {
+  width: 80px;
+}
 
-// .save-btn, .back-btn {
-//   background:    #b5cd60;
-//   border:        0;
-//   width:         49%;
-//   height:        40px;
-//   border-radius: 3px;
-//   color:         white;
-//   cursor:        pointer;
-// }
+.time-holiday {
+  width: 80px;
+}
 
-// .save-btn:hover, .back-btn:hover {
-//   background: #16aa56;
-// }
+.shortfall-time {
+  width: 80px;
+}
 
-// .form-attendance-btn {
-//   height: 30px;
-// }
+.reason {
+  min-width: 50px;
+}
+
+.leave-type {
+  width: 80px;
+}
+
+.rest-out-of-standard {
+  width: 100px;
+}
+

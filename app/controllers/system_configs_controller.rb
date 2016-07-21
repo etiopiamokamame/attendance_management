@@ -1,20 +1,27 @@
 class SystemConfigsController < ApplicationController
   before_action :required_admin_authority
   before_action :prep_system_config, only: [:edit, :update]
+  before_action :prep_weeks,         only: [:edit]
 
   def update
     @sys.attributes = sys_params
-    @sys.save!
-    flash[:notice] = t("success.process")
-    redirect_to action: :edit
-  rescue ActiveRecord::RecordInvalid
-    render action: :edit
+    if @sys.save
+      flash[:notice] = t("success.process")
+      redirect_to action: :edit
+    else
+      prep_weeks
+      render action: :edit
+    end
   end
 
   private
 
   def prep_system_config
     @sys = SystemConfig.find(params[:id])
+  end
+
+  def prep_weeks
+    @weeks = CONSTANTS::WEEKS.values.map { |week| [week[:name], week[:id]] }
   end
 
   def sys_params
@@ -28,7 +35,8 @@ class SystemConfigsController < ApplicationController
       :base_overtime_rest_start_time,
       :base_overtime_rest_end_time,
       :late_night_time,
-      :time_off_hours_prospect
+      :time_off_hours_prospect,
+      weeks: []
     )
   end
 end

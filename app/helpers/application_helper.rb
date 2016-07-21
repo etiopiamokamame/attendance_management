@@ -1,7 +1,7 @@
 module ApplicationHelper
   def header_messages(model_name = nil)
     render partial: "layouts/header_messages",
-      locals: {model_name: model_name}
+      locals: { model_name: model_name }
   end
 
   def header_title(title)

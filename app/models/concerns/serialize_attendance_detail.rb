@@ -1,6 +1,7 @@
 class SerializeAttendanceDetail
 
   def dump(obj)
+    # TODO Hashで保存するよう変更
     obj = obj.map do |o|
       if o.class == AttendanceDetail
         o

@@ -30,6 +30,15 @@ class SystemConfig < ActiveRecord::Base
     presence:     true,
     numericality: { greater_than_or_equal_to: 0, allow_blank: true }
 
+  def weeks
+    return [] if holiday_weeks.blank?
+    holiday_weeks.split(",").map(&:to_i)
+  end
+
+  def weeks=(value)
+    self.holiday_weeks = value.select { |v| v.present? }.join(",")
+  end
+
   private
 
   def enable_base_overtime_rest_time?

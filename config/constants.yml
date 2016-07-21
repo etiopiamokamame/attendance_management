@@ -1,0 +1,23 @@
+CONSTANTS:
+  WEEKS:
+    sun:
+      id:   0
+      name: "日"
+    mon:
+      id:   1
+      name: "月"
+    tue:
+      id:   2
+      name: "火"
+    wed:
+      id:   3
+      name: "水"
+    thu:
+      id:   4
+      name: "木"
+    fri:
+      id:   5
+      name: "金"
+    sat:
+      id:   6
+      name: "土"
