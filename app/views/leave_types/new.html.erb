@@ -1,9 +1,0 @@
-<%= stylesheet_link_tag "leave_types" %>
-<%= javascript_include_tag "leave_types" %>
-<%= header_messages :leave_type %>
-
-<div class="form-leave-type">
-  <%= form_for @leave_type, url: {action: "create"} do |f| %>
-    <%= render partial: "form", locals: {f: f} %>
-  <% end %>
-</div>

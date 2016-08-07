@@ -4,5 +4,7 @@ ja:
       article: "新着記事"
     attributes:
       article:
-        title: "タイトル"
-        body:  "本文"
+        posted_start_date: "掲載開始日付"
+        posted_end_date:   "掲載終了日付"
+        title:             "タイトル"
+        body:              "本文"

@@ -1,4 +1,4 @@
-class SystemConfig < ActiveRecord::Base
+class SystemConfig < ApplicationRecord
 
   before_validation :delete_base_overtime_rest_time,
     unless: :enable_base_overtime_rest_time?
@@ -39,11 +39,11 @@ class SystemConfig < ActiveRecord::Base
     self.holiday_weeks = value.select { |v| v.present? }.join(",")
   end
 
-  private
-
   def enable_base_overtime_rest_time?
-    self.enable_base_overtime_rest_time
+    self.enable_base_overtime_rest_time == "1"
   end
+
+  private
 
   def delete_base_overtime_rest_time
     self.base_overtime_rest_start_time = nil

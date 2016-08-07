@@ -1,6 +1,6 @@
 class TopController < ApplicationController
 
   def index
-    @new_articles = Article.all.order("updated_at DESC")
+    @new_articles = Article.availability.order_new
   end
 end

@@ -1,5 +1,13 @@
 <div class="box-body form-group">
   <div class="form-group-content">
+    <label><%= t(".posted_start_date") %></label>
+    <%= f.text_field :posted_start_date, class: "datepicker form-control" %>
+  </div>
+  <div class="form-group-content">
+    <label><%= t(".posted_end_date") %></label>
+    <%= f.text_field :posted_end_date, class: "datepicker form-control" %>
+  </div>
+  <div class="form-group-content">
     <label><%= t(".title") %></label>
     <%= f.text_field :title, class: "form-control" %>
   </div>

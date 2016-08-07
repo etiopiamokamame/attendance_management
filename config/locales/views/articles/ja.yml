@@ -12,11 +12,15 @@ ja:
       title:        "新規記事"
       save_article: "保存"
     show:
-      title:        "記事"
-      edit_article: "編集"
+      posted_start_date: "掲載開始期間"
+      posted_end_date:   "掲載終了期間"
+      title:             "記事"
+      edit_article:      "編集"
     edit:
       title:        "記事編集"
       save_article: "保存"
     form:
-      title:        "タイトル"
-      body:         "本文"
+      posted_start_date: "掲載開始期間"
+      posted_end_date:   "掲載終了期間"
+      title:             "タイトル"
+      body:              "本文"

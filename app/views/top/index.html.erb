@@ -6,21 +6,29 @@
     <h1>新着情報</h1>
   </div>
 
-  <% @new_articles.each do |article| %>
+  <% if @new_articles.blank?  %>
     <div class="box box-max-width">
-      <div class="box-header">
-        <h3 class="box-title">
-          <%= article.title %>
-        </h3>
-        <span class="date pull-right">
-          <label>
-            <%= article.updated_at.to_date.strftime("%Y年%m月%d日") %>
-          </label>
-        </span>
-      </div>
       <div class="box-body">
-        <pre><%= article.body %></pre>
+        <label><%= t(:no_data) %></label>
       </div>
     </div>
+  <% else %>
+    <% @new_articles.each do |article| %>
+      <div class="box box-max-width">
+        <div class="box-header">
+          <h3 class="box-title">
+            <%= article.title %>
+          </h3>
+          <span class="date pull-right">
+            <label>
+              <%= article.updated_at.to_date.strftime(t(:date_format)) %>
+            </label>
+          </span>
+        </div>
+        <div class="box-body">
+          <pre><%= article.body %></pre>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>

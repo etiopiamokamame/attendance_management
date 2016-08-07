@@ -4,6 +4,5 @@ ja:
       blank:                    "が未入力です。"
       invalid:                  "が不正です。"
       greater_than_or_equal_to: "は%{count}以上の数を入力して下さい。"
-      # taken:                    "は既に使用されています。"
       confirmation:             "が一致しません。"
-      # invalid_integrity_time:   "開始時間は終了時間以前にして下さい。"
+      invalid_consistency_date: "開始日付は終了日付以前にして下さい。"

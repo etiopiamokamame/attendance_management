@@ -1,3 +1,2 @@
-class WorkingReport < ActiveRecord::Base
-  belongs_to :user
+class WorkingReport < ApplicationRecord
 end

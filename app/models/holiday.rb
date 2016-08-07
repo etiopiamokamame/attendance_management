@@ -1,15 +1,15 @@
-class Holiday < ActiveRecord::Base
+class Holiday < ApplicationRecord
   validates :name,
     presence: true
   validate :validate_date
 
   def date
     return nil if year.blank? || month.blank? || day.blank?
-    "#{year}年#{month}月#{day}日"
+    "%04d年%02d月%02d日" % [year, month, day]
   end
 
   def date=(value)
-    holiday_date = Date.strptime(value, "%Y年%m月%d日")
+    holiday_date = Date.strptime(value, I18n.t(:date_format))
     self.year    = holiday_date.year
     self.month   = holiday_date.month
     self.day     = holiday_date.day

@@ -19,3 +19,5 @@
 /vendor
 /Gemfile.lock
 /db/schema.rb
+/sftp-config.json
+/README.md

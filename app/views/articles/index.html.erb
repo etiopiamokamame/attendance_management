@@ -24,7 +24,7 @@
             <% @articles.each do |article| %>
               <tr>
                 <td>
-                  <%= article.updated_at.strftime("%Y年%m月%d日") %>
+                  <%= article.updated_at.strftime(t(:date_format)) %>
                 </td>
                 <td class="abbreviation">
                   <%= article.title %>

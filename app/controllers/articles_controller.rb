@@ -53,6 +53,9 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title,
+                                    :body,
+                                    :posted_start_date,
+                                    :posted_end_date)
   end
 end

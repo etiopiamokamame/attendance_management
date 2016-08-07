@@ -1,4 +1,3 @@
-function leave_types_page() {
-  location.href = Routes.leave_types_path();
-  return false;
-}
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/

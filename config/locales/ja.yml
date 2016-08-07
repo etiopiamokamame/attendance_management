@@ -30,4 +30,6 @@ ja:
     not_logged_in:   "ログインして下さい。"
     some_errors:     "%{count}個のエラーが発生しています。"
     not_exist_admin: "管理者権限がありません。"
-  back:   "戻る"
+  back:        "戻る"
+  no_data:     "該当データはありません。"
+  date_format: "%Y年%m月%d日"

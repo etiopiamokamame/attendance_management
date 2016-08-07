@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   default_scope ->{ where(deleted: false) }
 
   has_many :attendances

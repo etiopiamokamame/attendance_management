@@ -1,2 +1,2 @@
-class LeaveType < ActiveRecord::Base
+class LeaveType < ApplicationRecord
 end

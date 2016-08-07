@@ -87,14 +87,14 @@
           <span class="pull-right">
             <ul class="enable-list">
               <li>
-                <label class="<%= @sys.enable_base_overtime_rest_time ? "selected" : "" %>">
-                  <%= f.radio_button :enable_base_overtime_rest_time, true %>
+                <label class="<%= @sys.enable_base_overtime_rest_time? ? "selected" : "" %>">
+                  <%= f.radio_button :enable_base_overtime_rest_time, "1" %>
                   ON
                 </label>
               </li>
               <li>
-                <label class="<%= @sys.enable_base_overtime_rest_time ? "" : "selected" %>">
-                  <%= f.radio_button :enable_base_overtime_rest_time, false %>
+                <label class="<%= @sys.enable_base_overtime_rest_time? ? "" : "selected" %>">
+                  <%= f.radio_button :enable_base_overtime_rest_time, "0" %>
                   OFF
                 </label>
               </li>
@@ -109,7 +109,7 @@
               </label>
                 <%= f.text_field :base_overtime_rest_start_time,
                   class:    "timepicker form-control",
-                  disabled: !@sys.enable_base_overtime_rest_time %>
+                  disabled: !@sys.enable_base_overtime_rest_time? %>
             </div>
             <div class="form-group-content">
               <label>
@@ -117,7 +117,7 @@
               </label>
               <%= f.text_field :base_overtime_rest_end_time,
                 class: "timepicker form-control",
-                disabled: !@sys.enable_base_overtime_rest_time %>
+                disabled: !@sys.enable_base_overtime_rest_time? %>
             </div>
           </div>
         </div>

@@ -1,2 +1,2 @@
-class Reason < ActiveRecord::Base
+class Reason < ApplicationRecord
 end
