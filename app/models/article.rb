@@ -2,6 +2,10 @@ class Article < ApplicationRecord
 
   # 有効データ
   scope :availability, -> {
+    where(deleted: "0")
+  }
+
+  scope :posted_period, -> {
     today = Date.today
     where(
       <<-EOF
@@ -12,7 +16,7 @@ class Article < ApplicationRecord
         posted_end_month >= #{today.month} AND
         posted_end_day >= #{today.day}
       EOF
-    ).where(deleted: "0")
+    )
   }
 
   # 新着順

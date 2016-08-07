@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :required_admin_authority
 
   def index
-    @articles = Article.where(deleted: false).order("updated_at DESC")
+    @articles = Article.availability.order_new
   end
 
   def show
