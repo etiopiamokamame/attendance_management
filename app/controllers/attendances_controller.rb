@@ -1,50 +1,85 @@
 class AttendancesController < ApplicationController
+  before_action :prep_index_info, only: [:index, :prev_month, :next_month]
+
   def index
-    @sys        = SystemConfig.first
-    @user       = login_user
-    @attendance = @user.this_month_attendance
+    today       = Date.today
+    year        = params[:year]  || today.year
+    month       = params[:month] || today.month
+    date        = Date.new(year.to_i, month.to_i, 1)
+    @attendance = @user.designated_month_attendance(date.year, date.month)
+  end
+
+  def prev_month
+    year        = params[:year]
+    month       = params[:month]
+    date        = Date.new(year.to_i, month.to_i, 1) - 1.month
+    @attendance = @user.designated_month_attendance(date.year, date.month)
+    render action: :index
+  end
+
+  def next_month
+    year        = params[:year]
+    month       = params[:month]
+    date        = Date.new(year.to_i, month.to_i, 1) + 1.month
+    @attendance = @user.designated_month_attendance(date.year, date.month)
+    render action: :index
   end
 
   def save
-    @user       = User.find(params[:user][:id])
-    @attendance = @user.attendances.find_or_initialize_by(
-                    year:  attendance_params[:year],
-                    month: attendance_params[:month]
-                  )
+    @user           = User.find(params[:user][:id])
+    options         = {}
+    options[:year]  = attendance_params[:year]
+    options[:month] = attendance_params[:month]
+    @attendance     = @user.attendances.find_or_initialize_by(options)
     @attendance.attributes = attendance_params
-    @attendance.save!
-    flash[:notice] = t("success.process")
-    redirect_to action: :index
-  rescue ActiveRecord::RecordInvalid
-    @sys = SystemConfig.first
-    render action: :index
+    if @attendance.save
+      flash[:notice] = t("success.process")
+      redirect_to attendances_path(options)
+    else
+      @sys = SystemConfig.first
+      render action: :index
+    end
+  end
+
+  def export
+    user            = User.find(params[:id])
+    options         = {}
+    options[:year]  = params[:year]
+    options[:month] = params[:month]
+    attendance      = user.attendances.find_by(options)
+
+    excel = Excel::ExcelFile.create_attendance_excel(attendance)
+    file  = Tempfile.new("attendance.xlsx", CONSTANTS::TEMP_DIR)
+    excel.package.serialize file.path
+
+    options  = [user.number, attendance.entries_abbr_era_year, user.name]
+    filename = attendance.class.human_attribute_name(:excel_filename) % options
+    send_file file.path,
+      filename: filename,
+      type:     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
   end
 
   private
 
   def attendance_params
-    my_params = params.require(:attendance).permit(
+    params.require(:attendance).permit(
       :year,
       :month,
       :display_site_start_time,
       :display_site_end_time,
-      details: {}
+      display_details: [:holiday_flag,
+                        :week,
+                        :work_start_time,
+                        :work_end_time,
+                        :time_holiday,
+                        :leave_type_id,
+                        :rest_out_of_standard]
     )
-    # params[:attendance][:details].each do |key, val|
-    #   my_params[:details][key] = params[:attendance][:details].require(key).permit(
-    #     :week,
-    #     :work_start_time_duration,
-    #     :work_end_time_duration,
-    #     :working_time_duration,
-    #     :off_hours_time_duration,
-    #     :late_night_time_duration,
-    #     :time_holiday_duration,
-    #     :shortfall_time_duration,
-    #     :reason,
-    #     :leave_type_id,
-    #     :rest_out_of_standard_duration
-    #   )
-    # end
-    my_params
+  end
+
+  def prep_index_info
+    @sys         = SystemConfig.first
+    @user        = User.find(params[:id] || session[:userid])
+    @leave_types = LeaveType.availability
   end
 end

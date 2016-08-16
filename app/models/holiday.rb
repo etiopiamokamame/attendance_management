@@ -3,6 +3,10 @@ class Holiday < ApplicationRecord
     presence: true
   validate :validate_date
 
+  scope :availability, -> {
+    where(deleted: "0")
+  }
+
   def date
     return nil if year.blank? || month.blank? || day.blank?
     "%04d年%02d月%02d日" % [year, month, day]

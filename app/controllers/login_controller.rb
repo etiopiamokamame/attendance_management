@@ -16,13 +16,14 @@ class LoginController < ApplicationController
   end
 
   def authenticate
-    if user = User.find_by(login_params)
+    user = User.availability.find_by(number: params[:user][:number], password: params[:user][:password])
+    if user.blank?
+      flash[:error] = I18n.t("error.not_login")
+      redirect_to action: :index
+    else
       session[:userid]     = user.id
       session[:admin_user] = user.admin
       redirect_to top_index_path
-    else
-      flash[:error] = I18n.t("error.not_login")
-      redirect_to action: :index
     end
   end
 

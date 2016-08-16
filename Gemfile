@@ -34,7 +34,6 @@ gem 'era_ja'
 gem 'jquery-timepicker-rails'
 gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'axlsx'
-gem 'rubyXL'
 gem 'roo'
 
 group :development, :test do

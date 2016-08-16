@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :user_configs, only: [:index, :destroy] do
+  resources :user_configs, only: [:index, :update, :destroy] do
     collection do
-      post :save
+      get :attendance
     end
     member do
       post :init_password
@@ -20,7 +20,10 @@ Rails.application.routes.draw do
 
   resources :attendances, only: [:index] do
     collection do
+      get :prev_month
+      get :next_month
       post :save
+      post :export
     end
   end
 
@@ -33,4 +36,7 @@ Rails.application.routes.draw do
   resources :system_configs, only:   [:edit, :update]
   resources :leave_tables,   only:   [:index]
   resources :reports,        only:   [:index]
+
+  # page not found
+  get '*path', controller: 'application', action: 'render_404'
 end

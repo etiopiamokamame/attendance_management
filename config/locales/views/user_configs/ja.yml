@@ -2,10 +2,11 @@ ja:
   user_configs:
     index:
       title:            "利用者管理"
+      user_list:        "利用者一覧"
       number:           "社員番号"
       affiliation_name: "所属部署"
       name:             "名前"
       admin:            "管理者権限"
-      save:             "保存"
+      attendance:       "勤怠"
       delete:           "削除"
       init_password:    "パスワード初期化"

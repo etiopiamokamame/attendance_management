@@ -8,7 +8,7 @@ class CreateAttendances < ActiveRecord::Migration[5.0]
       t.string     :site_end_time
       t.string     :rest_start_time
       t.string     :rest_end_time
-      t.string     :details
+      t.text       :details
       t.integer    :lock_version, null: false, default: 0
       t.string     :deleted,      null: false, limit: 1, default: 0
 

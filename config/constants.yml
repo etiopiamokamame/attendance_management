@@ -21,3 +21,11 @@ CONSTANTS:
     sat:
       id:   6
       name: "土"
+
+  # デフォルト新着記事掲載期間（単位: 月）
+  DEFAULT_POSTED_PERIOD: 1
+
+  # ロガープレフィックス
+  LOGGER_PREFIX: "[RAILS]"
+
+  TEMP_DIR: "<%= Rails.root.to_s + '/tmp/' %>"

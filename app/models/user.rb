@@ -1,10 +1,16 @@
 class User < ApplicationRecord
-  default_scope ->{ where(deleted: false) }
-
   has_many :attendances
   has_many :working_reports
 
   attr_accessor :password_confirm
+
+  scope :availability, -> {
+    where(deleted: "0")
+  }
+
+  scope :order_number, -> {
+    order(:number)
+  }
 
   validates :name,
     presence: true
@@ -18,6 +24,10 @@ class User < ApplicationRecord
   validate :validate_password,
     on: :create
 
+  def admin?
+    admin == "1"
+  end
+
   def init_password
     self.update(password: self.number)
   end
@@ -28,9 +38,8 @@ class User < ApplicationRecord
     self.working_reports.update_all(deleted: true)
   end
 
-  def this_month_attendance
-    today = Date.today
-    self.attendances.find_or_initialize_by(year: today.year, month: today.month)
+  def designated_month_attendance(year, month)
+    self.attendances.find_or_initialize_by(year: year, month: month)
   end
 
   class << self
@@ -38,8 +47,8 @@ class User < ApplicationRecord
       return if params.blank?
       admin_ids     = params.map { |opt| opt[:id] if opt[:admin] == "true" }.compact
       not_admin_ids = params.map { |opt| opt[:id] } - admin_ids
-      User.where(id: admin_ids).update_all(admin: true)
-      User.where(id: not_admin_ids).update_all(admin: false)
+      User.availability.where(id: admin_ids).update_all(admin: true)
+      User.availability.where(id: not_admin_ids).update_all(admin: false)
     end
   end
 

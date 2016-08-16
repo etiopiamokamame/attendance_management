@@ -1,0 +1,83 @@
+<%= stylesheet_link_tag "user_configs" %>
+
+<div class="wrapper">
+  <%= header_messages %>
+  <%= header_title t(".title") %>
+
+  <div class="box box-max-width">
+    <div class="box-header">
+      <h3 class="box-title">
+        <%= t(".user_list") %>
+      </h3>
+    </div>
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th><%= t(".number") %></th>
+              <th><%= t(".name") %></th>
+              <th><%= t(".admin") %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.number %></td>
+                <td><%= user.name %></td>
+                <td><%= user.admin? ? "○" : "×" %></td>
+                <td>
+                  <%= link_to t(".attendance"), attendance_user_configs_path(id: user.id),
+                    class: "btn" %>
+                  <%= link_to t(".delete"), user_config_path(user),
+                    method: :delete,
+                    class:  "btn" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="form-user-config"> -->
+  <%#= form_tag save_user_configs_path do %>
+    <!-- <table class="user-config-table"> -->
+      <!-- <tr> -->
+        <!-- <th><%#= t(".admin") %></th> -->
+        <!-- <th><%#= t(".number") %></th> -->
+        <!-- <th><%#= t(".affiliation_name") %></th> -->
+        <!-- <th><%#= t(".name") %></th> -->
+        <!-- <th><%#= t(".delete") %></th> -->
+        <!-- <th><%#= t(".init_password") %></th> -->
+      <!-- </tr> -->
+      <%# @users.each do |user| %>
+        <!-- <tr> -->
+          <%#= hidden_field_tag "user_configs[][id]", user.id %>
+          <!-- <td><%#= check_box_tag "user_configs[][admin]", true, user.admin %></td> -->
+          <!-- <td><%#= user.number %></td> -->
+          <!-- <td><%#= user.affiliation_name %></td> -->
+          <!-- <td><%#= user.name %></td> -->
+          <!-- <td> -->
+            <%#= link_to t(".delete"),
+              user_config_path(user.id),
+              method: :delete %>
+          <!-- </td> -->
+          <!-- <td> -->
+            <%#= link_to t(".init_password"),
+              init_password_user_config_path(user.id),
+              method: :post %>
+          <!-- </td> -->
+        <!-- </tr> -->
+      <%# end %>
+    <!-- </table> -->
+    <!-- <div class="form-user-config-btn"> -->
+      <%#= submit_tag t(".save"), class: "save-btn" %>
+        <%#= button_to t(:back), "",
+          class:   "back-btn",
+          onclick: "return top_page();" %>
+    <!-- </div> -->
+  <%# end %>
+<!-- </div> -->

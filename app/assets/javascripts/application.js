@@ -22,6 +22,7 @@
 //= require jquery.ui.datepicker-ja
 
 $(function() {
+  resize_wrapper();
   $(".timepicker").timepicker({
     "closeOnWindowScroll": true,
     "disableTextInput":    true,
@@ -34,7 +35,20 @@ $(function() {
   $(".datepicker").datepicker({
     "dateFormat": 'yy年mm月dd日'
   })
+
+  $("a.disabled").click(function() {
+    return false;
+  })
 });
+
+$(window).resize(function() {
+  resize_wrapper();
+});
+
+function resize_wrapper(){
+  var size = $(window).width() - $(".side-menu").width();
+  $(".wrapper").css("width", size);
+}
 
 function top_page() {
   location.href = Routes.top_index_path();
@@ -51,6 +65,7 @@ function toggle_sidebar(){
     elmSideMenuTitles.hide();
     elmContent.animate({"margin-left": "30px"}, "slow");
     elmSideMenu.animate({ "width": "30px" }, "slow");
+    $(".wrapper").animate({ "width": $(window).width() - 30 }, "slow");
     elmHeaderContent.animate({ "margin-left": "30px" }, "slow").promise().done(function () {
       elmContent.switchClass("active", "disable");
       elmSideMenu.switchClass("active", "disable");
@@ -60,6 +75,7 @@ function toggle_sidebar(){
   } else {
     elmContent.animate({"margin-left": "250px"}, "slow");
     elmSideMenu.animate({ "width": "250px" }, "slow");
+    $(".wrapper").animate({ "width": $(window).width() - 250 }, "slow");
     elmHeaderContent.animate({ "margin-left": "250px" }, "slow").promise().done(function () {
       elmSideMenuTitles.show();
       elmSideMenuTitles.attr("style", "");

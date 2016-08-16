@@ -1,13 +1,29 @@
-<%= stylesheet_link_tag "attendances" %>
+<%= stylesheet_link_tag    "attendances" %>
+<%= javascript_include_tag "attendances" %>
 
 <div class="wrapper">
   <%= header_messages :attendance %>
   <%= header_title t(".title") %>
 
-  <%= form_for @attendance, url: { action: "save" } do |f| %>
-    <div class="box-max-width">
-      <div class="box">
-        <div class="box-header">
+  <div class="box-max-width">
+    <div class="box">
+      <div class="box-header">
+        <div class="box-header-btn center">
+          <%= link_to t(".prev_month"), prev_month_attendances_path(id:    @user.id,
+                                                                    year:  @attendance.year,
+                                                                    month: @attendance.month),
+            class: "btn btn-lg pull-left" %>
+          <%= link_to t(".next_month"), next_month_attendances_path(id:    @user.id,
+                                                                    year:  @attendance.year,
+                                                                    month: @attendance.month),
+            class: "btn btn-lg pull-right" %>
+        </div>
+      </div>
+      <%= form_for @attendance, url: { action: :save }, method: :post do |f| %>
+        <%= hidden_field :user, :id %>
+        <%= hidden_field :attendance, :year %>
+        <%= hidden_field :attendance, :month %>
+        <div class="box-body">
           <table class="table">
             <thead>
               <tr>
@@ -110,8 +126,6 @@
               </tr>
             </thead>
           </table>
-        </div>
-        <div class="box-body">
           <div class="form-group">
             <table class="table table-attendance">
               <tbody>
@@ -155,37 +169,48 @@
                 </tr>
                 <% @attendance.display_details.each do |detail| %>
                   <%= fields_for detail do |detail_form| %>
-                    <%= detail_form.hidden_field :holiday_flag %>
-                    <tr class="<%= detail.holiday_flag ? 'holiday' : '' %>">
+                    <%= detail_form.hidden_field :holiday_flag,
+                      name: "attendance[display_details][#{detail.day}][holiday_flag]" %>
+                    <tr class="<%= detail.holiday? ? 'holiday' : '' %>">
                       <td>
                         <%= detail.day %>
                       </td>
                       <td>
                         <%= t(".week_name_#{detail.week}") %>
-                        <%= detail_form.hidden_field :week %>
+                        <%= detail_form.hidden_field :week,
+                          name: "attendance[display_details][#{detail.day}][week]" %>
                       </td>
                       <td>
                         <%= detail_form.text_field :work_start_time,
                           size:      "5",
                           maxlength: "5",
-                          class:     "timepicker form-control" %>
+                          day:       detail.day,
+                          class:     "timepicker form-control work_start_time",
+                          name:      "attendance[display_details][#{detail.day}][work_start_time]" %>
                       </td>
                       <td>
                         <%= detail_form.text_field :work_end_time,
                           size:      "5",
                           maxlength: "5",
-                          class:     "timepicker form-control" %>
+                          day:       detail.day,
+                          class:     "timepicker form-control work_end_time",
+                          name:      "attendance[display_details][#{detail.day}][work_end_time]" %>
                       </td>
                       <td>
-                      </td>
-
-                      <td>
-                      </td>
-                      <td>
-
+                        <label id="working_time<%= detail.day %>"></label>
                       </td>
                       <td>
 
+                      </td>
+                      <td>
+
+                      </td>
+                      <td>
+                        <%= detail_form.text_field :time_holiday,
+                          size:      "5",
+                          maxlength: "5",
+                          class:     "timepicker form-control",
+                          name:      "attendance[display_details][#{detail.day}][time_holiday]" %>
                       </td>
                       <td>
 
@@ -194,10 +219,19 @@
 
                       </td>
                       <td>
-
+                        <%= detail_form.collection_select :leave_type_id, @leave_types, :id, :content,
+                          { include_blank: true },
+                          {
+                            class: "form-control",
+                            name:  "attendance[display_details][#{detail.day}][leave_type_id]"
+                          } %>
                       </td>
                       <td>
-
+                        <%= detail_form.text_field :rest_out_of_standard,
+                          size:      "5",
+                          maxlength: "5",
+                          class:     "timepicker form-control",
+                          name:      "attendance[display_details][#{detail.day}][rest_out_of_standard]" %>
                       </td>
                     </tr>
                   <% end %>
@@ -267,124 +301,15 @@
             </table>
           </div>
         </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-<!-- <div class="form-attendance"> -->
-  <%#= form_tag save_attendances_path do %>
-    <%#= hidden_field :user, :id %>
-    <%#= hidden_field :attendance, :year %>
-    <%#= hidden_field :attendance, :month %>
-<!--     <table class="header-attendance-table">
-      <tr>
-        <th><%#= t(".entry_month") %></th>
-        <td>
-          <%#= @attendance.entries_month %>
-        </td>
-        <th><%#= t(".company_name") %></th>
-        <td><%#= @sys.company_name %></td>
-      </tr>
-      <tr>
-        <th><%#= t(".affiliation") %></th>
-        <td><%#= @user.affiliation_name %></td>
-        <th><%#= t(".site_start_time") %></th>
-        <td>
-          <%#= time_field :attendance, :display_site_start_time,
-            step: 30.minute %>
-        </td>
-      </tr>
-      <tr>
-        <th><%#= t(".user_name") %></th>
-        <td><%#= @user.name %></td>
-        <th><%#= t(".site_end_time") %></th>
-        <td>
-          <%#= time_field :attendance, :display_site_end_time,
-            step: 30.minute %>
-        </td>
-      </tr>
-    </table> -->
-<!--     <table class="attendance-table">
-      <tr>
-        <th class="day"><%#= t(".day") %></th>
-        <th class="week"><%#= t(".week") %></th>
-        <th class="work_start_time"><%#= t(".work_start_time") %></th>
-        <th class="work_end_time"><%#= t(".work_end_time") %></th>
-        <th class="working_time"><%#= t(".working_time") %></th>
-        <th class="off_hours_time"><%#= t(".off_hours_time") %></th>
-        <th class="late_night_time"><%#= t(".late_night_time") %></th>
-        <th class="time_holiday"><%#= t(".time_holiday") %></th>
-        <th class="shortfall_time"><%#= t(".shortfall_time") %></th>
-        <th class="reason"><%#= t(".reason") %></th>
-        <th class="leave_type"><%#= t(".leave_type") %></th>
-        <th class="rest_out_of_standard"><%#= t(".rest_out_of_standard") %></th>
-      </tr>
-      <% @attendance.display_details.each do |detail| %>
-        <tr>
-          <td>
-            <%#= detail.day %>
-          </td>
-          <td>
-            <%#= t(".week_name_#{detail.week}") %>
-            <%#= hidden_field_tag "attendance[details[#{detail.day}][week]]",
-              detail.week %>
-          </td>
-          <td>
-            <%#= time_field_tag "attendance[details[#{detail.day}][work_start_time_duration]]",
-              detail.work_start_time_duration,
-              step: 30.minute %>
-          </td>
-          <td>
-            <%#= time_field_tag "attendance[details[#{detail.day}][work_end_time_duration]]",
-              detail.work_end_time_duration,
-              step: 30.minute %>
-          </td>
-          <td>
-            <%#= time_field_tag "attendance[details[#{detail.day}][working_time_duration]]",
-              detail.working_time_duration,
-              readonly: true %>
-          </td>
-          <td>
-            <%#= time_field_tag "attendance[details[#{detail.day}][off_hours_time_duration]",
-              detail.off_hours_time_duration,
-              readonly: true %>
-          </td>
-          <td>
-            <%#= time_field_tag "attendance[details[#{detail.day}][late_night_time_duration]",
-              detail.late_night_time_duration,
-              readonly: true %>
-          </td>
-          <td>
-            <%#= time_field_tag "attendance[details[#{detail.day}][time_holiday_duration]",
-              detail.time_holiday_duration,
-              step: 60.minute %>
-          </td>
-          <td>
-            <%#= time_field_tag "attendance[details[#{detail.day}][shortfall_time_duration]",
-              detail.shortfall_time_duration,
-              readonly: true %>
-          </td>
-          <td>
-            <%#= text_field_tag "attendance[details[#{detail.day}][reason]",
-              detail.reason %>
-          </td>
-          <td>
-            <%#= text_field_tag "attendance[details[#{detail.day}][leave_type_id]",
-              detail.leave_type_id %>
-          </td>
-          <td>
-            <%#= time_field_tag "attendance[details[#{detail.day}][rest_out_of_standard_duration]",
-              detail.rest_out_of_standard_duration,
-              step: 30.minute %>
-          </td>
-        </tr>
+        <div class="box-footer">
+          <%= f.submit t(".save"), class: "btn btn-lg pull-left" %>
+          <%= link_to t(".export"), export_attendances_path(id:     @user.id,
+                                                            year:   @attendance.year,
+                                                            month:  @attendance.month),
+            method: :post,
+            class:  "btn btn-lg pull-right #{@attendance.new_record? ? 'disabled' : 'enable'}" %>
+        </div>
       <% end %>
-    </table> -->
-    <!-- <div class="form-attendance-btn"> -->
-      <%#= submit_tag t(".save"), class: "save-btn" %>
-      <%#= button_to t(:back), "",
-        class:   "back-btn",
-        onclick: "return top_page();" %>
-    <!-- </div> -->
-  <%# end %>
-<!-- </div> -->
+    </div>
+  </div>
+</div>

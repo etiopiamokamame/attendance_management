@@ -10,7 +10,15 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    today    = Date.today
+    end_date = CONSTANTS::DEFAULT_POSTED_PERIOD.month.from_now
     @article = Article.new
+    @article.posted_start_year  = today.year
+    @article.posted_start_month = today.month
+    @article.posted_start_day   = today.day
+    @article.posted_end_year    = end_date.year
+    @article.posted_end_month   = end_date.month
+    @article.posted_end_day     = end_date.day
   end
 
   def edit

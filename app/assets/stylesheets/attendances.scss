@@ -1,3 +1,64 @@
 // Place all the styles related to the attendances controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.table-attendance {
+
+}
+
+table.table-attendance tr th,
+table.table-attendance tr td {
+  padding: 5px;
+}
+
+table.table-attendance tr td {
+  text-align: center;
+}
+
+table.table-attendance tr.holiday {
+  background-color: #b5bbc8;
+}
+
+.day {
+  width: 30px;
+}
+
+.week {
+  width: 30px;
+}
+
+.work-time {
+  width: 80px;
+}
+
+.working-time {
+  width: 80px;
+}
+
+.off-hours-time {
+  width: 100px;
+}
+
+.late-night-time {
+  width: 80px;
+}
+
+.time-holiday {
+  width: 80px;
+}
+
+.shortfall-time {
+  width: 80px;
+}
+
+.reason {
+  width: 200px;
+}
+
+.leave-type {
+  width: 80px;
+}
+
+.rest-out-of-standard {
+  width: 100px;
+}
