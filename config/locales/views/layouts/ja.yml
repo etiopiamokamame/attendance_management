@@ -1,0 +1,15 @@
+ja:
+  layouts:
+    main_sidebar:
+      admin_menu:    "管理者メニュー"
+      system_config: "システム設定"
+      user_config:   "利用者管理"
+      reason:        "事由マスタ"
+      leave_type:    "休暇種別マスタ"
+      article:       "新着記事"
+      holiday:       "休暇マスタ"
+      user_menu:     "利用者メニュー"
+      attendance:    "勤怠記入"
+      user:          "利用者情報編集"
+      leave_table:   "休暇表"
+      report:        "報告書"

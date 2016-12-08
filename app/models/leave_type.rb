@@ -1,5 +1,3 @@
+# frozen_string_literal: true
 class LeaveType < ApplicationRecord
-  scope :availability, -> {
-    where(deleted: "0")
-  }
 end

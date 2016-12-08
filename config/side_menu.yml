@@ -1,51 +1,46 @@
 default: &default
   menu:
-    - path:        "/top"
-      icon:        "top.png"
-      label_class: "top-menu-list"
-      title:       "top"
-      tree_class:  "top-menu"
-    - label_class: "admin-menu-list"
-      title:       "admin_menu"
-      tree_class:  "admin-menu"
-      icon:        "admin_user.png"
-      admin:       true
-      tree_path:
-        - path:  "/system_configs/1/edit"
-          icon:  "system_config.png"
-          title: "system_config"
-        - path:  "/user_configs"
-          icon:  "user_config.png"
-          title: "user_config"
-        - path:  "/reasons"
-          icon:  "reason.png"
-          title: "reason"
-        - path:  "/leave_types"
-          icon:  "leave_type.png"
-          title: "leave_type"
-        - path:  "/articles"
-          icon:  "articles.png"
-          title: "articles"
-        - path:  "/holidays"
-          icon:  "holidays.png"
-          title: "holidays"
-    - label_class: "normal-menu-list"
-      title:       "normal_menu"
-      tree_class:  "normal-menu"
-      icon:        "normal_user.png"
-      tree_path:
-        - path:  "/attendances"
-          icon:  "attendance.png"
-          title: "attendance"
-        - path:  "/users"
-          icon:  "user.png"
-          title: "user"
-        - path:  "/leave_tables"
-          icon:  "leave_table.png"
-          title: "leave_table"
-        - path:  "/reports"
-          icon:  "report.png"
-          title: "report"
+    - title:  "admin_menu"
+      header: true
+      admin:  true
+    - title:  "system_config"
+      icon:   "fa-gear"
+      path:   "/system_config/edit"
+      admin:  true
+    - title:  "user_config"
+      icon:   "fa-user-plus"
+      path:   "/user_configs"
+      admin:  true
+    - title:  "reason"
+      icon:   "fa-list-alt"
+      path:   "/reasons"
+      admin:  true
+    - title:  "leave_type"
+      icon:   "fa-copy"
+      path:   "/leave_types"
+      admin:  true
+    - title:  "article"
+      icon:   "fa-newspaper-o"
+      path:   "/articles"
+      admin:  true
+    - title:  "holiday"
+      icon:   "fa-clipboard"
+      path:   "/holidays"
+      admin:  true
+    - title:  "user_menu"
+      header: true
+    - title:  "attendance"
+      icon:   "fa-calendar"
+      path:   "/attendances"
+    - title:  "user"
+      icon:   "fa-user"
+      path:   "/users"
+    - title:  "leave_table"
+      icon:   "fa-file-text"
+      path:   "/leave_tables"
+    - title:  "report"
+      icon:   "fa-file"
+      path:   "/reports"
 
 test:
   <<: *default

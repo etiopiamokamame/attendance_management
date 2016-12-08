@@ -1,47 +1,73 @@
-<%= stylesheet_link_tag    "articles" %>
-<%= javascript_include_tag "articles" %>
-
 <div class="wrapper">
-  <div class="content-heder">
-    <%= header_title t(".title") %>
-  </div>
-  <div class="box box-max-width">
-    <%= form_for @article do |f| %>
-      <div class="box-body form-group">
-        <div class="form-group-content">
-          <label><%= t(".posted_start_date") %></label>
-          <%= f.text_field :posted_start_date,
-            class:    "form-control",
-            disabled: true %>
-        </div>
-        <div class="form-group-content">
-          <label><%= t(".posted_end_date") %></label>
-          <%= f.text_field :posted_end_date,
-            class:    "form-control",
-            disabled: true %>
-        </div>
-        <div class="form-group-content">
-          <label><%= t(".title") %></label>
-          <%= f.text_field :title,
-            class:    "form-control",
-            disabled: true %>
-        </div>
-        <div class="form-group-content">
-          <label><%= t(".body") %></label>
-          <%= f.text_area :body,
-            size:      "50x10",
-            maxlength: 1000,
-            disabled:  true %>
+  <%= render "layouts/main_header" %>
+  <%= render "layouts/main_sidebar" %>
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1><%= t(".title") %></h1>
+    </section>
+
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <%= form_for @article, html: { class: "form-horizontal" } do |f| %>
+              <div class="box-body">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">
+                    <%= @article.class.human_attribute_name(:posted_start_date) %>
+                  </label>
+                  <div class="col-sm-10">
+                    <%= f.text_field :posted_start_date_text,
+                      class:    "form-control",
+                      readonly: true %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">
+                    <%= @article.class.human_attribute_name(:posted_end_date) %>
+                  </label>
+                  <div class="col-sm-10">
+                    <%= f.text_field :posted_end_date_text,
+                      class:    "form-control",
+                      readonly: true %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">
+                    <%= @article.class.human_attribute_name(:title) %>
+                  </label>
+                  <div class="col-sm-10">
+                    <%= f.text_field :title,
+                      class:    "form-control",
+                      readonly: true %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">
+                    <%= @article.class.human_attribute_name(:body) %>
+                  </label>
+                  <div class="col-sm-10">
+                    <%= f.text_area :body,
+                      class:     "textarea form-control",
+                      rows:      10,
+                      maxlength: 1000,
+                      readonly:  true %>
+                  </div>
+                </div>
+              </div>
+              <div class="box-footer">
+                <%= link_to t(".edit_article"), edit_article_path(@article.id),
+                  class: "btn btn-primary btn-lg" %>
+                <%= link_to t(".back"), articles_path,
+                  class: "btn btn-primary btn-lg pull-right" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-    <% end %>
-    <div class="box-footer">
-      <%= button_to t(".edit_article"), edit_article_path(@article.id),
-        method: :get,
-        class:  "btn btn-lg pull-left" %>
-      <%= button_to t(:back), "",
-        class:   "btn btn-lg pull-right",
-        onclick: "return article_page();" %>
-    </div>
+    </section>
   </div>
+
+  <%= render "layouts/main_footer" %>
 </div>

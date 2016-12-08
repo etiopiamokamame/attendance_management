@@ -1,82 +1,74 @@
+# frozen_string_literal: true
 class Article < ApplicationRecord
+  belongs_to :user
 
   # 有効データ
   scope :availability, -> {
     where(deleted: "0")
   }
 
+  # 掲載期間中データ
   scope :posted_period, -> {
-    today = Date.today
-    where(
-      <<-EOF
-        posted_start_year <= #{today.year} AND
-        posted_start_month <= #{today.month} AND
-        posted_start_day <= #{today.day} AND
-        posted_end_year >= #{today.year} AND
-        posted_end_month >= #{today.month} AND
-        posted_end_day >= #{today.day}
-      EOF
-    )
+    today = Date.today.strftime(I18n.t(:default_date_format))
+    table = arel_table
+    query = table[:posted_start_date].lteq(today)
+    query = query.and(table[:posted_end_date].gteq(today))
+    availability.where(query)
   }
 
   # 新着順
   scope :order_new, -> {
-    order("updated_at DESC")
+    order(updated_at: :desc)
   }
 
   validates :title,
-    presence: true
+            presence: true
   validates :body,
-    presence: true
-  validates :posted_start_date,
-    presence: true
-  validates :posted_end_date,
-    presence: true
-  validate :validate_posted_date
+            presence: true
+  validates :posted_start_date_text,
+            presence: true,
+            date: { format: I18n.t(:date_format), allow_blank: true }
+  validates :posted_end_date_text,
+            presence: true,
+            date: { format: I18n.t(:date_format), allow_blank: true }
+  validate :validate_posted_period
 
-  def posted_start_date
-    return nil if posted_start_year.blank? || posted_start_month.blank? || posted_start_day.blank?
-    "%04d年%02d月%02d日" % [posted_start_year, posted_start_month, posted_start_day]
-  end
-
-  def posted_start_date=(value)
-    date = Date.strptime(value, I18n.t(:date_format))
-    self.posted_start_year  = date.year
-    self.posted_start_month = date.month
-    self.posted_start_day   = date.day
+  def posted_start_date_text
+    Date.strptime(posted_start_date, I18n.t(:default_date_format)).strftime(I18n.t(:date_format))
   rescue
-    self.posted_start_year  = nil
-    self.posted_start_month = nil
-    self.posted_start_day   = nil
+    nil
   end
 
-  def posted_end_date
-    return nil if posted_end_year.blank? || posted_end_month.blank? || posted_end_day.blank?
-    "%04d年%02d月%02d日" % [posted_end_year, posted_end_month, posted_end_day]
-  end
-
-  def posted_end_date=(value)
-    date = Date.strptime(value, I18n.t(:date_format))
-    self.posted_end_year  = date.year
-    self.posted_end_month = date.month
-    self.posted_end_day   = date.day
+  def posted_end_date_text
+    Date.strptime(posted_end_date, I18n.t(:default_date_format)).strftime(I18n.t(:date_format))
   rescue
-    self.posted_end_year  = nil
-    self.posted_end_month = nil
-    self.posted_end_day   = nil
+    nil
+  end
+
+  def posted_start_date_text=(value)
+    self.posted_start_date = Date.strptime(value, I18n.t(:date_format)).strftime(I18n.t(:default_date_format))
+  rescue
+    self.posted_start_date = nil
+  end
+
+  def posted_end_date_text=(value)
+    self.posted_end_date = Date.strptime(value, I18n.t(:date_format)).strftime(I18n.t(:default_date_format))
+  rescue
+    self.posted_end_date = nil
+  end
+
+  def created_at_text
+    return if created_at.blank?
+    created_at.strftime(I18n.t(:date_format))
   end
 
   private
 
-  def validate_posted_date
-    return if posted_start_date.blank? || posted_end_date.blank?
-    if !Date.valid_date?(posted_start_year, posted_start_month, posted_start_day)
-      errors.add(:posted_start_date, :invalid)
-    elsif !Date.valid_date?(posted_end_year, posted_end_month, posted_end_day)
-      errors.add(:posted_end_date, :invalid)
-    else
-      return if posted_start_date <= posted_end_date
-      errors.add(:base, :invalid_consistency_date)
-    end
+  def validate_posted_period
+    return if errors.messages[:posted_start_date_text].present? || errors.messages[:posted_end_date_text].present?
+    return if posted_start_date_text.blank? || posted_end_date_text.blank?
+    return if posted_start_date_text <= posted_end_date_text
+    errors.add(:posted_start_date, :after_end_date)
+    errors.add(:posted_end_date, :before_start_date)
   end
 end

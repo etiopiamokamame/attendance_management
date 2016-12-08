@@ -1,84 +1,63 @@
+# frozen_string_literal: true
 module ApplicationHelper
-  def header_messages(model_name = nil)
-    render partial: "layouts/header_messages",
-      locals: { model_name: model_name }
-  end
-
-  def header_title(title)
-    content_tag(:div, content_tag(:h1, title), class: "content-heder")
-  end
-
-  def error_message_for(model_name = nil)
-    return nil if model_name.blank?
-    model = instance_eval "@#{model_name}"
-    return nil if model.errors.blank?
-    content_tag(:div,
-      content_tag(:div,
-        t("error.some_errors", count: model.errors.messages.count),
-        class: "some-error"
-      ) + content_tag(:ul,
-        model.errors.full_messages.inject(""){|str, msg| str << content_tag(:li, msg) }.html_safe
-      ),
-      class: "error-message"
-    )
-  end
-
   def load_menu
-    html       = ""
-    login_user = User.find(session[:userid])
+    menu_list  = []
+    login_user = current_user
     Rails.application.config.side_menu.menu.each do |menu|
-      next if menu[:admin] && !login_user.admin
-      if menu[:tree_path].blank?
-        link_title = t(".#{menu[:title]}")
-        link_html  = link_to menu[:path] do
-          h = <<-EOF
-            #{image_tag(menu[:icon])}
-            <span class="title #{session[:hidden_sidebar] ? 'disable' : 'active'}">
-              #{link_title}
-            </span>
-          EOF
-          h.html_safe
-        end
-        html += <<-EOF
-          <ul class="#{menu[:tree_class]}">
-            <li>
-              #{link_html}
-            </li>
-          </ul>
-        EOF
-      else
-        tree_html = ""
-        menu[:tree_path].each do |tree_menu|
-          label_title = t(".#{tree_menu[:title]}")
-          link_body   = <<-EOF
-            <label class="title #{session[:hidden_sidebar] ? 'disable' : 'active'}">
-              #{label_title}
-            </label>
-          EOF
-          link_html   = link_to tree_menu[:path] do
-            image_tag(tree_menu[:icon]) + link_body.html_safe
-          end
-          tree_html += <<-EOF
-            <li>
-              #{link_html}
-            </li>
-          EOF
-        end
-        label_title = t(".#{menu[:title]}")
-        html       += <<-EOF
-          <label class="#{menu[:label_class]}">
-            #{image_tag(menu[:icon])}
-            <span class="title #{session[:hidden_sidebar] ? 'disable' : 'active'}">
-              #{label_title}
-            </span>
-          </label>
-          <ul class="#{menu[:tree_class]}">
-            #{tree_html}
-          </ul>
-        EOF
-      end
+      next if menu[:admin] && !login_user.admin?
+      list_options         = {}
+      list_options[:class] = "header" if menu[:header]
+
+      list_body = if menu[:path].blank?
+                    t(".#{menu[:title]}")
+                  else
+                    link_to menu[:path] do
+                      <<~EOF.html_safe
+                        <i class="fa #{menu[:icon]}"></i>
+                        <span>#{t(".#{menu[:title]}")}</span>
+                      EOF
+                    end
+                  end
+
+      menu_list << content_tag(:li, list_body, list_options)
     end
 
-    html.html_safe
+    safe_join menu_list
+  end
+
+  def datatable_script(table_id, default_order, options = {})
+    <<~JS
+      <script>
+        $("##{table_id}").dataTable({
+          lengthChange: true,
+          searching:    false,
+          ordering:     true,
+          info:         true,
+          paging:       true,
+          order:        [#{default_order}, "#{options[:order] || 'asc'}"],
+          columnDefs:   [{orderable: false, targets: #{options[:column_defs] || []}}],
+          lengthMenu:   [[10, 20, 50, -1], [10, 20, 50, "#{t('datatable.lengthMenuAll')}"]],
+          language: {
+            emptyTable:     "#{t('datatable.emptyTable')}",
+            info:           "#{t('datatable.info')}",
+            infoEmpty:      "#{t('datatable.infoEmpty')}",
+            infoFiltered:   "#{t('datatable.infoFiltered')}",
+            infoPostFix:    "#{t('datatable.infoPostFix')}",
+            thousands:      "#{t('datatable.thousands')}",
+            lengthMenu:     "#{t('datatable.lengthMenu')}",
+            loadingRecords: "#{t('datatable.loadingRecords')}",
+            processing:     "#{t('datatable.processing')}",
+            search:         "#{t('datatable.search')}",
+            zeroRecords:    "#{t('datatable.zeroRecords')}",
+            paginate: {
+              first:    "先頭",
+              previous: "前へ",
+              next:     "次へ",
+              last:     "末尾"
+            }
+          }
+        });
+      </script>
+    JS
   end
 end

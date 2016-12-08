@@ -1,2 +1,0 @@
-module LeaveTablesHelper
-end

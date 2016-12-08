@@ -1,0 +1,25 @@
+<header class="main-header">
+  <%= link_to root_path, class: "logo" do %>
+    <span class="logo-mini"><%= t(:logo_mini) %></span>
+    <span class="logo-lg"><%= t(:logo_lg) %></span>
+  <% end %>
+  <nav class="navbar navbar-static-top">
+    <%= link_to toggle_sidebar_path,
+      class: "sidebar-toggle",
+      data: { toggle: "offcanvas" },
+      role: "button",
+      method: :post,
+      remote: true do %>
+      <span class="sr-only"><%= t(:toggle_navigation) %></span>
+    <% end %>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to logout_login_index_path do %>
+            <i class="fa fa-sign-out"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

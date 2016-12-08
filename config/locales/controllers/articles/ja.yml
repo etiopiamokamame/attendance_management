@@ -1,0 +1,8 @@
+ja:
+  articles:
+    new:
+      create_article: "新着記事を作成しました。"
+    edit:
+      update_article: "新着記事を更新しました。"
+    destroy:
+      delete_article: "新着記事を削除しました。"

@@ -6,25 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create do |u|
-  u.admin            = true
+User.find_or_create_by(admin: "1", number: "00000") do |u|
   u.name             = "管理者"
   u.affiliation_name = "管理職"
-  u.number           = "00000"
   u.password         = "admin"
   u.password_confirm = u.password
 end
 
-User.create do |u|
-  u.admin            = false
+User.find_or_create_by(admin: "0", number: "99999") do |u|
   u.name             = "一般利用者"
   u.affiliation_name = "一般職"
-  u.number           = "99999"
   u.password         = "user"
   u.password_confirm = u.password
 end
 
-SystemConfig.create do |s|
+SystemConfig.find_or_create_by(id: 1) do |s|
   s.base_working_start_time       = "09:00"
   s.base_working_end_time         = "18:00"
   s.rest_start_time               = "12:00"
@@ -35,10 +31,10 @@ SystemConfig.create do |s|
   s.time_off_hours_prospect       = 30.0
 end
 
-Reason.create do |r|
+Reason.find_or_create_by(id: 1) do |r|
   r.content = "月例会議(19:00～21:00)"
 end
 
-LeaveType.create do |l|
+LeaveType.find_or_create_by(id: 1) do |l|
   l.content = "年休"
 end

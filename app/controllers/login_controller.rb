@@ -1,35 +1,39 @@
+# frozen_string_literal: true
 class LoginController < ApplicationController
-  layout false
+  before_action :redirect_logined, only: [:new]
+  before_action :authenticate,     only: [:new]
 
-  def index
-    redirect_to top_index_path if session[:userid].present?
+  def new
+    @user = User.new
   end
 
   def logout
-    session.delete(:userid)
+    clear_current_user
     redirect_to root_path
-  end
-
-  def toggle_sidebar
-    session[:hidden_sidebar] = session[:hidden_sidebar].blank?
-    render nothing: true
-  end
-
-  def authenticate
-    user = User.availability.find_by(number: params[:user][:number], password: params[:user][:password])
-    if user.blank?
-      flash[:error] = I18n.t("error.not_login")
-      redirect_to action: :index
-    else
-      session[:userid]     = user.id
-      session[:admin_user] = user.admin
-      redirect_to top_index_path
-    end
   end
 
   private
 
-  def login_params
+  def redirect_logined
+    return if current_user.blank?
+    redirect_to top_index_path
+  end
+
+  def authenticate
+    return if params[:user].blank?
+    return if request.get?
+    user = User.availability.find_by(user_params)
+    if user.blank?
+      flash.now[:alert] = t("errors.not_login")
+      @user = User.new(user_params)
+      render action: :new
+    else
+      self.current_user = user.id
+      redirect_to top_index_path
+    end
+  end
+
+  def user_params
     params.require(:user).permit(:number, :password)
   end
 end

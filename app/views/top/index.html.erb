@@ -1,34 +1,40 @@
-<%= stylesheet_link_tag "top" %>
-
 <div class="wrapper">
-  <%= header_messages %>
-  <div class="content-heder">
-    <h1>新着情報</h1>
+  <%= render "layouts/main_header" %>
+  <%= render "layouts/main_sidebar" %>
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1><%= t(".title") %></h1>
+    </section>
+
+    <section class="content">
+      <%= render "shares/flash_messages" %>
+
+      <% if @new_articles.blank?  %>
+        <div class="box box-primary">
+          <div class="box-body">
+            <label><%= t(:no_data) %></label>
+          </div>
+        </div>
+      <% else %>
+        <% @new_articles.each do |article| %>
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">
+                <%= article.title %>
+              </h3>
+              <div class="pull-right">
+                <%= article.created_at_text %>
+              </div>
+            </div>
+            <div class="box-body">
+              <pre class="prettyprint"><code class="html"><%= article.body %></code></pre>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
   </div>
 
-  <% if @new_articles.blank?  %>
-    <div class="box box-max-width">
-      <div class="box-body">
-        <label><%= t(:no_data) %></label>
-      </div>
-    </div>
-  <% else %>
-    <% @new_articles.each do |article| %>
-      <div class="box box-max-width">
-        <div class="box-header">
-          <h3 class="box-title">
-            <%= article.title %>
-          </h3>
-          <span class="date pull-right">
-            <label>
-              <%= article.updated_at.to_date.strftime(t(:date_format)) %>
-            </label>
-          </span>
-        </div>
-        <div class="box-body">
-          <pre><%= article.body %></pre>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+  <%= render "layouts/main_footer" %>
 </div>

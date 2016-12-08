@@ -1,26 +1,21 @@
 ja:
   articles:
     index:
-      title:         "新着記事"
-      article_list:  "記事一覧"
-      new_article:   "新規作成"
-      detail:        "詳細"
-      delete:        "削除"
-      created_at:    "作成日"
-      article_title: "タイトル"
+      title:       "新着記事"
+      list:        "記事一覧"
+      new_article: "新規作成"
+      back:        "戻る"
+      show:        "詳細"
+      delete:      "削除"
     new:
       title:        "新規記事"
       save_article: "保存"
+      back:         "戻る"
     show:
-      posted_start_date: "掲載開始期間"
-      posted_end_date:   "掲載終了期間"
-      title:             "記事"
-      edit_article:      "編集"
+      title:        "記事"
+      edit_article: "編集"
+      back:         "戻る"
     edit:
       title:        "記事編集"
       save_article: "保存"
-    form:
-      posted_start_date: "掲載開始期間"
-      posted_end_date:   "掲載終了期間"
-      title:             "タイトル"
-      body:              "本文"
+      back:         "戻る"

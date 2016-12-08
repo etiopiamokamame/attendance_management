@@ -1,54 +1,79 @@
-<%= stylesheet_link_tag "articles" %>
-
 <div class="wrapper">
-  <%= header_messages %>
-  <div class="content-heder">
-    <%= header_title t(".title") %>
+  <%= render "layouts/main_header" %>
+  <%= render "layouts/main_sidebar" %>
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1><%= t(".title") %></h1>
+    </section>
+
+    <section class="content">
+      <%= render "shares/flash_messages" %>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title"><%= t(".list") %></h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <table id="article_table" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>
+                          <%= Article.human_attribute_name(:created_at) %>
+                        </th>
+                        <th>
+                          <%= Article.human_attribute_name(:title) %>
+                        </th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @articles.each do |article| %>
+                        <tr>
+                          <td>
+                            <%= article.created_at_text %>
+                          </td>
+                          <td>
+                            <%= article.title %>
+                          </td>
+                          <td>
+                            <%= link_to t(".show"), article_path(article),
+                              class: "btn btn-success" %>
+                          </td>
+                          <td>
+                            <%= link_to t(".delete"), article_path(article),
+                              method: :delete,
+                              class:   "btn btn-danger" %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                  <%== datatable_script("article_table",
+                                        0,
+                                        { order: "desc",
+                                          column_defs: [-1, -2] }) %>
+                </div>
+              </div>
+            </div>
+            <div class="box-footer">
+              <%= link_to t(".new_article"), new_article_path,
+                method: :get,
+                class:  "btn btn-primary btn-lg" %>
+              <%= link_to t(".back"), top_index_path,
+                method: :get,
+                class:  "btn btn-primary btn-lg pull-right" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <div class="box box-max-width">
-    <div class="box-header">
-      <%= t(".article_list") %>
-    </div>
-    <div class="box-body">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th><%= t(".created_at") %></th>
-              <th><%= t(".article_title") %></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @articles.each do |article| %>
-              <tr>
-                <td>
-                  <%= article.updated_at.strftime(t(:date_format)) %>
-                </td>
-                <td class="abbreviation">
-                  <%= article.title %>
-                </td>
-                <td class="operation-btns-td">
-                  <%= link_to t(".detail"), article_path(article),
-                    class: "btn" %>
-                  <%= link_to t(".delete"), article_path(article),
-                    method: :delete,
-                    class:  "btn" %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="box-footer">
-      <%= button_to t(".new_article"), new_article_path,
-        method: :get,
-        class:  "btn btn-lg pull-left" %>
-      <%= button_to t(:back), "",
-        class:   "btn btn-lg pull-right",
-        onclick: "return top_page();" %>
-    </div>
-  </div>
+  <%= render "layouts/main_footer" %>
 </div>

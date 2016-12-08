@@ -1,42 +1,27 @@
 Rails.application.routes.draw do
-  root to: "login#index"
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :login, only: [:index] do
+  resources :login, only: [:new] do
     collection do
-      post :authenticate
+      post "new"
       get :logout
-      post :toggle_sidebar
     end
   end
 
-  resources :user_configs, only: [:index, :update, :destroy] do
+  resources :top,      only: [:index]
+  resources :articles, only: [:index, :show, :new, :edit, :destroy] do
     collection do
-      get :attendance
+      post "new", as: :new
     end
     member do
-      post :init_password
+      post "edit", as: :edit
     end
   end
 
-  resources :attendances, only: [:index] do
-    collection do
-      get :prev_month
-      get :next_month
-      post :save
-      post :export
-    end
-  end
+  root to: redirect("login/new")
 
-  resources :users
-  resources :reasons
-  resources :articles
-  resources :leave_types
-  resources :holidays,       except: [:show]
-  resources :top,            only:   [:index]
-  resources :system_configs, only:   [:edit, :update]
-  resources :leave_tables,   only:   [:index]
-  resources :reports,        only:   [:index]
+  post "/toggle_sidebar" => "application#toggle_sidebar"
 
   # page not found
-  get '*path', controller: 'application', action: 'render_404'
+  get "*path", controller: "application", action: "render_404"
 end

@@ -1,8 +1,0 @@
-ja:
-  errors:
-    messages:
-      blank:                    "が未入力です。"
-      invalid:                  "が不正です。"
-      greater_than_or_equal_to: "は%{count}以上の数を入力して下さい。"
-      confirmation:             "が一致しません。"
-      invalid_consistency_date: "開始日付は終了日付以前にして下さい。"

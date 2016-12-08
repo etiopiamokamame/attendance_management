@@ -12,77 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-// require turbolinks
-// require_tree .
-//= require js-routes
-//= require jquery.timepicker.js
-//= require jquery.ui.core
-//= require jquery.ui.datepicker
-//= require jquery.ui.all
-//= require jquery.ui.datepicker-ja
-
-$(function() {
-  resize_wrapper();
-  $(".timepicker").timepicker({
-    "closeOnWindowScroll": true,
-    "disableTextInput":    true,
-    "selectOnBlur":        true,
-    "timeFormat":          "H:i",
-    "show2400":            true,
-    "step":                15
-  });
-
-  $(".datepicker").datepicker({
-    "dateFormat": 'yy年mm月dd日'
-  })
-
-  $("a.disabled").click(function() {
-    return false;
-  })
-});
-
-$(window).resize(function() {
-  resize_wrapper();
-});
-
-function resize_wrapper(){
-  var size = $(window).width() - $(".side-menu").width();
-  $(".wrapper").css("width", size);
-}
-
-function top_page() {
-  location.href = Routes.top_index_path();
-  return false;
-}
-
-function toggle_sidebar(){
-  var elmSideMenuTitles = $(".side-menu .side-content .title");
-  var elmContent        = $(".content");
-  var elmSideMenu       = $(".side-menu");
-  var elmHeaderContent  = $(".header-menu .header-content");
-
-  if (elmSideMenuTitles.first().css("display") == "inline-block"){
-    elmSideMenuTitles.hide();
-    elmContent.animate({"margin-left": "30px"}, "slow");
-    elmSideMenu.animate({ "width": "30px" }, "slow");
-    $(".wrapper").animate({ "width": $(window).width() - 30 }, "slow");
-    elmHeaderContent.animate({ "margin-left": "30px" }, "slow").promise().done(function () {
-      elmContent.switchClass("active", "disable");
-      elmSideMenu.switchClass("active", "disable");
-      elmHeaderContent.switchClass("active", "disable");
-      elmSideMenuTitles.switchClass("active", "disable");
-    });
-  } else {
-    elmContent.animate({"margin-left": "250px"}, "slow");
-    elmSideMenu.animate({ "width": "250px" }, "slow");
-    $(".wrapper").animate({ "width": $(window).width() - 250 }, "slow");
-    elmHeaderContent.animate({ "margin-left": "250px" }, "slow").promise().done(function () {
-      elmSideMenuTitles.show();
-      elmSideMenuTitles.attr("style", "");
-      elmContent.switchClass("disable", "active");
-      elmSideMenu.switchClass("disable", "active");
-      elmHeaderContent.switchClass("disable", "active");
-      elmSideMenuTitles.switchClass("disable", "active");
-    });
-  }
-}
+//= require bootstrap/js/bootstrap
+//= require dist/js/app.js
+//= require plugins/morris/morris.min
+//= require plugins/sparkline/jquery.sparkline
+//= require plugins/jvectormap/jquery-jvectormap-1.2.2.min
+//= require plugins/jvectormap/jquery-jvectormap-world-mill-en
+//= require plugins/knob/jquery.knob
+//= require plugins/datepicker/bootstrap-datepicker
+//= require plugins/datepicker/locales/bootstrap-datepicker.ja
+//= require plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min
+//= require plugins/slimScroll/jquery.slimscroll.min
+//= require plugins/datatables/jquery.dataTables
