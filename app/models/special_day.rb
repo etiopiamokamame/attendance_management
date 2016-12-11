@@ -25,6 +25,11 @@ class SpecialDay < ApplicationRecord
     self.date = nil
   end
 
+  def day_type
+    return CONSTANTS::SPECIAL_DAY_HOLIDAY_TYPE if super.blank?
+    super
+  end
+
   def day_type_text
     CONSTANTS::SPECIAL_DAY_TYPES[day_type]
   end
