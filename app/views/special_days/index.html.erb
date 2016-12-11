@@ -1,0 +1,84 @@
+<div class="wrapper">
+  <%= render "layouts/main_header" %>
+  <%= render "layouts/main_sidebar" %>
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1><%= t(".title") %></h1>
+    </section>
+
+    <section class="content">
+      <%= render "shares/flash_messages" %>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title"><%= t(".list") %></h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <table id="article_table" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>
+                          <%= SpecialDay.human_attribute_name(:date) %>
+                        </th>
+                        <th>
+                          <%= SpecialDay.human_attribute_name(:name) %>
+                        </th>
+                        <th>
+                          <%= SpecialDay.human_attribute_name(:day_type) %>
+                        </th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @special_days.each do |special_day| %>
+                        <tr>
+                          <td>
+                            <%= special_day.date_text %>
+                          </td>
+                          <td>
+                            <%= special_day.name %>
+                          <td>
+                            <%= special_day.day_type_text %>
+                          </td>
+                          <td>
+                            <%= link_to t(".edit_special_day"), edit_special_day_path(special_day),
+                              class: "btn btn-success" %>
+                          </td>
+                          <td>
+                            <%= link_to t(".delete"), special_day_path(special_day),
+                              method: :delete,
+                              class:   "btn btn-danger" %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                  <%== datatable_script("article_table",
+                                        0,
+                                        { order: "desc",
+                                          column_defs: [-1, -2] }) %>
+                </div>
+              </div>
+            </div>
+            <div class="box-footer">
+              <%= link_to t(".new_special_day"), new_special_day_path,
+                method: :get,
+                class:  "btn btn-primary btn-lg" %>
+              <%= link_to t(".back"), top_index_path,
+                method: :get,
+                class:  "btn btn-primary btn-lg pull-right" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <%= render "layouts/main_footer" %>
+</div>

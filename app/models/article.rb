@@ -62,6 +62,10 @@ class Article < ApplicationRecord
     created_at.strftime(I18n.t(:date_format))
   end
 
+  def soft_delete
+    update(deleted: "1")
+  end
+
   private
 
   def validate_posted_period

@@ -26,7 +26,7 @@ module ApplicationHelper
   end
 
   def datatable_script(table_id, default_order, options = {})
-    <<~JS
+    <<~EOS
       <script>
         $("##{table_id}").dataTable({
           lengthChange: true,
@@ -58,6 +58,10 @@ module ApplicationHelper
           }
         });
       </script>
-    JS
+    EOS
+  end
+
+  def required_marc
+    content_tag(:label, CONSTANTS::REQUIRED_MARC, class: "required-marc")
   end
 end

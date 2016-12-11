@@ -24,3 +24,4 @@
 //= require plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min
 //= require plugins/slimScroll/jquery.slimscroll.min
 //= require plugins/datatables/jquery.dataTables
+//= require plugins/iCheck/icheck

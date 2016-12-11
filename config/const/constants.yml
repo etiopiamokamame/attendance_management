@@ -31,5 +31,17 @@ CONSTANTS:
   # ロガープレフィックス
   LOGGER_PREFIX: "[RAILS]"
 
+  REQUIRED_MARC: "*"
+
   # tmpディレクトリ
   TEMP_DIR: "<%= Rails.root.to_s + '/tmp/' %>"
+
+  # 特別日程種別
+  SPECIAL_DAY_TYPES:
+    "001": "休暇"
+    "002": "出勤"
+
+  # 特別日程種別 休暇
+  SPECIAL_DAY_HOLIDAY_TYPE:      "001"
+  # 特別日程種別 出勤
+  SPECIAL_DAY_BUSINESS_DAY_TYPE: "002"

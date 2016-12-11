@@ -37,9 +37,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    article = Article.find(params[:id])
-    article.update(deleted: "1")
-    article.save
+    Article.find(params[:id]).soft_delete
     flash[:notice] = t(".delete_article")
     redirect_to articles_path
   end
