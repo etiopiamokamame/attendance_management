@@ -9,15 +9,15 @@ default: &default
       admin:  true
     - title:  "user_config"
       icon:   "fa-user-plus"
-      path:   "/user_configs"
+      path:   "#"
       admin:  true
     - title:  "reason"
       icon:   "fa-list-alt"
-      path:   "/reasons"
+      path:   "#"
       admin:  true
     - title:  "leave_type"
       icon:   "fa-copy"
-      path:   "/leave_types"
+      path:   "#"
       admin:  true
     - title:  "article"
       icon:   "fa-newspaper-o"
@@ -25,22 +25,22 @@ default: &default
       admin:  true
     - title:  "holiday"
       icon:   "fa-clipboard"
-      path:   "/holidays"
+      path:   "#"
       admin:  true
     - title:  "user_menu"
       header: true
     - title:  "attendance"
       icon:   "fa-calendar"
-      path:   "/attendances"
+      path:   "#"
     - title:  "user"
       icon:   "fa-user"
-      path:   "/users"
+      path:   "#"
     - title:  "leave_table"
       icon:   "fa-file-text"
-      path:   "/leave_tables"
+      path:   "#"
     - title:  "report"
       icon:   "fa-file"
-      path:   "/reports"
+      path:   "#"
 
 test:
   <<: *default
