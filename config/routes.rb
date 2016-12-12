@@ -23,6 +23,26 @@ Rails.application.routes.draw do
     only: [:index, :show, :new, :edit, :destroy],
     concerns: :custom_restful
 
+  resource :system_config,
+    only: [:edit, :update] do
+    member do
+      post "edit", as: :edit
+    end
+  end
+
+  resources :login, only: [:new] do
+    collection do
+      post "new"
+      get :logout
+    end
+  end
+
+  resources :top, only: [:index]
+
+  resources :articles,
+    only: [:index, :show, :new, :edit, :destroy],
+    concerns: :custom_restful
+
   resources :special_days,
     only: [:index, :new, :edit, :destroy],
     concerns: :custom_restful
