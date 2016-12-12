@@ -1,0 +1,8 @@
+ja:
+  special_days:
+    new:
+      create_special_day: "特別日程を作成しました。"
+    edit:
+      update_special_day: "特別日程を更新しました。"
+    destroy:
+      delete_special_day: "特別日程を削除しました。"

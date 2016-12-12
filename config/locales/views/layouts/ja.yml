@@ -7,7 +7,7 @@ ja:
       reason:        "事由マスタ"
       leave_type:    "休暇種別マスタ"
       article:       "新着記事"
-      holiday:       "休暇マスタ"
+      special_day:   "特別日程マスタ"
       user_menu:     "利用者メニュー"
       attendance:    "勤怠記入"
       user:          "利用者情報編集"

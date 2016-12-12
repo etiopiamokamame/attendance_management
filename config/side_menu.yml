@@ -5,42 +5,42 @@ default: &default
       admin:  true
     - title:  "system_config"
       icon:   "fa-gear"
-      path:   "/system_config/edit"
+      path:   "/#"
       admin:  true
     - title:  "user_config"
       icon:   "fa-user-plus"
-      path:   "#"
+      path:   "/#"
       admin:  true
     - title:  "reason"
       icon:   "fa-list-alt"
-      path:   "#"
+      path:   "/#"
       admin:  true
     - title:  "leave_type"
       icon:   "fa-copy"
-      path:   "#"
+      path:   "/#"
       admin:  true
     - title:  "article"
       icon:   "fa-newspaper-o"
       path:   "/articles"
       admin:  true
-    - title:  "holiday"
+    - title:  "special_day"
       icon:   "fa-clipboard"
-      path:   "#"
+      path:   "/special_days"
       admin:  true
     - title:  "user_menu"
       header: true
     - title:  "attendance"
       icon:   "fa-calendar"
-      path:   "#"
+      path:   "/#"
     - title:  "user"
       icon:   "fa-user"
-      path:   "#"
+      path:   "/#"
     - title:  "leave_table"
       icon:   "fa-file-text"
-      path:   "#"
+      path:   "/#"
     - title:  "report"
       icon:   "fa-file"
-      path:   "#"
+      path:   "/#"
 
 test:
   <<: *default

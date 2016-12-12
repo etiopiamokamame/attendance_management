@@ -17,3 +17,7 @@
  *= require adminlte
  *= require plugins/datatables/jquery.dataTables
  */
+
+.required-marc {
+  color: #f56954;
+}

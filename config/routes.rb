@@ -30,6 +30,23 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :login, only: [:new] do
+    collection do
+      post "new"
+      get :logout
+    end
+  end
+
+  resources :top, only: [:index]
+
+  resources :articles,
+    only: [:index, :show, :new, :edit, :destroy],
+    concerns: :custom_restful
+
+  resources :special_days,
+    only: [:index, :new, :edit, :destroy],
+    concerns: :custom_restful
+
   root to: redirect("login/new")
 
   post "/toggle_sidebar" => "application#toggle_sidebar"

@@ -1,0 +1,17 @@
+ja:
+  special_days:
+    index:
+      title:            "特別日程"
+      list:             "特別日程一覧"
+      new_special_day:  "新規作成"
+      back:             "戻る"
+      edit_special_day: "編集"
+      delete:           "削除"
+    new:
+      title:            "新規特別日程"
+      save_special_day: "保存"
+      back:             "戻る"
+    edit:
+      title:            "特別日程編集"
+      save_special_day: "保存"
+      back:             "戻る"
