@@ -16,20 +16,20 @@ module AttendanceManagementV2
     config.i18n.default_locale = :ja
 
     config.action_view.field_error_proc = proc do |html_tag, instance|
-      method_name   = instance.instance_eval("@method_name")
-      error_type    = instance.object.errors.details[method_name.try(:to_sym)].first
-      error_message = unless error_type.blank?
-                        <<~EOS
-                          <span class="help-block">
-                            #{I18n.t("form_errors")[error_type[:error]]}
-                          </span>
-                        EOS
-                      end
+      method_name    = instance.instance_eval("@method_name")
+      errors         = instance.object.errors[method_name.to_sym]
+      error_messages = errors.map do |error|
+        <<~EOS
+          <span class="help-block">
+            #{error}
+          </span>
+        EOS
+      end
 
       <<~EOS.html_safe
         <span class="has-error">
           #{html_tag}
-          #{error_message}
+          #{error_messages.join}
         </span>
       EOS
     end
