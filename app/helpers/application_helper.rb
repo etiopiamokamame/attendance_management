@@ -12,10 +12,10 @@ module ApplicationHelper
                     t(".#{menu[:title]}")
                   else
                     link_to menu[:path] do
-                      <<~EOF.html_safe
-                        <i class="fa #{menu[:icon]}"></i>
-                        <span>#{t(".#{menu[:title]}")}</span>
-                      EOF
+                      tags  = []
+                      tags << content_tag(:i, nil, class: "fa #{menu[:icon]}")
+                      tags << content_tag(:span, t(".#{menu[:title]}"))
+                      safe_join tags
                     end
                   end
 

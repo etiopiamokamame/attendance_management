@@ -1,0 +1,6 @@
+ja:
+  system_configs:
+    edit:
+      title:              "システム設定編集"
+      save_system_config: "保存"
+      back:               "戻る"

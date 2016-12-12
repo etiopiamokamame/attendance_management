@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      system_config: "システム設定"
+    attributes:
+      system_config:
+        company_name: "会社名"
