@@ -1,6 +1,7 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 @import url('http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css');
 @import 'bootstrap/css/bootstrap';
+@import 'plugins/select2/select2';
 @import 'dist/css/AdminLTE.min';
 @import 'dist/css/skins/_all-skins.min';
 @import 'plugins/iCheck/all';
@@ -8,4 +9,6 @@
 @import 'plugins/jvectormap/jquery-jvectormap-1.2.2.css';
 @import 'plugins/datepicker/datepicker3';
 @import 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min';
+@import 'plugins/timepicker/bootstrap-timepicker';
+@import 'plugins/timepicker/bootstrap-timepicker.min';
 @import 'documentation/style';

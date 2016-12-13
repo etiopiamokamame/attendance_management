@@ -34,25 +34,29 @@ class Article < ApplicationRecord
   validate :validate_posted_period
 
   def posted_start_date_text
-    Date.strptime(posted_start_date, I18n.t(:default_date_format)).strftime(I18n.t(:date_format))
+    date = Date.strptime(posted_start_date, I18n.t(:default_date_format, separate: nil))
+    date.strftime(I18n.t(:date_format))
   rescue
     nil
   end
 
   def posted_end_date_text
-    Date.strptime(posted_end_date, I18n.t(:default_date_format)).strftime(I18n.t(:date_format))
+    date = Date.strptime(posted_end_date, I18n.t(:default_date_format, separate: nil))
+    date.strftime(I18n.t(:date_format))
   rescue
     nil
   end
 
   def posted_start_date_text=(value)
-    self.posted_start_date = Date.strptime(value, I18n.t(:date_format)).strftime(I18n.t(:default_date_format))
+    date = Date.strptime(value, I18n.t(:date_format))
+    self.posted_start_date = date.strftime(I18n.t(:default_date_format, separate: nil))
   rescue
     self.posted_start_date = nil
   end
 
   def posted_end_date_text=(value)
-    self.posted_end_date = Date.strptime(value, I18n.t(:date_format)).strftime(I18n.t(:default_date_format))
+    date = Date.strptime(value, I18n.t(:date_format))
+    self.posted_end_date = date.strftime(I18n.t(:default_date_format, separate: nil))
   rescue
     self.posted_end_date = nil
   end
