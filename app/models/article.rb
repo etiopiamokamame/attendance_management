@@ -9,7 +9,7 @@ class Article < ApplicationRecord
 
   # 掲載期間中データ
   scope :posted_period, -> {
-    today = Date.today.strftime(I18n.t(:default_date_format))
+    today = Date.today.strftime(I18n.t(:default_date_format, separate: nil))
     table = arel_table
     query = table[:posted_start_date].lteq(today)
     query = query.and(table[:posted_end_date].gteq(today))
