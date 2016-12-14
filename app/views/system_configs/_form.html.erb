@@ -32,18 +32,6 @@
 </div>
 <div class="form-group bootstrap-timepicker">
   <label>
-    <%= f.object.class.human_attribute_name(:base_overtime_rest_start_time) %>
-  </label>
-  <%= f.text_field :base_overtime_rest_start_time_text, class: "form-control timepicker" %>
-</div>
-<div class="form-group bootstrap-timepicker">
-  <label>
-    <%= f.object.class.human_attribute_name(:base_overtime_rest_end_time) %>
-  </label>
-  <%= f.text_field :base_overtime_rest_end_time_text, class: "form-control timepicker" %>
-</div>
-<div class="form-group bootstrap-timepicker">
-  <label>
     <%= f.object.class.human_attribute_name(:late_night_time) %>
   </label>
   <%= f.text_field :late_night_time_text, class: "form-control timepicker" %>
@@ -52,7 +40,7 @@
   <label>
     <%= f.object.class.human_attribute_name(:time_off_hours_prospect) %>
   </label>
-  <%= f.text_field :time_off_hours_prospect_text, class: "form-control timepicker" %>
+  <%= f.number_field :time_off_hours_prospect, class: "form-control", step: 0.5 %>
 </div>
 <div class="form-group bootstrap-timepicker">
   <label>
@@ -72,7 +60,7 @@
     $("input.timepicker").timepicker({
       showInputs:   false,
       showMeridian: false,
-      minuteStep:   30
+      minuteStep:   15
     });
   });
 </script>
