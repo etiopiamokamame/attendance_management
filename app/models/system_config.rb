@@ -1,5 +1,34 @@
 # frozen_string_literal: true
 class SystemConfig < ApplicationRecord
+  validates :base_working_start_time_text,
+            presence: true,
+            time: { format: I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG),
+                    allow_blank: true }
+  validates :base_working_end_time_text,
+            presence: true,
+            time: { format: I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG),
+                    allow_blank: true }
+  validates :rest_start_time_text,
+            presence: true,
+            time: { format: I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG),
+                    allow_blank: true }
+  validates :rest_end_time_text,
+            presence: true,
+            time: { format: I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG),
+                    allow_blank: true }
+  validates :base_overtime_rest_start_time_text,
+            presence: true,
+            time: { format: I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG),
+                    allow_blank: true }
+  validates :base_overtime_rest_end_time_text,
+            presence: true,
+            time: { format: I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG),
+                    allow_blank: true }
+  validates :late_night_time_text,
+            presence: true,
+            time: { format: I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG),
+                    allow_blank: true }
+
   def base_working_start_time_text
     time = Time.strptime(base_working_start_time, I18n.t(:default_time_format, separate: nil))
     time.strftime(I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG))
@@ -44,13 +73,6 @@ class SystemConfig < ApplicationRecord
 
   def late_night_time_text
     time = Time.strptime(late_night_time, I18n.t(:default_time_format, separate: nil))
-    time.strftime(I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG))
-  rescue
-    nil
-  end
-
-  def time_off_hours_prospect_text
-    time = Time.strptime(time_off_hours_prospect, I18n.t(:default_time_format, separate: nil))
     time.strftime(I18n.t(:default_time_format, separate: CONSTANTS::TIME_SEPARATE_TAG))
   rescue
     nil
