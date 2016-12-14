@@ -1,8 +1,66 @@
 <div class="form-group">
-  <label class="col-sm-2 control-label">
+  <label>
     <%= f.object.class.human_attribute_name(:company_name) %>
   </label>
-  <div class="col-sm-10">
+  <div>
     <%= f.text_field :company_name, class: "form-control" %>
   </div>
 </div>
+<div class="form-group bootstrap-timepicker">
+  <label>
+    <%= f.object.class.human_attribute_name(:base_working_start_time) %>
+  </label>
+  <%= f.text_field :base_working_start_time_text, class: "form-control timepicker" %>
+</div>
+<div class="form-group bootstrap-timepicker">
+  <label>
+    <%= f.object.class.human_attribute_name(:base_working_end_time) %>
+  </label>
+  <%= f.text_field :base_working_end_time_text, class: "form-control timepicker" %>
+</div>
+<div class="form-group bootstrap-timepicker">
+  <label>
+    <%= f.object.class.human_attribute_name(:rest_start_time) %>
+  </label>
+  <%= f.text_field :rest_start_time_text, class: "form-control timepicker" %>
+</div>
+<div class="form-group bootstrap-timepicker">
+  <label>
+    <%= f.object.class.human_attribute_name(:rest_end_time) %>
+  </label>
+  <%= f.text_field :rest_end_time_text, class: "form-control timepicker" %>
+</div>
+<div class="form-group bootstrap-timepicker">
+  <label>
+    <%= f.object.class.human_attribute_name(:late_night_time) %>
+  </label>
+  <%= f.text_field :late_night_time_text, class: "form-control timepicker" %>
+</div>
+<div class="form-group bootstrap-timepicker">
+  <label>
+    <%= f.object.class.human_attribute_name(:time_off_hours_prospect) %>
+  </label>
+  <%= f.number_field :time_off_hours_prospect, class: "form-control", step: 0.5 %>
+</div>
+<div class="form-group bootstrap-timepicker">
+  <label>
+    <%= f.object.class.human_attribute_name(:weeks) %>
+  </label>
+  <%= f.select :weeks, CONSTANTS::WEEKS.invert, {},
+    { multiple: true,
+      class:    "form-control select2" } %>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $("select.select2").select2({
+      dropdownAutoWidth: true
+    });
+
+    $("input.timepicker").timepicker({
+      showInputs:   false,
+      showMeridian: false,
+      minuteStep:   15
+    });
+  });
+</script>

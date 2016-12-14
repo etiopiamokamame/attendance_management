@@ -4,7 +4,9 @@ ja:
   logo_lg:             "勤怠管理"
   toggle_navigation:   ""
   date_format:         "%Y年%m月%d日"
-  default_date_format: "%Y%m%d"
+  time_format:         "%H時%M秒"
+  default_date_format: "%Y%{separate}%m%{separate}%d"
+  default_time_format: "%H%{separate}%M"
   no_data:             "該当データはありません。"
   datepicker:
     format: "yyyy年mm月dd日"

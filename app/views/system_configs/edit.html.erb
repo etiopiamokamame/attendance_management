@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="box">
-            <%= form_for @system_config, url: { action: :edit }, html: { class: "form-horizontal" }, method: :post do |f| %>
+            <%= form_for @system_config, url: { action: :edit }, method: :post do |f| %>
               <div class="box-body">
                 <%= render partial: "form", locals: { f: f } %>
               </div>

@@ -2,28 +2,16 @@ CONSTANTS:
   # Copyright
   COPYRIGHT: "Copyright &copy; All Rights Reserved."
 
+  TIME_SEPARATE_TAG: ":"
+
   WEEKS:
-    sun:
-      id:   0
-      name: "日"
-    mon:
-      id:   1
-      name: "月"
-    tue:
-      id:   2
-      name: "火"
-    wed:
-      id:   3
-      name: "水"
-    thu:
-      id:   4
-      name: "木"
-    fri:
-      id:   5
-      name: "金"
-    sat:
-      id:   6
-      name: "土"
+    0: "日"
+    1: "月"
+    2: "火"
+    3: "水"
+    4: "木"
+    5: "金"
+    6: "土"
 
   # デフォルト新着記事掲載期間（単位: 月）
   DEFAULT_POSTED_PERIOD: 1

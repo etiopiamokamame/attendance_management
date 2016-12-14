@@ -21,7 +21,10 @@
 //= require plugins/knob/jquery.knob
 //= require plugins/datepicker/bootstrap-datepicker
 //= require plugins/datepicker/locales/bootstrap-datepicker.ja
+//= require plugins/timepicker/bootstrap-timepicker
+//= require plugins/timepicker/bootstrap-timepicker.min
 //= require plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min
 //= require plugins/slimScroll/jquery.slimscroll.min
 //= require plugins/datatables/jquery.dataTables
 //= require plugins/iCheck/icheck
+//= require plugins/select2/select2

@@ -21,13 +21,13 @@ User.find_or_create_by(admin: "0", number: "99999") do |u|
 end
 
 SystemConfig.find_or_create_by(id: 1) do |s|
-  s.base_working_start_time       = "09:00"
-  s.base_working_end_time         = "18:00"
-  s.rest_start_time               = "12:00"
-  s.rest_end_time                 = "13:00"
-  s.base_overtime_rest_start_time = "18:00"
-  s.base_overtime_rest_end_time   = "18:30"
-  s.late_night_time               = "22:00"
+  s.base_working_start_time       = "0900"
+  s.base_working_end_time         = "1800"
+  s.rest_start_time               = "1200"
+  s.rest_end_time                 = "1300"
+  s.base_overtime_rest_start_time = "1800"
+  s.base_overtime_rest_end_time   = "1830"
+  s.late_night_time               = "2200"
   s.time_off_hours_prospect       = 30.0
 end
 
