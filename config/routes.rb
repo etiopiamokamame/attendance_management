@@ -19,10 +19,6 @@ Rails.application.routes.draw do
 
   resources :top, only: [:index]
 
-  resources :articles,
-    only: [:index, :show, :new, :edit, :destroy],
-    concerns: :custom_restful
-
   resource :system_config,
     only: [:edit, :update] do
     member do

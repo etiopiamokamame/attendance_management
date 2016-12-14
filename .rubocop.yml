@@ -31,3 +31,5 @@ Metrics/MethodLength:
   Enabled: false
 Style/SpaceAroundOperators:
   Enabled: false
+Metrics/ClassLength:
+  Enabled: false
