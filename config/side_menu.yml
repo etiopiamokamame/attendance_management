@@ -5,7 +5,7 @@ default: &default
       admin:  true
     - title:  "system_config"
       icon:   "fa-gear"
-      path:   "/#"
+      path:   "/system_config/edit"
       admin:  true
     - title:  "user_config"
       icon:   "fa-user-plus"
