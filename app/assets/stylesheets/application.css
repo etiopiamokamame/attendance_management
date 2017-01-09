@@ -13,9 +13,7 @@
  *= require_self
  *= require jquery.timepicker.css
  *= require jquery.ui.datepicker
- *= require bootstrap/css/bootstrap
  *= require adminlte
- *= require plugins/datatables/jquery.dataTables
  */
 
 .required-marc {

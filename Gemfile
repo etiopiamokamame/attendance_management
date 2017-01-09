@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'unicorn'
+gem 'icheck-rails'
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 gem 'js-routes'
 gem 'era_ja'
 gem 'jquery-timepicker-rails'
