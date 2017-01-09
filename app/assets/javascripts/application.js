@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require plugins/datatables/jquery.dataTables
+//= require dataTables/jquery.dataTables
 //= require plugins/datepicker/bootstrap-datepicker
 //= require plugins/datepicker/locales/bootstrap-datepicker.ja
 //= require icheck
