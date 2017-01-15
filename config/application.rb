@@ -11,9 +11,10 @@ module AttendanceManagementV2
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.autoload_paths     += %W(#{config.root}/lib)
-    config.i18n.load_path     += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
-    config.i18n.default_locale = :ja
+    config.enable_dependency_loading = true
+    config.autoload_paths           += %W(#{config.root}/lib)
+    config.i18n.load_path           += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
+    config.i18n.default_locale       = :ja
 
     config.action_view.field_error_proc = proc do |html_tag, instance|
       method_name    = instance.instance_eval("@method_name")
