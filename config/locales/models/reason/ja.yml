@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      reason: "事由マスタ"
+    attributes:
+      reason:
+        display_order: "表示順"
+        content:       "事由"

@@ -15,43 +15,42 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"><%= t(".list") %></h3>
+              <div class="box-tools pull-right">
+                <%= link_to change_orders_reasons_path, class: "btn btn-info btn-sm" do %>
+                  <span class="glyphicon glyphicon-sort"></span>
+                <% end %>
+              </div>
             </div>
             <div class="box-body">
               <div class="row">
                 <div class="col-md-12">
-                  <table id="special_day_table" class="table table-bordered table-hover">
+                  <table id="reason_table" class="table table-bordered table-hover">
                     <thead>
                       <tr>
                         <th>
-                          <%= SpecialDay.human_attribute_name(:date) %>
+                          <%= Reason.human_attribute_name(:display_order) %>
                         </th>
                         <th>
-                          <%= SpecialDay.human_attribute_name(:name) %>
-                        </th>
-                        <th>
-                          <%= SpecialDay.human_attribute_name(:day_type) %>
+                          <%= Reason.human_attribute_name(:content) %>
                         </th>
                         <th></th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      <% @special_days.each do |special_day| %>
+                      <% @reasons.each do |reason| %>
                         <tr>
                           <td>
-                            <%= special_day.date_text %>
+                            <%= reason.display_order %>
                           </td>
                           <td>
-                            <%= special_day.name %>
+                            <%= reason.content %>
                           <td>
-                            <%= special_day.day_type_text %>
-                          </td>
-                          <td>
-                            <%= link_to t(".edit_special_day"), edit_special_day_path(special_day),
+                            <%= link_to t(".edit_reason"), edit_reason_path(reason),
                               class: "btn btn-success" %>
                           </td>
                           <td>
-                            <%= link_to t(".delete"), special_day_path(special_day),
+                            <%= link_to t(".delete"), reason_path(reason),
                               method: :delete,
                               class:   "btn btn-danger" %>
                           </td>
@@ -59,15 +58,13 @@
                       <% end %>
                     </tbody>
                   </table>
-                  <%== datatable_script("special_day_table",
+                  <%== datatable_script("reason_table",
                                         0,
-                                        { order: "desc",
-                                          column_defs: [-1, -2] }) %>
+                                        { column_defs: [-1, -2] }) %>
                 </div>
-              </div>
-            </div>
+              </div>            </div>
             <div class="box-footer">
-              <%= link_to t(".new_special_day"), new_special_day_path,
+              <%= link_to t(".new_reason"), new_reasons_path,
                 method: :get,
                 class:  "btn btn-primary btn-lg" %>
               <%= link_to t(".back"), top_index_path,

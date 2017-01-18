@@ -12,7 +12,8 @@
  *
  *= require_self
  *= require jquery.timepicker.css
- *= require jquery.ui.datepicker
+ *= require jquery-ui/datepicker
+ *= require jquery-ui/sortable
  *= require adminlte
  *= require dataTables/jquery.dataTables
  */

@@ -52,7 +52,6 @@ class SpecialDaysController < ApplicationController
   end
 
   def special_day_params
-    return if params[:special_day].blank?
     params.require(:special_day).permit(
       :name,
       :date_text,

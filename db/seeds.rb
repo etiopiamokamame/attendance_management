@@ -32,9 +32,10 @@ SystemConfig.find_or_create_by(id: 1) do |s|
 end
 
 Reason.find_or_create_by(id: 1) do |r|
-  r.content = "月例会議(19:00～21:00)"
+  r.display_order = 1
+  r.content       = "会議(19:00～21:00)"
 end
 
 LeaveType.find_or_create_by(id: 1) do |l|
-  l.content = "年休"
+  l.content = "有給休暇"
 end

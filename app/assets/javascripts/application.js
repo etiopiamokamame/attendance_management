@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require dataTables/jquery.dataTables
+//= require jquery-ui/widgets/sortable
 //= require plugins/datepicker/bootstrap-datepicker
 //= require plugins/datepicker/locales/bootstrap-datepicker.ja
 //= require icheck

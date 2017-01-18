@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <%= render "layouts/main_header" %>
+  <%= render "layouts/main_sidebar" %>
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1><%= t(".title") %></h1>
+    </section>
+
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <%= form_for @reason, url: { action: :edit }, html: { class: "form-horizontal" }, method: :post do |f| %>
+              <div class="box-body">
+                <%= render partial: "form", locals: { f: f } %>
+              </div>
+              <div class="box-footer">
+                <%= f.submit t(".save_reason"),
+                  class: "btn btn-primary btn-lg" %>
+                <%= link_to t(".back"), reasons_path,
+                  class: "btn btn-primary btn-lg pull-right" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <%= render "layouts/main_footer" %>
+</div>

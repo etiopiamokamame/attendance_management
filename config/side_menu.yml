@@ -13,7 +13,7 @@ default: &default
       admin:  true
     - title:  "reason"
       icon:   "fa-list-alt"
-      path:   "/#"
+      path:   "/reasons"
       admin:  true
     - title:  "leave_type"
       icon:   "fa-copy"

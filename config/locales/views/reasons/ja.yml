@@ -1,0 +1,21 @@
+ja:
+  reasons:
+    index:
+      title:       "事由"
+      list:        "事由一覧"
+      new_reason:  "新規作成"
+      back:        "戻る"
+      edit_reason: "編集"
+      delete:      "削除"
+    new:
+      title:       "新規事由"
+      save_reason: "保存"
+      back:        "戻る"
+    edit:
+      title:       "事由"
+      save_reason: "保存"
+      back:        "戻る"
+    change_orders:
+      title: "事由並び替え"
+      list:  "事由一覧"
+      back:  "戻る"

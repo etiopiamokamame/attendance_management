@@ -1,0 +1,8 @@
+ja:
+  reasons:
+    new:
+      create_reason: "事由を作成しました。"
+    edit:
+      update_reason: "事由を更新しました。"
+    destroy:
+      delete_reason: "事由を削除しました。"
