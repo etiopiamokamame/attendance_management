@@ -40,7 +40,7 @@ class Reason < ApplicationRecord
   private
 
   def set_display_order
-    self.display_order = Reason.availability.maximum(:display_order).next
+    self.display_order = Reason.availability.maximum(:display_order).try(:next) || 1
   end
 
   def prepare_display_orders
