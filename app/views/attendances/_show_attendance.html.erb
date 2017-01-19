@@ -1,0 +1,157 @@
+<%= stylesheet_link_tag "attendances" %>
+
+<div class="box-body">
+  <%= form_for attendance do |f| %>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-nowrap">
+          <th class="day">
+            <%= f.label :day %>
+          </th>
+          <th class="day">
+            <%= f.label :week %>
+          </th>
+          <th class="time">
+            <%= f.label :work_start_time %>
+          </th>
+          <th class="time">
+            <%= f.label :work_end_time %>
+          </th>
+          <th class="time">
+            <%= f.label :working_time %>
+          </th>
+          <th class="time">
+            <%= f.label :off_hours_time %>
+          </th>
+          <th class="time">
+            <%= f.label :late_night_time %>
+          </th>
+          <th class="time">
+            <%= f.label :time_holiday %>
+          </th>
+          <th class="time">
+            <%= f.label :shortfall_time %>
+          </th>
+          <th class="reason">
+            <%= f.label :reason %>
+          </th>
+          <th class="time">
+            <%= f.label :rest_out_of_standard %>
+          </th>
+          <th class="leave-type">
+            <%= f.label :leave_type %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% attendance.attendance_details.each do |detail| %>
+          <tr class="<%= 'bg-gray' if detail.holiday? %>">
+            <td class="day">
+              <%= detail.day %>
+            </td>
+            <td class="day">
+              <%= detail.week_name %>
+            </td>
+            <td class="time">
+              <%= detail.work_start_time_text(CONSTANTS::TIME_SEPARATE_TAG) %>
+            </td>
+            <td class="time">
+              <%= detail.work_end_time_text(CONSTANTS::TIME_SEPARATE_TAG) %>
+            </td>
+            <td class="time">
+              <%= detail.working_time_text(CONSTANTS::TIME_SEPARATE_TAG) %>
+            </td>
+            <td class="time">
+              <%= detail.off_hours_time_text(CONSTANTS::TIME_SEPARATE_TAG) %>
+            </td>
+            <td class="time">
+              <%= detail.late_night_time_text(CONSTANTS::TIME_SEPARATE_TAG) %>
+            </td>
+            <td class="time">
+              <%= detail.time_holiday_text(CONSTANTS::TIME_SEPARATE_TAG) %>
+            </td>
+            <td class="time">
+              <%= detail.shortfall_time_text(CONSTANTS::TIME_SEPARATE_TAG) %>
+            </td>
+            <td class="reason">
+              <%= detail.reason %>
+            </td>
+            <td class="time">
+              <%= detail.rest_out_of_standard_text(CONSTANTS::TIME_SEPARATE_TAG) %>
+            </td>
+            <td class="leave-type">
+              <%= detail.leave_type_name %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <table class="table table-bordered">
+      <tr class="text-nowrap bg-light-blue color-palette">
+        <th rowspan="2" class="text-center vertical-middle">
+          <%= f.label :total_work_time %>
+        </th>
+        <td rowspan="2" class="text-center vertical-middle">
+          <%= attendance.total_work_time %>
+        </td>
+        <td class="text-center">
+          <%= attendance.total_deemed_overtime %>
+        </td>
+        <td rowspan="2" class="text-center vertical-middle">
+          <%= attendance.late_night_time %>
+        </td>
+        <td rowspan="2" class="text-center vertical-middle">
+          <%= attendance.time_holiday %>
+        </td>
+        <td rowspan="2" class="text-center vertical-middle">
+          <%= attendance.shortfall_time %>
+        </td>
+        <th class="text-center">
+          <%= f.label :paid_holiday %>
+        </th>
+        <th class="text-center">
+          <%= f.label :half_day_leave %>
+        </th>
+        <th class="text-center">
+          <%= f.label :substitute_holiday %>
+        </th>
+        <th class="text-center">
+          <%= f.label :special_leave %>
+        </th>
+        <th class="text-center">
+          <%= f.label :none_special_leave %>
+        </th>
+        <th class="text-center">
+          <%= f.label :absence %>
+        </th>
+      </tr>
+      <tr class="text-nowrap bg-light-blue color-palette">
+        <td class="text-center">
+          <%= attendance.total_overtime %>
+        </td>
+        <td class="text-center">
+          <%= attendance.paid_holiday_count %>
+        </td>
+        <td class="text-center">
+          <%= attendance.half_day_leave_count %>
+        </td>
+        <td class="text-center">
+          <%= attendance.substitute_holiday_count %>
+        </td>
+        <td class="text-center">
+          <%= attendance.special_leave_count %>
+        </td>
+        <td class="text-center">
+          <%= attendance.none_special_leave_count %>
+        </td>
+        <td class="text-center">
+          <%= attendance.absence_count %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+<div class="box-footer">
+  <%= link_to t(".save"), save_attendances_path(id: attendance.id, date: attendance.date_ym),
+    class: "btn btn-primary btn-lg" %>
+</div>

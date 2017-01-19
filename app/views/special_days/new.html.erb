@@ -17,6 +17,7 @@
               </div>
               <div class="box-footer">
                 <%= f.submit t(".save_special_day"),
+                  data:  { disable_with: t(:processing) },
                   class: "btn btn-primary btn-lg" %>
                 <%= link_to t(".back"), special_days_path,
                   class: "btn btn-primary btn-lg pull-right" %>

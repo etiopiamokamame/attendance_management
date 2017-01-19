@@ -4,6 +4,6 @@ ja:
       special_day: "特別日程"
     attributes:
       special_day:
-        date:     "日付"
+        date_ymd: "日付"
         name:     "休日名"
         day_type: "種別"

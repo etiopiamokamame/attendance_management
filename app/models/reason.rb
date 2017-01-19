@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class Reason < ApplicationRecord
-
   validates :content,
             presence: true
 

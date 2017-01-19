@@ -11,8 +11,8 @@ class Article < ApplicationRecord
   scope :posted_period, -> {
     today = Date.today.strftime(I18n.t(:default_date_format, separate: nil))
     table = arel_table
-    query = table[:posted_start_date].lteq(today)
-    query = query.and(table[:posted_end_date].gteq(today))
+    query = table[:posted_start_date_ymd].lteq(today)
+    query = query.and(table[:posted_end_date_ymd].gteq(today))
     availability.where(query)
   }
 
@@ -33,32 +33,48 @@ class Article < ApplicationRecord
             date: { format: I18n.t(:date_format), allow_blank: true }
   validate :validate_posted_period
 
-  def posted_start_date_text
-    date = Date.strptime(posted_start_date, I18n.t(:default_date_format, separate: nil))
-    date.strftime(I18n.t(:date_format))
+  def posted_start_date
+    Date.strptime(posted_start_date_ymd, I18n.t(:default_date_format, separate: nil))
   rescue
     nil
   end
 
-  def posted_end_date_text
-    date = Date.strptime(posted_end_date, I18n.t(:default_date_format, separate: nil))
-    date.strftime(I18n.t(:date_format))
+  def posted_start_date_text
+    return @posted_start_date_text unless @posted_start_date_text.blank?
+    posted_start_date.strftime(I18n.t(:date_format))
   rescue
     nil
   end
 
   def posted_start_date_text=(value)
-    date = Date.strptime(value, I18n.t(:date_format))
-    self.posted_start_date = date.strftime(I18n.t(:default_date_format, separate: nil))
+    date_value = Date.strptime(value, I18n.t(:date_format))
+    self.posted_start_date_ymd = date_value.strftime(I18n.t(:default_date_format, separate: nil))
   rescue
-    self.posted_start_date = nil
+    self.posted_start_date_ymd = nil
+  ensure
+    @posted_start_date_text = value
+  end
+
+  def posted_end_date
+    Date.strptime(posted_end_date_ymd, I18n.t(:default_date_format, separate: nil))
+  rescue
+    nil
+  end
+
+  def posted_end_date_text
+    return @posted_end_date_text unless @posted_end_date_text.blank?
+    posted_end_date.strftime(I18n.t(:date_format))
+  rescue
+    nil
   end
 
   def posted_end_date_text=(value)
     date = Date.strptime(value, I18n.t(:date_format))
-    self.posted_end_date = date.strftime(I18n.t(:default_date_format, separate: nil))
+    self.posted_end_date_ymd = date.strftime(I18n.t(:default_date_format, separate: nil))
   rescue
-    self.posted_end_date = nil
+    self.posted_end_date_ymd = nil
+  ensure
+    @posted_end_date_text = value
   end
 
   def created_at_text

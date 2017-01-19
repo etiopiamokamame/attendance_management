@@ -1,0 +1,327 @@
+<%= javascript_include_tag "timepicker", "attendances" %>
+<%= stylesheet_link_tag "attendances" %>
+
+<div class="wrapper">
+  <%= render "layouts/main_header" %>
+  <%= render "layouts/main_sidebar" %>
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1><%= t(".title") %></h1>
+    </section>
+
+    <section class="content">
+      <%= form_for @attendance, url: save_attendances_path(id: @attendance.id) do |f| %>
+        <%= f.hidden_field :user_id %>
+        <%= f.hidden_field :date_ym %>
+        <div class="box box-primary collapsed-box">
+          <div class="box-header">
+            <h4 class="box-title">
+              <%= t(".provision_title") %>
+            </h4>
+            <div class="box-tools pull-right">
+              <%= link_to "#", class: "btn btn-box-tool", data: { widget: "collapse" }, onclick: "return false;" do %>
+                <i class="fa fa-plus"></i>
+              <% end %>
+            </div>
+          </div>
+          <div class="box-body" style="display: none;">
+            <div class="form-group">
+              <label>
+                <%= @attendance.class.human_attribute_name(:entries_month) %>
+              </label>
+              <%= f.text_field :entries_month, class: "form-control", disabled: true %>
+            </div>
+            <div class="form-group">
+              <label>
+                <%= current_user.class.human_attribute_name(:name) %>
+              </label>
+              <%= text_field_tag "user[name]",
+                current_user.name,
+                class: "form-control",
+                disabled: true %>
+            </div>
+            <div class="form-group">
+              <label>
+                <%= current_user.class.human_attribute_name(:affiliation_name) %>
+              </label>
+              <%= text_field_tag "user[affiliation_name]",
+                current_user.affiliation_name,
+                class: "form-control",
+                disabled: true %>
+            </div>
+            <div class="form-group">
+              <label>
+                <%= @system_config.class.human_attribute_name(:base_working_time) %>
+              </label>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= text_field_tag "system_config[base_working_start_time_text]",
+                    @system_config.base_working_start_time_text,
+                    disabled: true,
+                    class:    "form-control" %>
+                </div>
+                <div class="col-md-6">
+                  <%= text_field_tag "system_config[base_working_end_time_text]",
+                    @system_config.base_working_end_time_text,
+                    disabled: true,
+                    class:    "form-control" %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>
+                <%= @system_config.class.human_attribute_name(:late_night_time_hm) %>
+              </label>
+              <%= text_field_tag "system_config[late_night_time_text]",
+                @system_config.late_night_time_text,
+                disabled: true,
+                class:    "form-control timepicker" %>
+            </div>
+          </div>
+        </div>
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <div class="form-group">
+              <label>
+                <%= @attendance.class.human_attribute_name(:site_time) %>
+                <%= required_marc %>
+              </label>
+              <div class="row">
+                <div class="col-md-6  bootstrap-timepicker">
+                  <%= f.text_field :site_start_time_text, class: "form-control timepicker" %>
+                </div>
+                <div class="col-md-6  bootstrap-timepicker">
+                  <%= f.text_field :site_end_time_text, class: "form-control timepicker" %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>
+                <%= @attendance.class.human_attribute_name(:rest_time) %>
+                <%= required_marc %>
+              </label>
+              <div class="row">
+                <div class="col-md-6  bootstrap-timepicker">
+                  <%= f.text_field :rest_start_time_text, class: "form-control timepicker" %>
+                </div>
+                <div class="col-md-6  bootstrap-timepicker">
+                  <%= f.text_field :rest_end_time_text, class: "form-control timepicker" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="text-nowrap">
+                  <th class="day">
+                    <%= f.label :day %>
+                  </th>
+                  <th class="day">
+                    <%= f.label :week %>
+                  </th>
+                  <th class="time">
+                    <%= f.label :work_start_time %>
+                    <%= required_marc %>
+                  </th>
+                  <th class="time">
+                    <%= f.label :work_end_time %>
+                    <%= required_marc %>
+                  </th>
+                  <th class="time">
+                    <%= f.label :working_time %>
+                  </th>
+                  <th class="time">
+                    <%= f.label :off_hours_time %>
+                  </th>
+                  <th class="time">
+                    <%= f.label :late_night_time %>
+                  </th>
+                  <th class="time">
+                    <%= f.label :time_holiday %>
+                  </th>
+                  <th class="time">
+                    <%= f.label :shortfall_time %>
+                  </th>
+                  <th class="reason">
+                    <%= f.label :reason %>
+                  </th>
+                  <th class="time">
+                    <%= f.label :rest_out_of_standard %>
+                  </th>
+                  <th class="leave-type">
+                    <%= f.label :leave_type %>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @attendance.attendance_details.each do |detail| %>
+                  <%= fields_for "attendance[attendance_details][#{detail.day}][]", detail do |detail_form| %>
+                    <%= detail_form.hidden_field :week %>
+                    <%= detail_form.hidden_field :holiday_flag %>
+                    <tr class="<%= 'bg-gray' if detail.holiday? %>">
+                      <td class="day">
+                        <%= detail.day %>
+                      </td>
+                      <td class="day">
+                        <%= detail.week_name %>
+                      </td>
+                      <td class="time">
+                        <div class="bootstrap-timepicker">
+                          <%= detail_form.text_field :work_start_time_text,
+                            data:  { bind: "value:workStartTime#{detail.day}, valueUpdate:'afterkeydown'" },
+                            id:    "work_start_time#{detail.day}",
+                            class: "form-control timepicker" %>
+                        </div>
+                      </td>
+                      <td class="time">
+                        <div class="bootstrap-timepicker">
+                          <%= detail_form.text_field :work_end_time_text,
+                            data:  { bind: "value:workEndTime#{detail.day}, valueUpdate:'afterkeydown'" },
+                            id:    "work_end_time#{detail.day}",
+                            class: "form-control timepicker" %>
+                        </div>
+                      </td>
+                      <td class="time">
+                        <%= detail_form.text_field :working_time_text,
+                          readonly: true,
+                          data:     { bind: "value:workingTime#{detail.day}, valueUpdate:'afterkeydown'" },
+                          id:       "working_time#{detail.day}",
+                          class:    "form-control timepicker" %>
+                      </td>
+                      <td class="time">
+                        <%= detail_form.text_field :off_hours_time_text,
+                          readonly: true,
+                          class:    "form-control timepicker" %>
+                      </td>
+                      <td class="time">
+                        <%= detail_form.text_field :late_night_time_text,
+                          readonly: true,
+                          class:    "form-control timepicker" %>
+                      </td>
+                      <td class="time">
+                        <div class="bootstrap-timepicker">
+                          <%= detail_form.text_field :time_holiday_text,
+                            class: "form-control timepicker" %>
+                        </div>
+                      </td>
+                      <td class="time">
+                        <%= detail_form.text_field :shortfall_time_text,
+                          readonly: true,
+                          class:    "form-control timepicker" %>
+                      </td>
+                      <td class="reason">
+                        <div class="input-group">
+                          <div class="input-group-btn">
+                            <%= link_to "#", class: "btn btn-warning dropdown-toggle", data: { toggle: "dropdown" } do %>
+                              <span class="fa fa-caret-down"></span>
+                            <% end %>
+                            <ul class="dropdown-menu">
+                              <% @reasons.each do |reason| %>
+                                <li>
+                                  <%= link_to reason.content, "#",
+                                    onclick: "return set_reason('#{detail.day}', '#{reason.content}');" %>
+                                </li>
+                              <% end %>
+                            </ul>
+                          </div>
+                          <%= detail_form.text_field :reason,
+                            id:    "reason#{detail.day}",
+                            class: "form-control" %>
+                        </div>
+                      </td>
+                      <td class="time">
+                        <div class="bootstrap-timepicker">
+                          <%= detail_form.text_field :rest_out_of_standard_text,
+                            class: "form-control timepicker" %>
+                        </div>
+                      </td>
+                      <td class="leave-type">
+                        <%= detail_form.select :leave_type, CONSTANTS::LEAVE_TYPES.map { |k, v| [v[:name], k] },
+                          { include_blank: true },
+                          { class: "form-control" } %>
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+            <table class="table table-bordered">
+              <tr class="text-nowrap bg-light-blue color-palette">
+                <th rowspan="2" class="text-center vertical-middle">
+                  <%= f.label :total_work_time %>
+                </th>
+                <td rowspan="2" class="text-center vertical-middle">
+                  <%= @attendance.total_work_time %>
+                </td>
+                <td class="text-center">
+                  <%= @attendance.total_deemed_overtime %>
+                </td>
+                <td rowspan="2" class="text-center vertical-middle">
+                  <%= @attendance.late_night_time %>
+                </td>
+                <td rowspan="2" class="text-center vertical-middle">
+                  <%= @attendance.time_holiday %>
+                </td>
+                <td rowspan="2" class="text-center vertical-middle">
+                  <%= @attendance.shortfall_time %>
+                </td>
+                <th class="text-center">
+                  <%= f.label :paid_holiday %>
+                </th>
+                <th class="text-center">
+                  <%= f.label :half_day_leave %>
+                </th>
+                <th class="text-center">
+                  <%= f.label :substitute_holiday %>
+                </th>
+                <th class="text-center">
+                  <%= f.label :special_leave %>
+                </th>
+                <th class="text-center">
+                  <%= f.label :none_special_leave %>
+                </th>
+                <th class="text-center">
+                  <%= f.label :absence %>
+                </th>
+              </tr>
+              <tr class="text-nowrap bg-light-blue color-palette">
+                <td class="text-center">
+                  <%= @attendance.total_overtime %>
+                </td>
+                <td class="text-center">
+                  <%= @attendance.paid_holiday_count %>
+                </td>
+                <td class="text-center">
+                  <%= @attendance.half_day_leave_count %>
+                </td>
+                <td class="text-center">
+                  <%= @attendance.substitute_holiday_count %>
+                </td>
+                <td class="text-center">
+                  <%= @attendance.special_leave_count %>
+                </td>
+                <td class="text-center">
+                  <%= @attendance.none_special_leave_count %>
+                </td>
+                <td class="text-center">
+                  <%= @attendance.absence_count %>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="box-footer">
+            <%= f.submit t(".save"),
+              data:  { disable_with: t(:processing) },
+              class: "btn btn-primary btn-lg" %>
+            <%= link_to t(".back"), attendances_path,
+              class: "btn btn-primary btn-lg pull-right" %>
+          </div>
+        </div>
+      <% end %>
+    </section>
+  </div>
+
+  <%= render "layouts/main_footer" %>
+</div>

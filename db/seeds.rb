@@ -21,21 +21,15 @@ User.find_or_create_by(admin: "0", number: "99999") do |u|
 end
 
 SystemConfig.find_or_create_by(id: 1) do |s|
-  s.base_working_start_time       = "0900"
-  s.base_working_end_time         = "1800"
-  s.rest_start_time               = "1200"
-  s.rest_end_time                 = "1300"
-  s.base_overtime_rest_start_time = "1800"
-  s.base_overtime_rest_end_time   = "1830"
-  s.late_night_time               = "2200"
-  s.time_off_hours_prospect       = 30.0
+  s.base_working_start_time_hm = "0900"
+  s.base_working_end_time_hm   = "1800"
+  s.rest_start_time_hm         = "1200"
+  s.rest_end_time_hm           = "1300"
+  s.late_night_time_hm         = "2200"
+  s.time_off_hours_prospect    = 30.0
 end
 
 Reason.find_or_create_by(id: 1) do |r|
   r.display_order = 1
   r.content       = "会議(19:00～21:00)"
-end
-
-LeaveType.find_or_create_by(id: 1) do |l|
-  l.content = "有給休暇"
 end

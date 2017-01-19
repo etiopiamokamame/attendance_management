@@ -45,6 +45,14 @@ Rails.application.routes.draw do
     only: [:index, :new, :edit, :destroy],
     concerns: :custom_restful
 
+  resources :attendances,
+    only: [:index, :destroy] do
+    collection do
+      match :save, via: :all
+      post :specific_month
+    end
+  end
+
   root to: redirect("login/new")
 
   post "/toggle_sidebar" => "application#toggle_sidebar"

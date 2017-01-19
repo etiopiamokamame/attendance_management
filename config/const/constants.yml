@@ -4,6 +4,11 @@ CONSTANTS:
 
   TIME_SEPARATE_TAG: ":"
 
+  # 年度開始月
+  START_FISCAL_YEAR: 4
+  # 年度終了月
+  END_FISCAL_YEAR: 3
+
   WEEKS:
     0: "日"
     1: "月"
@@ -33,3 +38,44 @@ CONSTANTS:
   SPECIAL_DAY_HOLIDAY_TYPE:      "001"
   # 特別日程種別 出勤
   SPECIAL_DAY_BUSINESS_DAY_TYPE: "002"
+
+  LEAVE_TYPES:
+    "001":
+      type: "001"
+      name: "年休"
+    "002":
+      type: "001"
+      name: "午前半休"
+    "003":
+      type: "001"
+      name: "午後半休"
+    "004":
+      type: "001"
+      name: "振休"
+    "005":
+      type: "002"
+      name: "振出"
+    "006":
+      type: ""
+      name: "夏季休暇"
+    "007":
+      type: "001"
+      name: "特有"
+    "008":
+      type: "001"
+      name: "特無"
+    "009":
+      type: "001"
+      name: "傷病欠"
+    "010":
+      type: "001"
+      name: "事故欠"
+    "011":
+      type: "001"
+      name: "遅刻"
+    "012":
+      type: "001"
+      name: "早退"
+    "013":
+      type: "002"
+      name: "シフト勤務"

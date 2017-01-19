@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require knockout
 //= require bootstrap-sprockets
 //= require dataTables/jquery.dataTables
 //= require jquery-ui/widgets/sortable

@@ -21,3 +21,7 @@
 .required-marc {
   color: #f56954;
 }
+
+.vertical-middle {
+  vertical-align: middle !important;
+}
