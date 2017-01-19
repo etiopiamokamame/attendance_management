@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      attendance: "勤怠"
+    attributes:
+      attendance:
+        day:                  "日"
+        week:                 "曜"
+        work_start_time:      "始業"
+        work_end_time:        "終業"
+        working_time:         "労働時間"
+        off_hours_time:       "時間外時間"
+        late_night_time:      "深夜時間"
+        time_holiday:         "時年時間"
+        shortfall_time:       "不足時間"
+        reason:               "事由"
+        leave_type:           "休暇種別"
+        rest_out_of_standard: "基準外休憩"
+        entries_month:        "記入月"
+        site_time:            "現場時間"
+        rest_time:            "休憩時間"
+        total_work_time:      "合計"
+        paid_holiday:         "年休"
+        half_day_leave:       "半休"
+        substitute_holiday:   "振休"
+        special_leave:        "特有"
+        none_special_leave:   "特無"
+        absence:              "欠勤"

@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'knockoutjs-rails'
 gem 'unicorn'
 gem 'icheck-rails'
 gem 'bootstrap-sass'

@@ -11,6 +11,10 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 files = %w(
+          timepicker.js
+          select2.js
+          attendances.js
+          attendances.css
           reasons.js
           leave_types.js
         )

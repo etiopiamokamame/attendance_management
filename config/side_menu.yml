@@ -31,7 +31,7 @@ default: &default
       header: true
     - title:  "attendance"
       icon:   "fa-calendar"
-      path:   "/#"
+      path:   "/attendances"
     - title:  "user"
       icon:   "fa-user"
       path:   "/#"

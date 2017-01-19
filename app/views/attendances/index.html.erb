@@ -1,0 +1,47 @@
+<%= javascript_include_tag "attendances" %>
+
+<div class="wrapper">
+  <%= render "layouts/main_header" %>
+  <%= render "layouts/main_sidebar" %>
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1><%= t(".title") %></h1>
+    </section>
+
+    <section class="content">
+      <%= render "shares/flash_messages" %>
+
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <% @attendances.each do |attendance| %>
+            <li class="col-md-1 no-margin no-padding text-center <%= 'active' if attendance.active_month? %>">
+              <%= link_to attendance.date_month_text, "##{attendance.date_ym}",
+                data: { toggle: "tab" },
+                onclick: "get_attendance('#{attendance.date_ym}')" %>
+            </li>
+          <% end %>
+        </ul>
+        <div class="tab-content">
+          <% @attendances.each do |attendance| %>
+            <div id="<%= attendance.date_ym %>" class="tab-pane <%= 'active' if attendance.active_month? %> no-data">
+              <div class="box no-border content">
+                <div class="overlay">
+                  <i class="fa fa-refresh fa-spin"></i>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <%= render "layouts/main_footer" %>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    get_attendance("<%= @date %>");
+  });
+</script>

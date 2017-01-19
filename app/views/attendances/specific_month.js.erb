@@ -1,0 +1,3 @@
+var attendanceBody = $("#" + "<%= @date %>");
+
+$(attendanceBody).html('<%= j render partial: "show_attendance", locals: { attendance: @attendance } %>');

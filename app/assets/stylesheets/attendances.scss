@@ -1,0 +1,23 @@
+// Place all the styles related to the attendances controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.day {
+  text-align: center;
+  width: 50px;
+}
+
+.time {
+  text-align: center;
+  width: 100px;
+}
+
+.reason {
+  min-width: 200px;
+  text-align: center;
+}
+
+.leave-type {
+  text-align: center;
+  width: 130px;
+}

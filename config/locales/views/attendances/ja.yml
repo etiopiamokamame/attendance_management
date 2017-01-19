@@ -1,0 +1,11 @@
+ja:
+  attendances:
+    index:
+      title: "勤怠"
+    show_attendance:
+      save: "編集"
+    save:
+      title:           "勤怠入力"
+      provision_title: "規定"
+      save:            "保存"
+      back:            "戻る"

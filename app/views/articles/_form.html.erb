@@ -1,20 +1,20 @@
 <%= f.hidden_field :user_id, value: current_user.id %>
 <div class="form-group">
   <label class="col-sm-2 control-label">
-    <%= f.object.class.human_attribute_name(:posted_start_date) %>
+    <%= f.object.class.human_attribute_name(:posted_start_date_ymd) %>
     <%= required_marc %>
   </label>
   <div class="col-sm-10">
-    <%= f.text_field :posted_start_date_text, class: "datepicker form-control flat" %>
+    <%= f.text_field :posted_start_date_text, required: true, class: "datepicker form-control flat" %>
   </div>
 </div>
 <div class="form-group">
   <label class="col-sm-2 control-label">
-    <%= f.object.class.human_attribute_name(:posted_end_date) %>
+    <%= f.object.class.human_attribute_name(:posted_end_date_ymd) %>
     <%= required_marc %>
   </label>
   <div class="col-sm-10">
-    <%= f.text_field :posted_end_date_text, class: "datepicker form-control flat" %>
+    <%= f.text_field :posted_end_date_text, required: true, class: "datepicker form-control flat" %>
   </div>
 </div>
 <div class="form-group">
@@ -23,7 +23,7 @@
     <%= required_marc %>
   </label>
   <div class="col-sm-10">
-    <%= f.text_field :title, class: "form-control" %>
+    <%= f.text_field :title, required: true, class: "form-control" %>
   </div>
 </div>
 <div class="form-group">
@@ -32,7 +32,7 @@
     <%= required_marc %>
   </label>
   <div class="col-sm-10">
-    <%= f.text_area :body, class: "textarea form-control", rows: 10, maxlength: 1000 %>
+    <%= f.text_area :body, required: true, class: "textarea form-control", rows: 10, maxlength: 1000 %>
   </div>
 </div>
 
