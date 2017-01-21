@@ -34,6 +34,7 @@ class ReasonsController < ApplicationController
   def update_orders
     reason = Reason.availability.find(params[:id])
     reason.change_order(params[:position])
+    render json: { result: true }
   end
 
   private

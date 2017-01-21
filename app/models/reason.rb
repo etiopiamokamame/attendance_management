@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 class Reason < ApplicationRecord
-
   validates :content,
             presence: true
 
   before_save :set_display_order,
-    if: :new_record?
+              if: :new_record?
   after_save :prepare_display_orders,
-    if: :deleted?
+             if: :deleted?
 
   scope :availability, -> {
     where(deleted: "0")
@@ -18,13 +17,13 @@ class Reason < ApplicationRecord
       .order(:display_order)
   }
 
-  scope :position, -> (position) {
+  scope :position, ->(position) {
     order_display[position.to_i]
   }
 
   def change_order(position)
     pr = Reason.position(position)
-    self.display_order, pr.display_order = pr.display_order, self.display_order
+    self.display_order, pr.display_order = pr.display_order, display_order
     save
     pr.save
   end
