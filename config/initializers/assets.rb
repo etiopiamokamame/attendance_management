@@ -15,6 +15,7 @@ files = %w(
           select2.js
           attendances.js
           attendances.css
+          reasons.js
         )
 
 Rails.application.config.assets.precompile += files
