@@ -1,0 +1,21 @@
+ja:
+  leave_types:
+    index:
+      title:           "休暇種別"
+      list:            "休暇種別一覧"
+      new_leave_type:  "新規作成"
+      back:            "戻る"
+      edit_leave_type: "編集"
+      delete:          "削除"
+    new:
+      title:           "新規休暇種別"
+      save_leave_type: "保存"
+      back:            "戻る"
+    edit:
+      title:           "休暇種別"
+      save_leave_type: "保存"
+      back:            "戻る"
+    change_orders:
+      title: "休暇種別並び替え"
+      list:  "休暇種別一覧"
+      back:  "戻る"

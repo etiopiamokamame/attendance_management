@@ -1,4 +1,8 @@
 CONSTANTS:
+
+  ACTIVE_FLAG:  "0"
+  DELETED_FLAG: "1"
+
   # Copyright
   COPYRIGHT: "Copyright &copy; All Rights Reserved."
 
@@ -33,3 +37,13 @@ CONSTANTS:
   SPECIAL_DAY_HOLIDAY_TYPE:      "001"
   # 特別日程種別 出勤
   SPECIAL_DAY_BUSINESS_DAY_TYPE: "002"
+
+  # 休暇種別状態
+  LEAVE_TYPE_STATUSES:
+    "001": "有効"
+    "002": "無効"
+
+  # 休暇種別状態 有効
+  LEAVE_TYPE_ENABLE:  "001"
+  # 休暇種別状態 無効
+  LEAVE_TYPE_DISABLE: "002"

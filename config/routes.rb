@@ -37,6 +37,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :leave_types,
+    only: [:index, :new, :edit],
+    concerns: :custom_restful do
+    collection do
+      get :change_orders
+    end
+    member do
+      post :update_orders
+    end
+  end
+
   resources :articles,
     only: [:index, :show, :new, :edit, :destroy],
     concerns: :custom_restful

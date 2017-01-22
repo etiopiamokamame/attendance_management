@@ -1,0 +1,8 @@
+ja:
+  leave_types:
+    new:
+      create_leave_type: "休暇種別を作成しました。"
+    edit:
+      update_leave_type: "休暇種別を更新しました。"
+    destroy:
+      delete_leave_type: "休暇種別を削除しました。"

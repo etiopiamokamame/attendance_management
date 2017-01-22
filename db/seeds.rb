@@ -37,5 +37,7 @@ Reason.find_or_create_by(id: 1) do |r|
 end
 
 LeaveType.find_or_create_by(id: 1) do |l|
-  l.content = "有給休暇"
+  l.content           = "年休"
+  l.aggregate_display = "1"
+  l.status            = "001"
 end

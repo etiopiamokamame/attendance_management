@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 class SpecialDay < ApplicationRecord
-  # 有効データ
-  scope :availability, -> {
-    where(deleted: "0")
-  }
-
   validates :name,
             presence: true
   validates :day_type,
@@ -12,6 +7,10 @@ class SpecialDay < ApplicationRecord
   validates :date_text,
             presence: true,
             date: { format: I18n.t(:date_format), allow_blank: true }
+
+  scope :availability, -> {
+    where(deleted: CONSTANTS::ACTIVE_FLAG)
+  }
 
   def date_text
     Date.strptime(date, I18n.t(:default_date_format)).strftime(I18n.t(:date_format))
@@ -35,6 +34,6 @@ class SpecialDay < ApplicationRecord
   end
 
   def soft_delete
-    update(deleted: "1")
+    update(deleted: CONSTANTS::DELETED_FLAG)
   end
 end

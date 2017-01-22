@@ -17,7 +17,7 @@ default: &default
       admin:  true
     - title:  "leave_type"
       icon:   "fa-copy"
-      path:   "/#"
+      path:   "/leave_types"
       admin:  true
     - title:  "article"
       icon:   "fa-newspaper-o"
