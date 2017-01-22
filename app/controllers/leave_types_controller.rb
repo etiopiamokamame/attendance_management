@@ -34,6 +34,7 @@ class LeaveTypesController < ApplicationController
   def update_orders
     leave_type = LeaveType.availability.find(params[:id])
     leave_type.change_order(params[:position])
+    render json: { result: true }
   end
 
   private

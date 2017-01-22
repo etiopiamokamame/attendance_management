@@ -12,6 +12,7 @@ Rails.application.config.assets.version = '1.0'
 
 files = %w(
           reasons.js
+          leave_types.js
         )
 
 Rails.application.config.assets.precompile += files

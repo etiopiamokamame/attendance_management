@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   # 有効データ
   scope :availability, -> {
-    where(deleted: CONSTANTS::ACTIVE_FLAG)
+    where(deleted: CONSTANTS::DISABLE_FLAG)
   }
 
   def admin?

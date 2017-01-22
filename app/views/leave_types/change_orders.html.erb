@@ -1,3 +1,4 @@
+<%= javascript_include_tag "leave_types" %>
 <div class="wrapper">
   <%= render "layouts/main_header" %>
   <%= render "layouts/main_sidebar" %>
@@ -45,30 +46,3 @@
 
   <%= render "layouts/main_footer" %>
 </div>
-
-<script type="text/javascript">
-  $(function() {
-    $(".sortable").sortable({
-      axis:    "y",
-      opacity: 0.5,
-      handle:  ".handle",
-      update: function(e, ui) {
-        $(".overlay").removeClass("hide");
-        var item        = ui.item;
-        var item_data   = item.data();
-        var params      = {};
-        params.position = item.index();
-
-        $.ajax({
-          type:     "POST",
-          url:      item_data.update_url,
-          dataType: "json",
-          data:     params,
-          success: function(){
-            $(".overlay").addClass("hide");
-          }
-        });
-      }
-    });
-  });
-</script>

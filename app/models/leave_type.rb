@@ -7,9 +7,11 @@ class LeaveType < ApplicationRecord
 
   before_save :set_display_order,
               if: :new_record?
+  before_save :set_aggregate_display,
+              if: :disable?
 
   scope :availability, -> {
-    where(deleted: CONSTANTS::ACTIVE_FLAG)
+    where(deleted: CONSTANTS::DISABLE_FLAG)
   }
 
   scope :order_display, -> {
@@ -41,16 +43,20 @@ class LeaveType < ApplicationRecord
   end
 
   def aggregate_display_enable?
-    aggregate_display == CONSTANTS::ACTIVE_FLAG
+    aggregate_display == CONSTANTS::ENABLE_FLAG
   end
 
   def aggregate_display_disable?
-    aggregate_display == CONSTANTS::DELETED_FLAG
+    aggregate_display == CONSTANTS::DISABLE_FLAG
   end
 
   private
 
   def set_display_order
     self.display_order = LeaveType.availability.maximum(:display_order).try(:next) || 1
+  end
+
+  def set_aggregate_display
+    self.aggregate_display = CONSTANTS::DISABLE_FLAG
   end
 end

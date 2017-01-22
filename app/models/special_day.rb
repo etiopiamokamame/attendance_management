@@ -9,7 +9,7 @@ class SpecialDay < ApplicationRecord
             date: { format: I18n.t(:date_format), allow_blank: true }
 
   scope :availability, -> {
-    where(deleted: CONSTANTS::ACTIVE_FLAG)
+    where(deleted: CONSTANTS::DISABLE_FLAG)
   }
 
   def date_text
@@ -34,6 +34,6 @@ class SpecialDay < ApplicationRecord
   end
 
   def soft_delete
-    update(deleted: CONSTANTS::DELETED_FLAG)
+    update(deleted: CONSTANTS::ENABLE_FLAG)
   end
 end

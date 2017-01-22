@@ -1,7 +1,7 @@
 CONSTANTS:
 
-  ACTIVE_FLAG:  "0"
-  DELETED_FLAG: "1"
+  ENABLE_FLAG:  "1"
+  DISABLE_FLAG: "0"
 
   # Copyright
   COPYRIGHT: "Copyright &copy; All Rights Reserved."
