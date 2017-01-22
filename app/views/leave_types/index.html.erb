@@ -1,0 +1,91 @@
+<div class="wrapper">
+  <%= render "layouts/main_header" %>
+  <%= render "layouts/main_sidebar" %>
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1><%= t(".title") %></h1>
+    </section>
+
+    <section class="content">
+      <%= render "shares/flash_messages" %>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title"><%= t(".list") %></h3>
+              <div class="box-tools pull-right">
+                <%= link_to change_orders_leave_types_path, class: "btn btn-info btn-sm" do %>
+                  <span class="glyphicon glyphicon-sort"></span>
+                <% end %>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <table id="leave_type_table" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>
+                          <%= LeaveType.human_attribute_name(:display_order) %>
+                        </th>
+                        <th>
+                          <%= LeaveType.human_attribute_name(:content) %>
+                        </th>
+                        <th>
+                          <%= LeaveType.human_attribute_name(:status) %>
+                        </th>
+                        <th>
+                          <%= LeaveType.human_attribute_name(:aggregate_display) %>
+                        </th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @leave_types.each do |leave_type| %>
+                        <tr class="<%= 'bg-gray' if leave_type.disable? %>">
+                          <td>
+                            <%= leave_type.display_order %>
+                          </td>
+                          <td>
+                            <%= leave_type.content %>
+                          </td>
+                          <td>
+                            <%= leave_type.status_name %>
+                          </td>
+                          <td>
+                            <% if leave_type.aggregate_display_enable? %>
+                              <span class="glyphicon glyphicon-ok"></span>
+                            <% end %>
+                          </td>
+                          <td>
+                            <%= link_to t(".edit_leave_type"), edit_leave_type_path(leave_type),
+                              class: "btn btn-success" %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                  <%== datatable_script("leave_type_table",
+                                        0,
+                                        { column_defs: [-1, -2] }) %>
+                </div>
+              </div>
+            </div>
+            <div class="box-footer">
+              <%= link_to t(".new_leave_type"), new_leave_type_path,
+                method: :get,
+                class:  "btn btn-primary btn-lg" %>
+              <%= link_to t(".back"), top_index_path,
+                method: :get,
+                class:  "btn btn-primary btn-lg pull-right" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <%= render "layouts/main_footer" %>
+</div>

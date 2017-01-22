@@ -4,7 +4,7 @@ class Article < ApplicationRecord
 
   # 有効データ
   scope :availability, -> {
-    where(deleted: "0")
+    where(deleted: CONSTANTS::ACTIVE_FLAG)
   }
 
   # 掲載期間中データ
@@ -67,7 +67,7 @@ class Article < ApplicationRecord
   end
 
   def soft_delete
-    update(deleted: "1")
+    update(deleted: CONSTANTS::DELETED_FLAG)
   end
 
   private

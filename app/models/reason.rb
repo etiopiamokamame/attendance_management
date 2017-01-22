@@ -9,7 +9,7 @@ class Reason < ApplicationRecord
              if: :deleted?
 
   scope :availability, -> {
-    where(deleted: "0")
+    where(deleted: CONSTANTS::ACTIVE_FLAG)
   }
 
   scope :order_display, -> {
@@ -29,11 +29,11 @@ class Reason < ApplicationRecord
   end
 
   def soft_delete
-    update(deleted: "1")
+    update(deleted: CONSTANTS::DELETED_FLAG)
   end
 
   def deleted?
-    deleted == "1"
+    deleted == CONSTANTS::DELETED_FLAG
   end
 
   private

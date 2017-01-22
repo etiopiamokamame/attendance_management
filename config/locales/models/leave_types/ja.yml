@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      leave_type: "休暇種別"
+    attributes:
+      leave_type:
+        display_order:     "表示順"
+        content:           "休暇種別"
+        aggregate_display: "集計表示"
+        status:            "状態"
