@@ -52,3 +52,4 @@ CONSTANTS:
   LEAVE_TYPE_ENABLE:  "001"
   # 休暇種別状態 無効
   LEAVE_TYPE_DISABLE: "002"
+
