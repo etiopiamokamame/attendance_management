@@ -42,11 +42,7 @@ class AttendanceDetail
     self.time_holiday_text         = opt[:time_holiday_text]
     self.shortfall_time_text       = opt[:shortfall_time_text]
     self.reason                    = opt[:reason]
-<<<<<<< HEAD
     self.leave_type_id             = opt[:leave_type_id]
-=======
-    self.leave_type                = opt[:leave_type]
->>>>>>> 7c4608a93d7895c36d7d985db2406b4d2b1a5f37
     self.rest_out_of_standard_text = opt[:rest_out_of_standard_text]
     self.holiday_flag              = opt[:holiday_flag]
   end
@@ -209,13 +205,8 @@ class AttendanceDetail
     @shortfall_time_text = value
   end
 
-<<<<<<< HEAD
   def leave_type
     LeaveType.find_by(id: leave_type_id)
-=======
-  def leave_type_name
-    CONSTANTS::LEAVE_TYPES.dig(leave_type, :name)
->>>>>>> 7c4608a93d7895c36d7d985db2406b4d2b1a5f37
   end
 
   def rest_out_of_standard

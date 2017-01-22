@@ -25,8 +25,8 @@ class LeaveType < ApplicationRecord
   }
 
   scope :aggregate_display_validity, -> {
-    order_display.
-      where(aggregate_display: CONSTANTS::ENABLE_FLAG)
+    order_display
+      .where(aggregate_display: CONSTANTS::ENABLE_FLAG)
   }
 
   scope :position, ->(position) {
