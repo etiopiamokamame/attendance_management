@@ -80,7 +80,8 @@
               <%= detail.rest_out_of_standard_text(CONSTANTS::TIME_SEPARATE_TAG) %>
             </td>
             <td class="leave-type">
-              <%= detail.leave_type_name %>
+
+              <%= detail.leave_type_content %>
             </td>
           </tr>
         <% end %>
@@ -106,47 +107,21 @@
         <td rowspan="2" class="text-center vertical-middle">
           <%= attendance.shortfall_time %>
         </td>
-        <th class="text-center">
-          <%= f.label :paid_holiday %>
-        </th>
-        <th class="text-center">
-          <%= f.label :half_day_leave %>
-        </th>
-        <th class="text-center">
-          <%= f.label :substitute_holiday %>
-        </th>
-        <th class="text-center">
-          <%= f.label :special_leave %>
-        </th>
-        <th class="text-center">
-          <%= f.label :none_special_leave %>
-        </th>
-        <th class="text-center">
-          <%= f.label :absence %>
-        </th>
+        <% LeaveType.aggregate_display_validity.each do |leave_type| %>
+          <td class="text-center">
+            <%= leave_type.content %>
+          </td>
+        <% end %>
       </tr>
       <tr class="text-nowrap bg-light-blue color-palette">
         <td class="text-center">
           <%= attendance.total_overtime %>
         </td>
-        <td class="text-center">
-          <%= attendance.paid_holiday_count %>
-        </td>
-        <td class="text-center">
-          <%= attendance.half_day_leave_count %>
-        </td>
-        <td class="text-center">
-          <%= attendance.substitute_holiday_count %>
-        </td>
-        <td class="text-center">
-          <%= attendance.special_leave_count %>
-        </td>
-        <td class="text-center">
-          <%= attendance.none_special_leave_count %>
-        </td>
-        <td class="text-center">
-          <%= attendance.absence_count %>
-        </td>
+        <% LeaveType.aggregate_display_validity.each do |leave_type| %>
+          <td class="text-center">
+            TODO
+          </td>
+        <% end %>
       </tr>
     </table>
   <% end %>

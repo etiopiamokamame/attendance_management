@@ -238,7 +238,8 @@
                         </div>
                       </td>
                       <td class="leave-type">
-                        <%= detail_form.select :leave_type, CONSTANTS::LEAVE_TYPES.map { |k, v| [v[:name], k] },
+                        <%= detail_form.collection_select :leave_type_id,
+                          LeaveType.validity.order_display, :id, :content,
                           { include_blank: true },
                           { class: "form-control" } %>
                       </td>
@@ -267,47 +268,21 @@
                 <td rowspan="2" class="text-center vertical-middle">
                   <%= @attendance.shortfall_time %>
                 </td>
-                <th class="text-center">
-                  <%= f.label :paid_holiday %>
-                </th>
-                <th class="text-center">
-                  <%= f.label :half_day_leave %>
-                </th>
-                <th class="text-center">
-                  <%= f.label :substitute_holiday %>
-                </th>
-                <th class="text-center">
-                  <%= f.label :special_leave %>
-                </th>
-                <th class="text-center">
-                  <%= f.label :none_special_leave %>
-                </th>
-                <th class="text-center">
-                  <%= f.label :absence %>
-                </th>
+                <% LeaveType.aggregate_display_validity.each do |leave_type| %>
+                  <th class="text-center">
+                    <%= leave_type.content %>
+                  </th>
+                <% end %>
               </tr>
               <tr class="text-nowrap bg-light-blue color-palette">
                 <td class="text-center">
                   <%= @attendance.total_overtime %>
                 </td>
-                <td class="text-center">
-                  <%= @attendance.paid_holiday_count %>
-                </td>
-                <td class="text-center">
-                  <%= @attendance.half_day_leave_count %>
-                </td>
-                <td class="text-center">
-                  <%= @attendance.substitute_holiday_count %>
-                </td>
-                <td class="text-center">
-                  <%= @attendance.special_leave_count %>
-                </td>
-                <td class="text-center">
-                  <%= @attendance.none_special_leave_count %>
-                </td>
-                <td class="text-center">
-                  <%= @attendance.absence_count %>
-                </td>
+                <% LeaveType.aggregate_display_validity.each do |leave_type| %>
+                  <td class="text-center">
+                    TODO
+                  </td>
+                <% end %>
               </tr>
             </table>
           </div>

@@ -12,7 +12,7 @@ class AttendanceDetail
                 :time_holiday_hm,         # 時年時間
                 :shortfall_time_hm,       # 不足時間
                 :reason,                  # 事由
-                :leave_type,              # 休暇種別
+                :leave_type_id,           # 休暇種別
                 :rest_out_of_standard_hm, # 基準外休憩
                 :holiday_flag             # 休日フラグ
 
@@ -24,6 +24,11 @@ class AttendanceDetail
             presence: { unless: :holiday? },
             time: { format: I18n.t(:default_time_format_hm, separate: CONSTANTS::TIME_SEPARATE_TAG),
                     allow_blank: true }
+
+  delegate :content,
+           to:        :leave_type,
+           prefix:    true,
+           allow_nil: true
 
   def initialize(day, h = {})
     opt                            = h.symbolize_keys
@@ -37,7 +42,7 @@ class AttendanceDetail
     self.time_holiday_text         = opt[:time_holiday_text]
     self.shortfall_time_text       = opt[:shortfall_time_text]
     self.reason                    = opt[:reason]
-    self.leave_type                = opt[:leave_type]
+    self.leave_type_id             = opt[:leave_type_id]
     self.rest_out_of_standard_text = opt[:rest_out_of_standard_text]
     self.holiday_flag              = opt[:holiday_flag]
   end
@@ -200,8 +205,8 @@ class AttendanceDetail
     @shortfall_time_text = value
   end
 
-  def leave_type_name
-    CONSTANTS::LEAVE_TYPES.dig(leave_type, :name)
+  def leave_type
+    LeaveType.find_by(id: leave_type_id)
   end
 
   def rest_out_of_standard

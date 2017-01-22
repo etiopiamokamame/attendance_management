@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class SpecialDay < ApplicationRecord
-  # 有効データ
+  # ?L???f?[?^
   scope :availability, -> {
     where(deleted: "0")
   }

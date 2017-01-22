@@ -194,7 +194,7 @@ class Attendance < ApplicationRecord
     else
       return @attendance_details unless @attendance_details.blank?
 
-      YAML.load(details).map do |day, detail|
+      YAML.safe_load(details).map do |day, detail|
         AttendanceDetail.new(day, detail)
       end
     end
@@ -237,30 +237,6 @@ class Attendance < ApplicationRecord
   end
 
   def shortfall_time
-    0
-  end
-
-  def paid_holiday_count
-    0
-  end
-
-  def half_day_leave_count
-    0
-  end
-
-  def substitute_holiday_count
-    0
-  end
-
-  def special_leave_count
-    0
-  end
-
-  def none_special_leave_count
-    0
-  end
-
-  def absence_count
     0
   end
 

@@ -14,9 +14,19 @@ class LeaveType < ApplicationRecord
     where(deleted: CONSTANTS::DISABLE_FLAG)
   }
 
+  scope :validity, -> {
+    availability
+      .where(status: CONSTANTS::LEAVE_TYPE_ENABLE)
+  }
+
   scope :order_display, -> {
     availability
       .order(:display_order)
+  }
+
+  scope :aggregate_display_validity, -> {
+    order_display.
+      where(aggregate_display: CONSTANTS::ENABLE_FLAG)
   }
 
   scope :position, ->(position) {
